@@ -167,7 +167,7 @@ public class Battle_Handler : MonoBehaviour
                         arrows[i].SetVisible(false);
                     } else {
                         targets.Add(units[i]);
-                        arrows[i].SetVisible(true);
+                        arrows[i].SetVisible(true, true);
                     }
                 }
             }

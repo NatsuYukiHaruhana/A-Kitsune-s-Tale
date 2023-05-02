@@ -35,42 +35,27 @@ public class ArrowMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (doMovementX == true) {
-            if (moveBackwards == true) {
-                if (Utils.ApproximatelyEqual(transform.position.x, minPosX, 0.02f)) {
-                    moveBackwards = false;
-                    transform.position = new Vector3(minPosX, transform.position.y, transform.position.z);
-                } else { 
-                    transform.position = new Vector3(transform.position.x - moveSpeed, transform.position.y, transform.position.z);
-                }
-            } else {
-                if (Utils.ApproximatelyEqual(transform.position.x, maxPosX, 0.02f)) {
-                    moveBackwards = true;
-                    transform.position = new Vector3(maxPosX, transform.position.y, transform.position.z);
-                } else {
-                    transform.position = new Vector3(transform.position.x + moveSpeed, transform.position.y, transform.position.z);
-                }
-            }
-            return;
-        }
+        DoMovementOnAxis(doMovementX, minPosX, maxPosX, true);
+        DoMovementOnAxis(doMovementY, minPosY, maxPosY, false);
+    }
 
-        if (doMovementY == true) {
-            if (moveBackwards == true) {
-                if (Utils.ApproximatelyEqual(transform.position.y, minPosY, 0.02f)) {
-                    moveBackwards = false;
-                    transform.position = new Vector3(transform.position.x, minPosY, transform.position.z);
-                } else {
-                    transform.position = new Vector3(transform.position.x, transform.position.y - moveSpeed, transform.position.z);
-                }
-            } else {
-                if (Utils.ApproximatelyEqual(transform.position.y, maxPosY, 0.02f)) {
-                    moveBackwards = true;
-                    transform.position = new Vector3(transform.position.x, maxPosY, transform.position.z);
-                } else {
-                    transform.position = new Vector3(transform.position.x, transform.position.y + moveSpeed, transform.position.z);
-                }
+    private void DoMovementOnAxis(bool doMovementOnAxis, float minPos, float maxPos, bool isOnXAxis) {
+        if (doMovementOnAxis) {
+            Vector3 delta = isOnXAxis ? Vector3.right : Vector3.up;
+            if (moveBackwards) {
+                delta *= -1;
             }
-            return;
+            
+            transform.position += delta * moveSpeed;
+            float axis = isOnXAxis ? transform.position.x : transform.position.y;
+            
+            if (Utils.ApproximatelyEqual(axis, minPos, 0.02f)) {
+                moveBackwards = false;
+                transform.position = transform.position + delta * (axis - minPos);
+            } else if (Utils.ApproximatelyEqual(axis, maxPos, 0.02f)) {
+                moveBackwards = true;
+                transform.position = transform.position + delta * (axis - maxPos);
+            }
         }
     }
 
@@ -99,10 +84,11 @@ public class ArrowMovement : MonoBehaviour
         doMovementY = newMovementValue;
     }
 
-    public void SetVisible(bool visible) {
+    public void SetVisible(bool visible, bool moveOnX = false, bool moveOnY = false) {
         gameObject.GetComponent<SpriteRenderer>().enabled = visible;
-        SetMovementX(visible);
-        SetMovementY(visible);
+        
+        SetMovementX(moveOnX);
+        SetMovementY(moveOnY);
     }
 
     public void SetOffsetX(float newOffsetX) {
