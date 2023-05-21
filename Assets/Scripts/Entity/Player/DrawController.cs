@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawController : MonoBehaviour
 {
-    public void TakeScreenshot() {
+    public static void TakeScreenshot() {
         ScreenshotHandler.TakeScreenshot_Static();
     }
 }

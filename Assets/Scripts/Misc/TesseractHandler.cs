@@ -13,6 +13,8 @@ public class TesseractHandler : MonoBehaviour
 
     private TesseractDriver _tesseractDriver;
     private string recognizedText = "";
+    private string errorMsg = "";
+    private bool isDone = false;
 
     private void Start() {
         instance = this;
@@ -26,14 +28,16 @@ public class TesseractHandler : MonoBehaviour
     }
 
     private void OnSetupCompleteRecognize() {
-        recognizedText = "Output: " + _tesseractDriver.Recognize(_texture) + "\nError message: " + _tesseractDriver.GetErrorMessage();
+        recognizedText = _tesseractDriver.Recognize(_texture);
+        errorMsg = "Error message: " + _tesseractDriver.GetErrorMessage();
         if (displayText != null) {
-            displayText.text = recognizedText;
+            displayText.text = recognizedText + errorMsg;
         }
         if (outputImage != null) { 
             SetImageDisplay();
         }
         Debug.Log(recognizedText);
+        isDone = true;
     }
 
     public static void Recognize_Static() {
@@ -54,6 +58,18 @@ public class TesseractHandler : MonoBehaviour
 
     public static string GetRecognizedText() {
         return instance.recognizedText;
+    }
+
+    public static string GetErrorMsg() {
+        return instance.errorMsg;
+    }
+
+    public static bool GetIsDone() {
+        return instance.isDone;
+    }
+
+    public static void ResetIsDone() {
+        instance.isDone = false;
     }
 
     private void SetImageDisplay() {

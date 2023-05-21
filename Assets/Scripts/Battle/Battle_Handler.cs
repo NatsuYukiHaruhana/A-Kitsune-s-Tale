@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.SceneManagement;
 
 public class Battle_Handler : MonoBehaviour
 {
@@ -12,6 +14,15 @@ public class Battle_Handler : MonoBehaviour
     [SerializeField]
     private List<GameObject> buttons;
 
+    public enum TurnAction {
+        Attack,
+        Guard,
+        Items,
+        Spells,
+        Run,
+        NULL
+    }
+
     private static readonly ReadOnlyCollection<Vector3> unitPositions = 
         new ReadOnlyCollection<Vector3>(new List<Vector3>{new Vector3(-5.3f, 3.3f, 0f),   // top-most unit (ally)
                                                           new Vector3(-2.6f, 2f, 0f),     // leader unit (ally)
@@ -20,19 +31,24 @@ public class Battle_Handler : MonoBehaviour
                                                           new Vector3(2.6f, 2f, 0f),      // leader unit (enemy)
                                                           new Vector3(5.3f, 0.7f, 0f)});  // bottom-most unit (enemy)
 
+    private Battle_Entity.Faction allowedTargets;
+    private TurnAction currentAction;
     private List<ArrowMovement> arrows;
     private List<Battle_Entity> units;
     private List<Button_Functionality> unitButtons;
     private List<Battle_Entity> targets;
-    private Battle_Entity.Faction allowedTargets = Battle_Entity.Faction.NULL;
     private int unitTurn;
     private bool canSelectTarget;
 
     private void Awake() {
+        allowedTargets = Battle_Entity.Faction.NULL;
+        currentAction = TurnAction.NULL;
+        
         arrows = new List<ArrowMovement>();
         units = new List<Battle_Entity>();
         unitButtons = new List<Button_Functionality>();
         targets = new List<Battle_Entity>();
+        
         unitTurn = 0;
         canSelectTarget = false;
 
@@ -114,17 +130,47 @@ public class Battle_Handler : MonoBehaviour
         if (canSelectTarget) {
             DoTargetSelection();
         }
+
+        switch (currentAction) {
+            case TurnAction.Attack: {
+                if (TesseractHandler.GetIsDone()) {
+                    TesseractHandler.ResetIsDone();
+                    DoAttack();
+                }
+                break;
+            }
+            case TurnAction.Run: {
+                DoRun();
+                break;
+            }
+        }
     }
 
-    public void SelectTargets(string menuToOpen) {
-        if (menuToOpen == "Battle_Menu_2") { // Attack button pressed
+    public void SetCurrentAction(string action) {
+        if (action == "Attack") {
+            currentAction = TurnAction.Attack;
+        } else if (action == "Guard") {
+            currentAction = TurnAction.Guard;
+        } else if (action == "Items") {
+            currentAction = TurnAction.Items;
+        } else if (action == "Spells") {
+            currentAction = TurnAction.Spells;
+        } else if (action == "Run") {
+            currentAction = TurnAction.Run;
+        } else {
+            currentAction = TurnAction.NULL;
+        }
+    }
+
+    public void SelectTargets() {
+        if (currentAction == TurnAction.Attack) { // Attack button pressed
             allowedTargets = Battle_Entity.Faction.Enemy;
         }
 
         foreach(GameObject buttonMenu in buttons) {
             if (buttonMenu.name == "Battle_Menu_1") {
                 buttonMenu.SetActive(false);
-            } else if (buttonMenu.name == menuToOpen) {
+            } else if (buttonMenu.name == "Battle_Menu_2") {
                 buttonMenu.SetActive(true);
             }
         }
@@ -148,14 +194,26 @@ public class Battle_Handler : MonoBehaviour
         }
     }
 
-    public void DoAttack() {
+    public void DoAttackPrep() {
         if (targets.Count == 0) {
             Debug.Log("Please select targets!");
             return;
         }
 
-        units[unitTurn].BasicAttack(targets);
-        NextTurn();
+        DrawController.TakeScreenshot();
+    }
+
+    private void DoAttack() {
+        char wantedChar = Utils.GetRandomCharacter(true, false, false);
+        Debug.Log("Wanted: " + wantedChar);
+        if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
+            units[unitTurn].BasicAttack(targets);
+            NextTurn();
+        }
+    }
+
+    private void DoRun() {
+        SceneManager.LoadScene("SampleScene");
     }
 
     private void DoTargetSelection() {
@@ -175,6 +233,7 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void NextTurn() {
+        currentAction = TurnAction.NULL;
         canSelectTarget = false;
         targets.Clear();
         unitTurn = unitTurn < units.Count ? unitTurn++ : 0;

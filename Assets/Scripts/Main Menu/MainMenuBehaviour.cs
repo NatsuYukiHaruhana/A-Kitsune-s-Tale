@@ -31,6 +31,7 @@ public class MainMenuBehaviour : MonoBehaviour {
     }
 
     public void LoadGame() {
+        Utils.InitGameData();
         SceneManager.LoadScene("Battle Scene");
     }
 

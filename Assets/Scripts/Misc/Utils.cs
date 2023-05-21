@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#define ALLOW_HIRAGANA
+using UnityEngine;
 using System;
 using System.IO;
 using System.Collections;
@@ -28,11 +29,12 @@ public class Utils
     }
 
     public static void InitGameData() {
-        string dirPath = Application.persistentDataPath + "item_data";
+        string dirPath = Application.persistentDataPath + "/item_data";
         if (!Directory.Exists(dirPath)) {
             Directory.CreateDirectory(dirPath);
         }
 
+        InitTextRecognitionData();
         InitAccessoryData();
         //InitArmorData();
         //InitShieldData();
@@ -45,6 +47,50 @@ public class Utils
 
     public static void LoadGameData() {
         LoadTeamData();
+    }
+
+    public static char GetRandomCharacter(bool allowHiragana, bool allowKatakana, bool allowKanji) {
+        List<string> allowedFiles = new List<string>();
+        if (allowHiragana) {
+            string filePath = Application.persistentDataPath + "/hiragana.dat";
+
+            if (!File.Exists(filePath)) {
+                Debug.LogError("hiragana.dat was not found in " + Application.persistentDataPath + "!");
+            }
+            allowedFiles.Add(filePath);
+        }
+        if (allowKatakana) {
+            string filePath = Application.persistentDataPath + "/katakana.dat";
+
+            if (!File.Exists(filePath)) {
+                Debug.LogError("katakana.dat was not found in " + Application.persistentDataPath + "!");
+            }
+            allowedFiles.Add(filePath);
+        }
+        if (allowKanji) {
+            string filePath = Application.persistentDataPath + "/kanji.dat";
+
+            if (!File.Exists(filePath)) {
+                Debug.LogError("kanji.dat was not found in " + Application.persistentDataPath + "!");
+            }
+            allowedFiles.Add(filePath);
+        }
+
+        if (allowedFiles.Count == 0) {
+            return '\0';
+        }
+
+        int fileToUse = UnityEngine.Random.Range(0, allowedFiles.Count);
+
+        using (FileStream file = File.OpenRead(allowedFiles[fileToUse])) {
+            using (StreamReader sr = new StreamReader(file, System.Text.Encoding.UTF8)) {
+                string line = sr.ReadLine();
+                return 'あ';
+                //return line[UnityEngine.Random.Range(0, line.Length)];
+            }
+        }
+        
+        return '\0';
     }
 
     private static void SaveTeamData() {
@@ -90,8 +136,38 @@ public class Utils
         Team_Data.spells   = (List<List<Battle_Entity_Spells>>) data[3];
         Team_Data.items    = (List<List<Item>>)                 data[4];
     }
-    
-    public static void InitAccessoryData() {
+
+    private static void InitTextRecognitionData() {
+        string filePath = Application.persistentDataPath + "/hiragana.dat";
+        if (!File.Exists(filePath)) {
+            WriteOneLineToFile(filePath,
+                            "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん" +
+                            "がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ");
+        }
+
+        filePath = Application.persistentDataPath + "/katakana.dat";
+        if (!File.Exists(filePath)) {
+            WriteOneLineToFile(filePath,
+                            "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン" +
+                            "ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ");
+        }
+
+        filePath = Application.persistentDataPath + "/kanji.dat";
+        if (!File.Exists(filePath)) {
+            WriteOneLineToFile(filePath,
+                            ""); // TODO: Add kanji characters
+        }
+    }
+
+    private static void WriteOneLineToFile(string filePath, string line) {
+        using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write))
+
+        using (StreamWriter sw = new StreamWriter(file)) {
+            sw.WriteLine(line);
+        }
+    }
+
+    private static void InitAccessoryData() {
         string filePath = Application.persistentDataPath + "/item_data/accessory_data.dat";
         if (File.Exists(filePath) == true) {
             return;
@@ -109,7 +185,7 @@ public class Utils
         }
     }
 
-    public static void InitArmorData() {
+    private static void InitArmorData() {
         string filePath = Application.persistentDataPath + "/item_data/armor_data.dat";
         if (File.Exists(filePath) == true) {
             return;
@@ -127,7 +203,7 @@ public class Utils
         }
     }
 
-    public static void InitShieldData() {
+    private static void InitShieldData() {
         string filePath = Application.persistentDataPath + "/item_data/shield_data.dat";
         if (File.Exists(filePath) == true) {
             return;
@@ -145,7 +221,7 @@ public class Utils
         }
     }
 
-    public static void InitWeaponData() {
+    private static void InitWeaponData() {
         string filePath = Application.persistentDataPath + "/item_data/weapon_data.dat";
         if (File.Exists(filePath) == true) {
             return;
