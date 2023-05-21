@@ -15,6 +15,8 @@ public class Battle_Entity : MonoBehaviour {
     private string unitName = "\n";
     private Faction unitFaction = Faction.NULL;
     private Battle_Entity_Stats battleStats;
+    private List<Battle_Entity_Stat_Change> statChanges;
+    private bool isGuarding;
     private Battle_Entity_Loadout loadout;
     private List<Battle_Entity_Spells> spells;
     private List<Item> items;
@@ -33,6 +35,9 @@ public class Battle_Entity : MonoBehaviour {
         manaBar = Instantiate(barPrefab, this.transform).GetComponent<Battle_Entity_Bar>();
         manaBar.SetColor(new Color(0, 0, 255));
         manaBar.transform.localPosition = new Vector3(0f, 0.88f, 0f);
+
+        statChanges = new List<Battle_Entity_Stat_Change>();
+        isGuarding = false;
 
         loadout = new Battle_Entity_Loadout();
 
@@ -76,6 +81,14 @@ public class Battle_Entity : MonoBehaviour {
         }
     }
 
+    public void RaiseGuard() {
+        isGuarding = true;
+    }
+
+    public void LowerGuard() {
+        isGuarding = false;
+    }
+
     public void TakeDamage(float damage, DamageType damageType) {
         float damageReduction;
         switch (damageType) {
@@ -99,6 +112,10 @@ public class Battle_Entity : MonoBehaviour {
             return;
         }
 
+        if (isGuarding) {
+            damageDealt /= 2f;
+        }
+
         if (damageDealt < battleStats.currHP) {
             battleStats.currHP -= damageDealt;
         } else {
@@ -107,6 +124,18 @@ public class Battle_Entity : MonoBehaviour {
 
         hpBar.SetTargetPercentage(battleStats.currHP / battleStats.maxHP);
         hpBar.gameObject.SetActive(true);
+    }
+
+    public void AddStatChange(Battle_Entity_Stat_Change newStatChange) {
+        statChanges.Add(newStatChange);
+    }
+
+    public void CheckStatChanges() {
+        foreach (Battle_Entity_Stat_Change statChange in statChanges) {
+            statChange.LowerTurnCount();
+        }
+
+        statChanges.RemoveAll(statChange => statChange.GetReadyToRemove() == true);
     }
 
     public Battle_Entity_Stats GetStats() {

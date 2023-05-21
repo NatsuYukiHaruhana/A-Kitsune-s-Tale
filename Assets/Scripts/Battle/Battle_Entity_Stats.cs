@@ -66,6 +66,42 @@ public struct Battle_Entity_Stats : ISerializable
         return false;
     }
 
+    public static Battle_Entity_Stats operator+(Battle_Entity_Stats left, Battle_Entity_Stats right) {
+        Battle_Entity_Stats retStats = left;
+
+        retStats.currHP += right.maxHP;
+        retStats.maxHP += right.maxHP;
+        retStats.currMana += right.currMana;
+        retStats.maxMana += right.maxMana;
+        retStats.str += right.str;
+        retStats.mag += right.mag;
+        retStats.spd += right.spd;
+        retStats.def += right.def;
+        retStats.res += right.res;
+
+        return retStats;
+    }
+
+    public static Battle_Entity_Stats operator-(Battle_Entity_Stats left, Battle_Entity_Stats right) {
+        Battle_Entity_Stats retStats = left;
+
+        retStats.maxHP -= right.maxHP;
+        if (retStats.currHP > retStats.maxHP) {
+            retStats.currHP = retStats.maxHP;
+        }
+        retStats.maxMana -= right.maxMana;
+        if (retStats.currMana > retStats.maxMana) {
+            retStats.currMana = retStats.maxMana;
+        }
+        retStats.str -= right.str;
+        retStats.mag -= right.mag;
+        retStats.spd -= right.spd;
+        retStats.def -= right.def;
+        retStats.res -= right.res;
+
+        return retStats;
+    }
+
     public Battle_Entity_Stats(SerializationInfo info, StreamingContext ctxt) {
         level    = (int)  info.GetValue("Level",       typeof(int));
         currXP   = (float)info.GetValue("CurrentXP",   typeof(float));

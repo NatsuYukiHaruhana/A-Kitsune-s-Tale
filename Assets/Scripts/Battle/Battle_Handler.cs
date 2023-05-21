@@ -12,6 +12,9 @@ public class Battle_Handler : MonoBehaviour
     [SerializeField]
     private GameObject arrowPrefab;
     [SerializeField]
+    private GameObject drawBoardParent;
+
+    [SerializeField]
     private List<GameObject> buttons;
 
     public enum TurnAction {
@@ -130,49 +133,60 @@ public class Battle_Handler : MonoBehaviour
         if (canSelectTarget) {
             DoTargetSelection();
         }
-
-        switch (currentAction) {
-            case TurnAction.Attack: {
-                if (TesseractHandler.GetIsDone()) {
-                    TesseractHandler.ResetIsDone();
-                    DoAttack();
-                }
-                break;
-            }
-            case TurnAction.Run: {
-                DoRun();
-                break;
-            }
-        }
     }
 
     public void SetCurrentAction(string action) {
-        if (action == "Attack") {
-            currentAction = TurnAction.Attack;
-        } else if (action == "Guard") {
-            currentAction = TurnAction.Guard;
-        } else if (action == "Items") {
-            currentAction = TurnAction.Items;
-        } else if (action == "Spells") {
-            currentAction = TurnAction.Spells;
-        } else if (action == "Run") {
-            currentAction = TurnAction.Run;
-        } else {
-            currentAction = TurnAction.NULL;
+        switch (action) {
+            case "Attack": {
+                drawBoardParent.SetActive(true);
+
+                foreach (GameObject buttonMenu in buttons) {
+                    if (buttonMenu.name == "Battle_Menu_1") {
+                        buttonMenu.SetActive(false);
+                    } else if (buttonMenu.name == "Battle_Menu_2") {
+                        buttonMenu.SetActive(true);
+                    }
+                }
+
+                currentAction = TurnAction.Attack;
+                break;
+            }
+            case "Guard": {
+                drawBoardParent.SetActive(true);
+
+                foreach (GameObject buttonMenu in buttons) {
+                    if (buttonMenu.name == "Battle_Menu_1") {
+                        buttonMenu.SetActive(false);
+                    } else if (buttonMenu.name == "Battle_Menu_2") {
+                        buttonMenu.SetActive(true);
+                    }
+                }
+
+                currentAction = TurnAction.Guard;
+                break;
+            }
+            case "Items": {
+                currentAction = TurnAction.Items;
+                break;
+            }
+            case "Spells": {
+                currentAction = TurnAction.Spells;
+                break;
+            }
+            case "Run": {
+                currentAction = TurnAction.Run;
+                break;
+            }
+            default: {
+                currentAction = TurnAction.NULL;
+                break;
+            }
         }
     }
 
     public void SelectTargets() {
         if (currentAction == TurnAction.Attack) { // Attack button pressed
             allowedTargets = Battle_Entity.Faction.Enemy;
-        }
-
-        foreach(GameObject buttonMenu in buttons) {
-            if (buttonMenu.name == "Battle_Menu_1") {
-                buttonMenu.SetActive(false);
-            } else if (buttonMenu.name == "Battle_Menu_2") {
-                buttonMenu.SetActive(true);
-            }
         }
 
         canSelectTarget = true;
@@ -187,6 +201,7 @@ public class Battle_Handler : MonoBehaviour
             }
         }
 
+        drawBoardParent.SetActive(false);
         canSelectTarget = false;
         targets.Clear();
         foreach(ArrowMovement arrow in arrows) {
@@ -194,20 +209,53 @@ public class Battle_Handler : MonoBehaviour
         }
     }
 
-    public void DoAttackPrep() {
-        if (targets.Count == 0) {
-            Debug.Log("Please select targets!");
-            return;
+    public void DoAction() {
+        switch (currentAction) {
+            case TurnAction.Attack: {
+                if (targets.Count == 0) {
+                    Debug.Log("Please select targets!");
+                    return;
+                }
+
+                DrawController.TakeScreenshot();
+                if (TesseractHandler.GetIsDone()) {
+                    TesseractHandler.ResetIsDone();
+                    DoAttack();
+                }
+                break;
+            }
+            case TurnAction.Guard: {
+                DrawController.TakeScreenshot();
+                if (TesseractHandler.GetIsDone()) {
+                    TesseractHandler.ResetIsDone();
+                    DoGuard();
+                }
+                break;
+            }
+            case TurnAction.Run: {
+                DoRun();
+                break;
+            }
         }
-
-        DrawController.TakeScreenshot();
     }
-
     private void DoAttack() {
         char wantedChar = Utils.GetRandomCharacter(true, false, false);
         Debug.Log("Wanted: " + wantedChar);
         if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
             units[unitTurn].BasicAttack(targets);
+            NextTurn();
+        } else {
+            NextTurn();
+        }
+    }
+
+    private void DoGuard() {
+        char wantedChar = Utils.GetRandomCharacter(true, false, false);
+        Debug.Log("Wanted: " + wantedChar);
+        if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
+            units[unitTurn].RaiseGuard();
+            NextTurn();
+        } else {
             NextTurn();
         }
     }
@@ -237,6 +285,14 @@ public class Battle_Handler : MonoBehaviour
         canSelectTarget = false;
         targets.Clear();
         unitTurn = unitTurn < units.Count ? unitTurn++ : 0;
+
+        if (unitTurn == 0) { // new turn
+            foreach (Battle_Entity unit in units) {
+                unit.LowerGuard();
+                unit.CheckStatChanges();
+            }
+        }
+
         GoBack();
     }
 }
