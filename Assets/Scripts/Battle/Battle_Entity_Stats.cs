@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 [Serializable()]
-public struct Battle_Entity_Stats : ISerializable
+public struct Battle_Entity_Stats
 {
     public int level;
     public float currXP;
@@ -100,35 +99,5 @@ public struct Battle_Entity_Stats : ISerializable
         retStats.res -= right.res;
 
         return retStats;
-    }
-
-    public Battle_Entity_Stats(SerializationInfo info, StreamingContext ctxt) {
-        level    = (int)  info.GetValue("Level",       typeof(int));
-        currXP   = (float)info.GetValue("CurrentXP",   typeof(float));
-        maxXP    = (float)info.GetValue("MaxXP",       typeof(float));
-        currHP   = (float)info.GetValue("CurrentHP",   typeof(float));
-        maxHP    = (float)info.GetValue("MaxHP",       typeof(float));
-        currMana = (float)info.GetValue("CurrentMana", typeof(float));
-        maxMana  = (float)info.GetValue("MaxMana",     typeof(float));
-        str      = (float)info.GetValue("Strength",    typeof(float));
-        mag      = (float)info.GetValue("Magic",       typeof(float));
-        spd      = (float)info.GetValue("Speed",       typeof(float));
-        def      = (float)info.GetValue("Defense",     typeof(float));
-        res      = (float)info.GetValue("Resistance",  typeof(float));
-    }
-
-    public void GetObjectData(SerializationInfo info, StreamingContext ctxt) {
-        info.AddValue("Level",       level);
-        info.AddValue("CurrentXP",   currXP);
-        info.AddValue("MaxXP",       maxXP);
-        info.AddValue("CurrentHP",   currHP);
-        info.AddValue("MaxHP",       maxHP);
-        info.AddValue("CurrentMana", currMana);
-        info.AddValue("MaxMana",     maxMana);
-        info.AddValue("Strength",    str);
-        info.AddValue("Magic",       mag);
-        info.AddValue("Speed",       spd);
-        info.AddValue("Defense",     def);
-        info.AddValue("Resistance",  res);
     }
 }

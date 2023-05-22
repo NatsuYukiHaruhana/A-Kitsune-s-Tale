@@ -9,6 +9,9 @@ using System.Reflection.Emit;
 
 public class Utils
 {
+    public static int saveFile = 0;
+    public static string username = "";
+
     public static Vector3 GetMouseWorldPosition() {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPos.z = 0f;
@@ -39,6 +42,7 @@ public class Utils
         //InitArmorData();
         //InitShieldData();
         //InitWeaponData();
+        InitUnitData();
     }
 
     public static void SaveGameData() {
@@ -94,7 +98,7 @@ public class Utils
     }
 
     private static void SaveTeamData() {
-        string filePath = Application.persistentDataPath + "/team_data.dat";
+        string filePath = Application.persistentDataPath + "/team_data_" + saveFile + ".dat";
         FileStream file;
 
         if (File.Exists(filePath) == true) {
@@ -103,12 +107,13 @@ public class Utils
             file = File.Create(filePath);
         }
 
-        ArrayList data = new ArrayList(5);
-        data.Add(Team_Data.names);
-        data.Add(Team_Data.stats);
-        data.Add(Team_Data.loadouts);
-        data.Add(Team_Data.spells);
-        data.Add(Team_Data.items);
+        ArrayList data = new ArrayList(5) {
+            Team_Data.names,
+            Team_Data.stats,
+            Team_Data.loadouts,
+            Team_Data.spells,
+            Team_Data.items
+        };
 
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
@@ -116,7 +121,7 @@ public class Utils
     }
 
     private static void LoadTeamData() {
-        string filePath = Application.persistentDataPath + "/team_data.dat";
+        string filePath = Application.persistentDataPath + "/team_data_" + saveFile + ".dat";
         FileStream file;
 
         if (File.Exists(filePath) == false) {
@@ -237,6 +242,35 @@ public class Utils
             sw.WriteLine("[Acc_Equippable]=" + accessory_to_write.GetIsEquippable());
             sw.WriteLine("[Acc_Type_Slot]=" + accessory_to_write.GetAccessorySlots());
         }
+    }
+
+    private static void InitUnitData() {
+        string filePath = Application.persistentDataPath + "/team_data_" + saveFile + ".dat";
+        FileStream file;
+
+        if (File.Exists(filePath) == true) {
+            LoadTeamData();
+            return;
+        }
+
+        Team_Data.names.Add(username);
+        Team_Data.stats.Add(new Battle_Entity_Stats(1,   // level
+                                                0,    // currXP
+                                                100,  // maxXP
+                                                100,  // currHP
+                                                100,  // maxHP
+                                                100,  // currMana
+                                                100,  // maxMana
+                                                20,   // strength
+                                                10,   // magic
+                                                10,   // speed
+                                                10,   // defense
+                                                10)); // resistance);
+        Team_Data.loadouts.Add(new Battle_Entity_Loadout());
+        Team_Data.spells.Add(new List<Battle_Entity_Spells>());
+        Team_Data.items.Add(new List<Item>());
+
+        SaveTeamData();
     }
 
 }

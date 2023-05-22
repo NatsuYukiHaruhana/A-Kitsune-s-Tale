@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.Serialization;
 using static Battle_Entity_Loadout;
 using UnityEngine;
 
@@ -16,15 +15,5 @@ public class Shield : Item_Equippable
 
     public Shield(Shield other) : base(other.itemName, other.itemDesc, other.statModifiers) {
         handSlot = other.handSlot;
-    }
-
-    public Shield(SerializationInfo info, StreamingContext ctxt)
-        : base(info, ctxt) {
-        handSlot = (HandSlots)info.GetValue("Hand_Slot", typeof(HandSlots));
-    }
-
-    public new void GetObjectData(SerializationInfo info, StreamingContext ctxt) {
-        base.GetObjectData(info, ctxt);
-        info.AddValue("Hand_Slot",      handSlot);
     }
 }

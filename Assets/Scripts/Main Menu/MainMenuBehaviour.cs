@@ -6,6 +6,7 @@ public class MainMenuBehaviour : MonoBehaviour {
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject displayMenu;
+    [SerializeField] private GameObject saveMenu;
 
     public void EnterSettings() {
         mainMenu.SetActive(false);
@@ -28,11 +29,12 @@ public class MainMenuBehaviour : MonoBehaviour {
     public void EnterMainMenu() {
         mainMenu.SetActive(true);
         settingsMenu.SetActive(false);
+        saveMenu.SetActive(false);
     }
-
-    public void LoadGame() {
-        Utils.InitGameData();
-        SceneManager.LoadScene("Battle Scene");
+    
+    public void EnterSaveMenu() {
+        saveMenu.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public static void LoadMainMenu() {

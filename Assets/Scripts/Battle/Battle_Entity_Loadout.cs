@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable()]
-public class Battle_Entity_Loadout : ISerializable
+public class Battle_Entity_Loadout
 {
     public enum HandSlots {
         Weapon,
@@ -58,34 +56,6 @@ public class Battle_Entity_Loadout : ISerializable
         shieldSlot     = new Shield(other.shieldSlot);
         armorSlots     = new List<Armor>(other.armorSlots);
         accessorySlots = new List<Accessory>(other.accessorySlots);
-    }
-
-    public Battle_Entity_Loadout(SerializationInfo info, StreamingContext ctxt) {
-        weaponSlots    = (List<Weapon>)   info.GetValue("Weapons",   typeof(List<Weapon>));
-        shieldSlot     = (Shield)         info.GetValue("Shield",    typeof(Shield));
-        armorSlots     = (List<Armor>)    info.GetValue("Armor",     typeof(List<Armor>));
-        accessorySlots = (List<Accessory>)info.GetValue("Accessory", typeof(List<Accessory>));
-    }
-
-    public void GetObjectData(SerializationInfo info, StreamingContext ctxt) {
-        info.AddValue("Weapons",   weaponSlots);
-        info.AddValue("Shield",    shieldSlot);
-        info.AddValue("Armor",     armorSlots);
-        info.AddValue("Accessory", accessorySlots);
-
-        for (int i = 0; i < weaponSlots.Capacity; i++) {
-            weaponSlots[i].GetObjectData(info, ctxt);
-        }
-
-        shieldSlot.GetObjectData(info, ctxt);
-        
-        for (int i = 0; i < armorSlots.Capacity; i++) {
-            armorSlots[i].GetObjectData(info, ctxt);
-        }
-
-        for (int i = 0; i < accessorySlots.Capacity; i++) {
-            accessorySlots[i].GetObjectData(info, ctxt);
-        }
     }
 
     public List<Weapon> GetWeapons() {
