@@ -9,7 +9,7 @@ public class DrawableObject : MonoBehaviour
     private Brush activeBrush = null;
 
     private void Start() {
-        float width = .1f;
+        float width = .2f;
         brushPrefab.GetComponent<LineRenderer>().startWidth = brushPrefab.GetComponent<LineRenderer>().endWidth = width;
     }
 

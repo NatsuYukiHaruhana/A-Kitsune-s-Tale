@@ -36,7 +36,7 @@ public class TesseractHandler : MonoBehaviour
         if (outputImage != null) { 
             SetImageDisplay();
         }
-        Debug.Log(recognizedText);
+        Debug.Log("Recognized: " + recognizedText);
         isDone = true;
     }
 

@@ -16,6 +16,8 @@ public abstract class Item_Not_Equippable : Item {
         statModifiers = newStats;
     }
 
+    abstract public void UseItem(Battle_Entity target);
+
     public Battle_Entity_Stats GetStats() {
         return statModifiers;
     }

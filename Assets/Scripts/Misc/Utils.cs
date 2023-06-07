@@ -11,6 +11,7 @@ public class Utils
 {
     public static int saveFile = 0;
     public static string username = "";
+    public static string currentLanguage = "null";
 
     public static Vector3 GetMouseWorldPosition() {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -86,11 +87,29 @@ public class Utils
 
         int fileToUse = UnityEngine.Random.Range(0, allowedFiles.Count);
 
+        switch (fileToUse) {
+            case 0: {
+                currentLanguage = "hiragana";
+                break;
+            }
+            case 1: {
+                currentLanguage = "katakana";
+                break;
+            }
+            case 2: {
+                currentLanguage = "kanji";
+                break;
+            }
+            default: {
+                currentLanguage = "null";
+                break;
+            }
+        }
+
         using (FileStream file = File.OpenRead(allowedFiles[fileToUse])) {
             using (StreamReader sr = new StreamReader(file, System.Text.Encoding.UTF8)) {
                 string line = sr.ReadLine();
-                return 'あ';
-                //return line[UnityEngine.Random.Range(0, line.Length)];
+                return line[UnityEngine.Random.Range(0, line.Length)];
             }
         }
         
@@ -139,7 +158,7 @@ public class Utils
         Team_Data.stats    = (List<Battle_Entity_Stats>)        data[1];
         Team_Data.loadouts = (List<Battle_Entity_Loadout>)      data[2];
         Team_Data.spells   = (List<List<Battle_Entity_Spells>>) data[3];
-        Team_Data.items    = (List<List<Item>>)                 data[4];
+        Team_Data.items    = (List<Item>)                       data[4];
     }
 
     private static void InitTextRecognitionData() {
@@ -268,7 +287,9 @@ public class Utils
                                                 10)); // resistance);
         Team_Data.loadouts.Add(new Battle_Entity_Loadout());
         Team_Data.spells.Add(new List<Battle_Entity_Spells>());
-        Team_Data.items.Add(new List<Item>());
+        Team_Data.items.Add(new Potion());
+        Team_Data.items.Add(new Potion());
+        Team_Data.items.Add(new Potion());
 
         SaveTeamData();
     }

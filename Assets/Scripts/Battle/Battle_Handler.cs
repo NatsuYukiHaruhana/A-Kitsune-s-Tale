@@ -2,8 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Battle_Handler : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class Battle_Handler : MonoBehaviour
     private GameObject arrowPrefab;
     [SerializeField]
     private GameObject drawBoardParent;
+    [SerializeField]
+    private TextMeshProUGUI wantedCharText;
+    [SerializeField]
+    private ScrollViewBehaviour scrollViewBehaviour;
 
     [SerializeField]
     private List<GameObject> buttons;
@@ -42,6 +48,11 @@ public class Battle_Handler : MonoBehaviour
     private List<Battle_Entity> targets;
     private int unitTurn;
     private bool canSelectTarget;
+    private char wantedChar;
+
+    private EventSystem eventSystem;
+    private GameObject lastSelectedGameObject;
+    private GameObject currentSelectedGameObject_Recent;
 
     private void Awake() {
         allowedTargets = Battle_Entity.Faction.NULL;
@@ -55,63 +66,63 @@ public class Battle_Handler : MonoBehaviour
         unitTurn = 0;
         canSelectTarget = false;
 
+        eventSystem = EventSystem.current;
+
         Utils.LoadGameData();
         for (int i = 0; i < Team_Data.names.Count; i++) {
-            units.Add(Instantiate(unitPrefab).GetComponent<Battle_Entity>());
-            unitButtons.Add(units[i].gameObject.GetComponent<Button_Functionality>());
-
-            units[i].SetName(Team_Data.names[i]);
-            units[i].SetStats(Team_Data.stats[i]);
-            units[i].SetLoadout(Team_Data.loadouts[i]);
-            units[i].SetSpells(Team_Data.spells[i]);
-            units[i].SetItems(Team_Data.items[i]);
-
-            units[i].gameObject.transform.position = unitPositions[i];
-
-            arrows.Add(Instantiate(arrowPrefab).GetComponent<ArrowMovement>());
-            arrows[i].SetTarget(units[i].gameObject);
-            arrows[i].SetVisible(false);
+            LoadUnit(Team_Data.names[i], 
+                Team_Data.stats[i], 
+                Team_Data.loadouts[i], 
+                Team_Data.spells[i], 
+                Team_Data.items,
+                Battle_Entity.Faction.Ally);
         }
 
         for (int i = Team_Data.names.Count; i < Team_Data.names.Count + 3; i++) {
-            units.Add(Instantiate(unitPrefab).GetComponent<Battle_Entity>());
-            unitButtons.Add(units[i].gameObject.GetComponent<Button_Functionality>());
-
-            units[i].SetName("Unit " + (i + 1));
-            units[i].SetStats(new Battle_Entity_Stats(i + 1,           // level
-                                                        0,             // currXP
-                                                        100 * (i + 1), // maxXP
-                                                        100,           // currHP
-                                                        100,           // maxHP
-                                                        100,           // currMana
-                                                        100,           // maxMana
-                                                        20,            // strength
-                                                        10,            // magic
-                                                        10,            // speed
-                                                        10,            // defense
-                                                        10));          // resistance
-            units[i].SetFaction(Battle_Entity.Faction.Enemy);
-
-            units[i].gameObject.transform.position = unitPositions[i + (3 - Team_Data.names.Count)];
-
-            arrows.Add(Instantiate(arrowPrefab).GetComponent<ArrowMovement>());
-            arrows[i].SetOffsetX(-1.3f);
-            arrows[i].SetTarget(units[i].gameObject);
-            arrows[i].RotateArrow(0f);
-            arrows[i].SetVisible(false);
+            LoadUnit("Enemy " + (i - Team_Data.names.Count + 1),
+                new Battle_Entity_Stats(i + 1,           // level
+                                        0,             // currXP
+                                        100 * (i + 1), // maxXP
+                                        100,           // currHP
+                                        100,           // maxHP
+                                        100,           // currMana
+                                        100,           // maxMana
+                                        20,            // strength
+                                        10,            // magic
+                                        10,            // speed
+                                        10,            // defense
+                                        10),          // resistance);
+                new Battle_Entity_Loadout(),
+                new List<Battle_Entity_Spells>(),
+                new List<Item>(),
+                Battle_Entity.Faction.Enemy);
         }
+
+        // THIS IS FOR TESTING POTIONS, TO REMOVE LATER
+        units[0].TakeDamage(50, DamageType.Physical);
     }
 
-    void Update()
+    private void Update()
     {
         if (canSelectTarget) {
             DoTargetSelection();
+        }
+
+        GetLastGameObjectSelected();
+    }
+
+    private void GetLastGameObjectSelected() {
+        if (eventSystem.currentSelectedGameObject != currentSelectedGameObject_Recent) {
+            lastSelectedGameObject = currentSelectedGameObject_Recent;
+            currentSelectedGameObject_Recent = eventSystem.currentSelectedGameObject;
         }
     }
 
     public void SetCurrentAction(string action) {
         switch (action) {
             case "Attack": {
+                PrepareWantedChar();
+
                 drawBoardParent.SetActive(true);
 
                 foreach (GameObject buttonMenu in buttons) {
@@ -126,6 +137,7 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
             case "Guard": {
+                PrepareWantedChar();
                 drawBoardParent.SetActive(true);
 
                 foreach (GameObject buttonMenu in buttons) {
@@ -140,7 +152,16 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
             case "Items": {
+                foreach (GameObject buttonMenu in buttons) {
+                    if (buttonMenu.name == "Battle_Menu_1") {
+                        buttonMenu.SetActive(false);
+                    } else if (buttonMenu.name == "Battle_Menu_2") {
+                        buttonMenu.SetActive(true);
+                    }
+                }
+
                 currentAction = TurnAction.Items;
+                scrollViewBehaviour.gameObject.SetActive(true);
                 break;
             }
             case "Spells": {
@@ -158,9 +179,54 @@ public class Battle_Handler : MonoBehaviour
         }
     }
 
+    private void LoadUnit(string name, 
+        Battle_Entity_Stats stats, 
+        Battle_Entity_Loadout loadout, 
+        List<Battle_Entity_Spells> spells, 
+        List<Item> items,
+        Battle_Entity.Faction faction) {
+        units.Add(Instantiate(unitPrefab).GetComponent<Battle_Entity>());
+        int currentUnit = units.Count - 1;
+        unitButtons.Add(units[currentUnit].gameObject.GetComponent<Button_Functionality>());
+
+        units[currentUnit].SetFaction(faction);
+
+        units[currentUnit].SetName(name);
+        units[currentUnit].SetStats(stats);
+        units[currentUnit].SetLoadout(loadout);
+        units[currentUnit].SetSpells(spells);
+        units[currentUnit].SetItems(items);
+
+        if (faction == Battle_Entity.Faction.Enemy) {
+            units[currentUnit].gameObject.transform.position = unitPositions[currentUnit + (3 - Team_Data.names.Count)];
+        } else if (faction == Battle_Entity.Faction.Ally) {
+            units[currentUnit].gameObject.transform.position = unitPositions[currentUnit];
+        }
+
+        arrows.Add(Instantiate(arrowPrefab).GetComponent<ArrowMovement>());
+        arrows[currentUnit].SetTarget(units[currentUnit].gameObject);
+        arrows[currentUnit].SetVisible(false);
+        if (faction == Battle_Entity.Faction.Enemy) {
+            arrows[currentUnit].SetOffsetX(-1.3f);
+            arrows[currentUnit].RotateArrow(0f);
+        } else if (faction == Battle_Entity.Faction.Ally) {
+            foreach(Item item in items) {
+                scrollViewBehaviour.CreateNewContent(item.GetItemName());
+            }
+
+            if (currentUnit + 1 == Team_Data.names.Count) {
+                scrollViewBehaviour.gameObject.SetActive(false);
+            }
+        }
+    }
+
     public void SelectTargets() {
         if (currentAction == TurnAction.Attack) { // Attack button pressed
             allowedTargets = Battle_Entity.Faction.Enemy;
+        }
+
+        if (currentAction == TurnAction.Items) {
+            allowedTargets = Battle_Entity.Faction.Ally;
         }
 
         canSelectTarget = true;
@@ -175,10 +241,12 @@ public class Battle_Handler : MonoBehaviour
             }
         }
 
+        scrollViewBehaviour.gameObject.SetActive(false);
         drawBoardParent.SetActive(false);
         canSelectTarget = false;
         targets.Clear();
-        foreach(ArrowMovement arrow in arrows) {
+        wantedCharText.gameObject.SetActive(false);
+        foreach (ArrowMovement arrow in arrows) {
             arrow.SetVisible(false);
         }
     }
@@ -191,19 +259,15 @@ public class Battle_Handler : MonoBehaviour
                     return;
                 }
 
-                DrawController.TakeScreenshot();
-                if (TesseractHandler.GetIsDone()) {
-                    TesseractHandler.ResetIsDone();
-                    DoAttack();
-                }
+                StartCoroutine(WaitForTesseract(DoAttack));
                 break;
             }
             case TurnAction.Guard: {
-                DrawController.TakeScreenshot();
-                if (TesseractHandler.GetIsDone()) {
-                    TesseractHandler.ResetIsDone();
-                    DoGuard();
-                }
+                StartCoroutine(WaitForTesseract(DoGuard));
+                break;
+            }
+            case TurnAction.Items: {
+                UseItem();
                 break;
             }
             case TurnAction.Run: {
@@ -212,9 +276,58 @@ public class Battle_Handler : MonoBehaviour
             }
         }
     }
+    
+    public void UseItem() {
+        if (targets.Count == 0) {
+            Debug.Log("Please select targets!");
+            return;
+        }
+
+        GameObject buttonObject = lastSelectedGameObject;
+        if (buttonObject != null) {
+            string itemName = buttonObject.GetComponentInChildren<TextMeshProUGUI>().text;
+            Item itemToRemove = null;
+
+            foreach (Item item in Team_Data.items) {
+                if (itemName == item.GetItemName()) {
+                    if (item.GetType().IsSubclassOf(typeof(Item_Not_Equippable)) == true) {
+                        ((Item_Not_Equippable)item).UseItem(targets[0]);
+
+                        itemToRemove = item;
+                        break;
+                    }
+                    
+                    break;
+                }
+            }
+
+            if (itemToRemove != null) {
+                Team_Data.items.Remove(itemToRemove);
+
+                scrollViewBehaviour.RemoveContent(itemName);
+            }
+        }
+        NextTurn();
+    }
+
+    private void PrepareWantedChar() {
+        wantedChar = Utils.GetRandomCharacter(true, false, false);
+        wantedCharText.text = "Please draw " + wantedChar;
+        wantedCharText.gameObject.SetActive(true);
+    }
+
+    IEnumerator WaitForTesseract(Action doAction) {
+        DrawController.TakeScreenshot();
+
+        while (TesseractHandler.GetIsDone() == false) {
+            yield return null;
+        }
+        TesseractHandler.ResetIsDone(); 
+
+        doAction();
+    }
+
     private void DoAttack() {
-        char wantedChar = Utils.GetRandomCharacter(true, false, false);
-        Debug.Log("Wanted: " + wantedChar);
         if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
             units[unitTurn].BasicAttack(targets);
             NextTurn();
@@ -224,8 +337,6 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void DoGuard() {
-        char wantedChar = Utils.GetRandomCharacter(true, false, false);
-        Debug.Log("Wanted: " + wantedChar);
         if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
             units[unitTurn].RaiseGuard();
             NextTurn();

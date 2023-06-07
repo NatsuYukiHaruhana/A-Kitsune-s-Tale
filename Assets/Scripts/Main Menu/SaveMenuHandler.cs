@@ -163,9 +163,17 @@ public class SaveMenuHandler : MonoBehaviour
 
     public void DeleteSaveFile() {
         string filePath = Application.persistentDataPath + "/save_data_" + Utils.saveFile + ".dat";
-        FileStream file;
+
+        saveButtons[Utils.saveFile].GetComponentInChildren<TextMeshProUGUI>().text = "No Data";
+        buttonsParent.gameObject.SetActive(false);
 
         File.Delete(filePath);
+
+        filePath = Application.persistentDataPath + "/team_data_" + Utils.saveFile + ".dat";
+
+        File.Delete(filePath);
+
+        Utils.saveFile = 0;
     }
 
     private void NewGame() {

@@ -89,6 +89,15 @@ public class Battle_Entity : MonoBehaviour {
         isGuarding = false;
     }
 
+    public void Heal(float amount) {
+        if (battleStats.currHP > 0.0f) {
+            battleStats.currHP = Mathf.Min(battleStats.currHP + amount, battleStats.maxHP);
+
+            hpBar.SetTargetPercentage(battleStats.currHP / battleStats.maxHP);
+            hpBar.gameObject.SetActive(true);
+        }
+    }
+
     public void TakeDamage(float damage, DamageType damageType) {
         float damageReduction;
         switch (damageType) {

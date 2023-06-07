@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 6515c70982ef5b846bb0b95e8421e1f3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pretendard
+  fontNames:
+  - Pretendard
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 17a6c417672cf874b997f5ae5c1b9277, type: 3}
+  - {fileID: 12800000, guid: e0bb730d4d96d324ebf559e40ebc2f33, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
