@@ -164,7 +164,7 @@ public class Battle_Entity : MonoBehaviour {
     }
 
     public string GetName() {
-        return name;
+        return unitName;
     }
 
     public Faction GetFaction() {
@@ -190,6 +190,7 @@ public class Battle_Entity : MonoBehaviour {
     public void SetName(string newName) {
         if (unitName == "\n") {
             unitName = newName;
+            name = newName;
         }
     }
 

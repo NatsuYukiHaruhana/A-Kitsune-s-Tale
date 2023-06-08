@@ -204,8 +204,6 @@ public class Battle_Handler : MonoBehaviour
         }
 
         arrows.Add(Instantiate(arrowPrefab).GetComponent<ArrowMovement>());
-        arrows[currentUnit].SetTarget(units[currentUnit].gameObject);
-        arrows[currentUnit].SetVisible(false);
         if (faction == Battle_Entity.Faction.Enemy) {
             arrows[currentUnit].SetOffsetX(-1.3f);
             arrows[currentUnit].RotateArrow(0f);
@@ -218,6 +216,8 @@ public class Battle_Handler : MonoBehaviour
                 scrollViewBehaviour.gameObject.SetActive(false);
             }
         }
+        arrows[currentUnit].SetTarget(units[currentUnit].gameObject);
+        arrows[currentUnit].SetVisible(false);
     }
 
     public void SelectTargets() {
