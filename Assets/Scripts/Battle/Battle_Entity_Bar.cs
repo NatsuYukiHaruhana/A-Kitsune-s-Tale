@@ -12,12 +12,13 @@ public class Battle_Entity_Bar : MonoBehaviour
 
     private void FixedUpdate() {
         if (Utils.ApproximatelyEqual(targetPercentage, percentage, 0.01f) == false) {
+            float deltaMoveSpeed = moveSpeed + (Mathf.Abs(targetPercentage - percentage) * .01f);
             if (targetPercentage > percentage) {
-                movableBar.transform.localPosition += new Vector3(moveSpeed, 0f, 0f);
-                percentage += moveSpeed;
+                movableBar.transform.localPosition += new Vector3(deltaMoveSpeed, 0f, 0f);
+                percentage += deltaMoveSpeed;
             } else {
-                movableBar.transform.localPosition -= new Vector3(moveSpeed, 0f, 0f);
-                percentage -= moveSpeed;
+                movableBar.transform.localPosition -= new Vector3(deltaMoveSpeed, 0f, 0f);
+                percentage -= deltaMoveSpeed;
             }
         } else {
             movableBar.transform.localPosition = new Vector3(targetPercentage - 1f, 0f, 0f);

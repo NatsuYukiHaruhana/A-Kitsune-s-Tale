@@ -141,7 +141,9 @@ public class SaveMenuHandler : MonoBehaviour
     public void ConfirmBeginGame() {
         switch (saveMode) {
             case SaveFileMode.NEW_GAME: {
-                NewGame();
+                if (usernameField.text != "") {
+                    NewGame();
+                }
                 break;
             }
             case SaveFileMode.CONTINUE: {
@@ -164,7 +166,7 @@ public class SaveMenuHandler : MonoBehaviour
     public void DeleteSaveFile() {
         string filePath = Application.persistentDataPath + "/save_data_" + Utils.saveFile + ".dat";
 
-        saveButtons[Utils.saveFile].GetComponentInChildren<TextMeshProUGUI>().text = "No Data";
+        saveButtons[Utils.saveFile - 1].GetComponentInChildren<TextMeshProUGUI>().text = "No Data";
         buttonsParent.gameObject.SetActive(false);
 
         File.Delete(filePath);

@@ -286,7 +286,10 @@ public class Utils
                                                 10,   // defense
                                                 10)); // resistance);
         Team_Data.loadouts.Add(new Battle_Entity_Loadout());
-        Team_Data.spells.Add(new List<Battle_Entity_Spells>());
+        List<Battle_Entity_Spells> spells = new List<Battle_Entity_Spells> {
+            new Fireball()
+        };
+        Team_Data.spells.Add(spells);
         Team_Data.items.Add(new Potion());
         Team_Data.items.Add(new Potion());
         Team_Data.items.Add(new Potion());

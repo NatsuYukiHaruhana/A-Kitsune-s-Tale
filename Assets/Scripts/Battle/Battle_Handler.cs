@@ -18,7 +18,9 @@ public class Battle_Handler : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI wantedCharText;
     [SerializeField]
-    private ScrollViewBehaviour scrollViewBehaviour;
+    private ScrollViewBehaviour itemMenuBehaviour;
+    [SerializeField]
+    private ScrollViewBehaviour spellMenuBehaviour;
 
     [SerializeField]
     private List<GameObject> buttons;
@@ -54,6 +56,8 @@ public class Battle_Handler : MonoBehaviour
     private GameObject lastSelectedGameObject;
     private GameObject currentSelectedGameObject_Recent;
 
+    private List<Battle_Entity_Spells> loadedSpells;
+
     private void Awake() {
         allowedTargets = Battle_Entity.Faction.NULL;
         currentAction = TurnAction.NULL;
@@ -67,6 +71,8 @@ public class Battle_Handler : MonoBehaviour
         canSelectTarget = false;
 
         eventSystem = EventSystem.current;
+
+        loadedSpells = new List<Battle_Entity_Spells>();
 
         Utils.LoadGameData();
         for (int i = 0; i < Team_Data.names.Count; i++) {
@@ -98,6 +104,7 @@ public class Battle_Handler : MonoBehaviour
                 Battle_Entity.Faction.Enemy);
         }
 
+        spellMenuBehaviour.gameObject.SetActive(false);
         // THIS IS FOR TESTING POTIONS, TO REMOVE LATER
         units[0].TakeDamage(50, DamageType.Physical);
     }
@@ -134,6 +141,7 @@ public class Battle_Handler : MonoBehaviour
                 }
 
                 currentAction = TurnAction.Attack;
+                SelectTargets();
                 break;
             }
             case "Guard": {
@@ -161,15 +169,27 @@ public class Battle_Handler : MonoBehaviour
                 }
 
                 currentAction = TurnAction.Items;
-                scrollViewBehaviour.gameObject.SetActive(true);
+                itemMenuBehaviour.gameObject.SetActive(true);
+                SelectTargets();
                 break;
             }
             case "Spells": {
+                foreach (GameObject buttonMenu in buttons) {
+                    if (buttonMenu.name == "Battle_Menu_1") {
+                        buttonMenu.SetActive(false);
+                    } else if (buttonMenu.name == "Battle_Menu_2") {
+                        buttonMenu.SetActive(true);
+                    }
+                }
+
                 currentAction = TurnAction.Spells;
+                LoadSpells();
+                SelectTargets();
                 break;
             }
             case "Run": {
                 currentAction = TurnAction.Run;
+                DoAction();
                 break;
             }
             default: {
@@ -209,24 +229,28 @@ public class Battle_Handler : MonoBehaviour
             arrows[currentUnit].RotateArrow(0f);
         } else if (faction == Battle_Entity.Faction.Ally) {
             foreach(Item item in items) {
-                scrollViewBehaviour.CreateNewContent(item.GetItemName());
+                itemMenuBehaviour.CreateNewContent(item.GetItemName());
             }
 
             if (currentUnit + 1 == Team_Data.names.Count) {
-                scrollViewBehaviour.gameObject.SetActive(false);
+                itemMenuBehaviour.gameObject.SetActive(false);
             }
         }
         arrows[currentUnit].SetTarget(units[currentUnit].gameObject);
         arrows[currentUnit].SetVisible(false);
     }
 
-    public void SelectTargets() {
+    private void SelectTargets() {
         if (currentAction == TurnAction.Attack) { // Attack button pressed
             allowedTargets = Battle_Entity.Faction.Enemy;
         }
 
         if (currentAction == TurnAction.Items) {
             allowedTargets = Battle_Entity.Faction.Ally;
+        }
+
+        if (currentAction == TurnAction.Spells) {
+            allowedTargets = Battle_Entity.Faction.Enemy;
         }
 
         canSelectTarget = true;
@@ -241,7 +265,8 @@ public class Battle_Handler : MonoBehaviour
             }
         }
 
-        scrollViewBehaviour.gameObject.SetActive(false);
+        itemMenuBehaviour.gameObject.SetActive(false);
+        spellMenuBehaviour.gameObject.SetActive(false);
         drawBoardParent.SetActive(false);
         canSelectTarget = false;
         targets.Clear();
@@ -270,6 +295,10 @@ public class Battle_Handler : MonoBehaviour
                 UseItem();
                 break;
             }
+            case TurnAction.Spells: {
+                CastSpell();
+                break;
+            }
             case TurnAction.Run: {
                 DoRun();
                 break;
@@ -277,7 +306,7 @@ public class Battle_Handler : MonoBehaviour
         }
     }
     
-    public void UseItem() {
+    private void UseItem() {
         if (targets.Count == 0) {
             Debug.Log("Please select targets!");
             return;
@@ -304,8 +333,42 @@ public class Battle_Handler : MonoBehaviour
             if (itemToRemove != null) {
                 Team_Data.items.Remove(itemToRemove);
 
-                scrollViewBehaviour.RemoveContent(itemName);
+                itemMenuBehaviour.RemoveContent(itemName);
             }
+        }
+        NextTurn();
+    }
+
+    public void LoadSpells() {
+        loadedSpells = units[unitTurn].GetSpells();
+
+        spellMenuBehaviour.gameObject.SetActive(true);
+
+        foreach (Battle_Entity_Spells spell in loadedSpells) {
+            spellMenuBehaviour.CreateNewContent(spell.GetSpellName());
+        }
+    }
+
+    private void CastSpell() {
+        if (targets.Count == 0) {
+            Debug.Log("Please select targets!");
+            return;
+        }
+
+        GameObject buttonObject = lastSelectedGameObject;
+        if (buttonObject != null) {
+            string spellName = buttonObject.GetComponentInChildren<TextMeshProUGUI>().text;
+
+            foreach (Battle_Entity_Spells spell in loadedSpells) {
+                if (spellName == spell.GetSpellName()) {
+                    spell.CastSpell(targets, units[unitTurn]);
+
+                    break;
+                }
+            }
+        }
+        foreach (Battle_Entity_Spells spell in loadedSpells) {
+            spellMenuBehaviour.RemoveContent(spell.GetSpellName());
         }
         NextTurn();
     }

@@ -135,6 +135,13 @@ public class Battle_Entity : MonoBehaviour {
         hpBar.gameObject.SetActive(true);
     }
 
+    public void ReduceMana(float amount) {
+        battleStats.currMana -= amount;
+
+        manaBar.SetTargetPercentage(battleStats.currMana / battleStats.maxMana);
+        manaBar.gameObject.SetActive(true);
+    }
+
     public void AddStatChange(Battle_Entity_Stat_Change newStatChange) {
         statChanges.Add(newStatChange);
     }

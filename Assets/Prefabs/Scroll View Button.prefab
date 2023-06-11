@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5719896218103501739}
   - component: {fileID: 7986961690280605731}
   m_Layer: 5
-  m_Name: Item Button
+  m_Name: Scroll View Button
   m_TagString: BattleMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
