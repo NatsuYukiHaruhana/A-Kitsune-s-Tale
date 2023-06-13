@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Battle_Entity : MonoBehaviour {
@@ -27,6 +29,8 @@ public class Battle_Entity : MonoBehaviour {
     private Battle_Entity_Bar hpBar;
     private Battle_Entity_Bar manaBar;
 
+    private Animator animator;
+
     private void Awake() {
         hpBar = Instantiate(barPrefab, this.transform).GetComponent<Battle_Entity_Bar>();
         hpBar.SetColor(new Color(0, 255, 0));
@@ -44,6 +48,8 @@ public class Battle_Entity : MonoBehaviour {
         spells = new List<Battle_Entity_Spells>();
 
         items = new List<Item>();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update() {
@@ -75,6 +81,7 @@ public class Battle_Entity : MonoBehaviour {
                 }
             }
 
+            animator.SetTrigger("isAttacking");
             foreach (Battle_Entity target in targets) {
                 target.TakeDamage(premitigationDamage, damageType);
             }
@@ -133,6 +140,8 @@ public class Battle_Entity : MonoBehaviour {
 
         hpBar.SetTargetPercentage(battleStats.currHP / battleStats.maxHP);
         hpBar.gameObject.SetActive(true);
+
+        animator.SetTrigger("isHurt");
     }
 
     public void ReduceMana(float amount) {
@@ -198,6 +207,13 @@ public class Battle_Entity : MonoBehaviour {
         if (unitName == "\n") {
             unitName = newName;
             name = newName;
+        }
+    }
+
+    public void LoadSprites() {
+        if (unitName == Utils.username) {
+            animator.runtimeAnimatorController = Resources.Load("Animations/Player/Player_Combat") as RuntimeAnimatorController;
+            //animator.Play("Idle");
         }
     }
 

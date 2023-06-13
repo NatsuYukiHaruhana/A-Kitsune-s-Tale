@@ -195,12 +195,12 @@ public class SaveMenuHandler : MonoBehaviour
         bf.Serialize(file, data);
         file.Close();
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Platforming Scene");
     }
 
     private void LoadGame() {
         Utils.InitGameData();
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Platforming Scene");
     }
 
     private void AdjustButtonsParentPosition(int saveFile) {

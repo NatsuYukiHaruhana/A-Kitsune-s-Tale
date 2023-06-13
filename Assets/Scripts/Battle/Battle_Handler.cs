@@ -231,6 +231,7 @@ public class Battle_Handler : MonoBehaviour
         units[currentUnit].SetLoadout(loadout);
         units[currentUnit].SetSpells(spells);
         units[currentUnit].SetItems(items);
+        units[currentUnit].LoadSprites();
 
         if (faction == Battle_Entity.Faction.Enemy) {
             units[currentUnit].gameObject.transform.position = unitPositions[currentUnit + (3 - Team_Data.names.Count)];
