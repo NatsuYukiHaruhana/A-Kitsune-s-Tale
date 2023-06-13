@@ -213,7 +213,8 @@ public class Battle_Entity : MonoBehaviour {
     public void LoadSprites() {
         if (unitName == Utils.username) {
             animator.runtimeAnimatorController = Resources.Load("Animations/Player/Player_Combat") as RuntimeAnimatorController;
-            //animator.Play("Idle");
+        } else {
+            animator.runtimeAnimatorController = Resources.Load("Animations/" + unitName + "/" + unitName + "_Combat") as RuntimeAnimatorController;
         }
     }
 

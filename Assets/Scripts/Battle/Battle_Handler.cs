@@ -91,8 +91,8 @@ public class Battle_Handler : MonoBehaviour
                 Battle_Entity.Faction.Ally);
         }
 
-        for (int i = Team_Data.names.Count; i < Team_Data.names.Count + 3; i++) {
-            LoadUnit("Enemy " + (i - Team_Data.names.Count + 1),
+        for (int i = Team_Data.names.Count; i < Team_Data.names.Count + 1; i++) {
+            LoadUnit("Flower",
                 new Battle_Entity_Stats(i + 1,           // level
                                         0,             // currXP
                                         100 * (i + 1), // maxXP
@@ -123,7 +123,7 @@ public class Battle_Handler : MonoBehaviour
         GetLastGameObjectSelected();
 
         if (unitTurn >= Team_Data.names.Count) { // AI's turn
-            DoAITurn();
+            StartCoroutine(EnemyAIWait(DoAITurn));
         } else {
             enemyTurn = false;
         }
@@ -426,6 +426,14 @@ public class Battle_Handler : MonoBehaviour
         TesseractHandler.ResetIsDone(); 
 
         doAction();
+    }
+
+    IEnumerator EnemyAIWait(Action doAction) {
+        yield return new WaitForSeconds(1);
+
+        if (unitTurn > Team_Data.names.Count - 1) {
+            doAction();
+        }
     }
 
     private void DoAttack() {
