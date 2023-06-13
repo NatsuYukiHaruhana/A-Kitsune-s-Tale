@@ -356,6 +356,9 @@ public class Battle_Handler : MonoBehaviour
     }
 
     public void LoadSpells() {
+        foreach (Battle_Entity_Spells spell in loadedSpells) {
+            spellMenuBehaviour.RemoveContent(spell.GetSpellName());
+        }
         loadedSpells = units[unitTurn].GetSpells();
 
         spellMenuBehaviour.gameObject.SetActive(true);
@@ -377,10 +380,6 @@ public class Battle_Handler : MonoBehaviour
                     break;
                 }
             }
-        }
-
-        foreach (Battle_Entity_Spells spell in loadedSpells) {
-            spellMenuBehaviour.RemoveContent(spell.GetSpellName());
         }
 
         spellMenuBehaviour.gameObject.SetActive(false);
@@ -465,7 +464,7 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void DoRun() {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Platforming Scene");
     }
 
     private void DoTargetSelection() {
