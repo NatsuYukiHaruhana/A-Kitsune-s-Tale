@@ -9,7 +9,9 @@ public class Fireball : Battle_Entity_Spells {
             10,
             1,
             "The user calls upon the power of fire to create a concentrated ball of fire to throw towards their enemies.",
-            "Fireball") {}
+            "Fireball",
+            "火玉",
+            Battle_Entity.Faction.Enemy) {}
 
     public override void CastSpell(List<Battle_Entity> targets, Battle_Entity caster) {
         if (caster.GetStats().currMana < manaCost) {

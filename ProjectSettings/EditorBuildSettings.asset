@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Draw Test.unity
     guid: e2e52f14f726e6d40a4e05536ac36102
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Platforming Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Tesseract Test Scene.unity

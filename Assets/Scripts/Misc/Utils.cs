@@ -54,7 +54,7 @@ public class Utils
         LoadTeamData();
     }
 
-    public static char GetRandomCharacter(bool allowHiragana, bool allowKatakana, bool allowKanji) {
+    public static char GetRandomCharacter(bool allowHiragana, bool allowKatakana) {
         List<string> allowedFiles = new List<string>();
         if (allowHiragana) {
             string filePath = Application.persistentDataPath + "/hiragana.dat";
@@ -72,48 +72,39 @@ public class Utils
             }
             allowedFiles.Add(filePath);
         }
-        if (allowKanji) {
-            string filePath = Application.persistentDataPath + "/kanji.dat";
-
-            if (!File.Exists(filePath)) {
-                Debug.LogError("kanji.dat was not found in " + Application.persistentDataPath + "!");
-            }
-            allowedFiles.Add(filePath);
-        }
 
         if (allowedFiles.Count == 0) {
             return '\0';
         }
 
-        int fileToUse = UnityEngine.Random.Range(0, allowedFiles.Count);
+        int fileToUse;
 
-        switch (fileToUse) {
-            case 0: {
-                currentLanguage = "hiragana";
+        switch (currentLanguage) {
+            case "hiragana":
+            case "hiragana2": {
+                fileToUse = 0;
                 break;
             }
-            case 1: {
-                currentLanguage = "katakana";
-                break;
-            }
-            case 2: {
-                currentLanguage = "kanji";
+            case "katakana": {
+                fileToUse = 1;
                 break;
             }
             default: {
-                currentLanguage = "null";
+                fileToUse = -1;
                 break;
             }
+        }
+
+        if (fileToUse == -1) {
+            return '\0';
         }
 
         using (FileStream file = File.OpenRead(allowedFiles[fileToUse])) {
             using (StreamReader sr = new StreamReader(file, System.Text.Encoding.UTF8)) {
                 string line = sr.ReadLine();
-                return line[UnityEngine.Random.Range(0, line.Length)];
+                return line[UnityEngine.Random.Range(0, 10)];
             }
         }
-        
-        return '\0';
     }
 
     private static void SaveTeamData() {

@@ -57,6 +57,9 @@ public class Battle_Handler : MonoBehaviour
     private GameObject currentSelectedGameObject_Recent;
 
     private List<Battle_Entity_Spells> loadedSpells;
+    private Battle_Entity_Spells selectedSpell;
+
+    private bool enemyTurn;
 
     private void Awake() {
         allowedTargets = Battle_Entity.Faction.NULL;
@@ -73,6 +76,10 @@ public class Battle_Handler : MonoBehaviour
         eventSystem = EventSystem.current;
 
         loadedSpells = new List<Battle_Entity_Spells>();
+
+        selectedSpell = null;
+
+        enemyTurn = false;
 
         Utils.LoadGameData();
         for (int i = 0; i < Team_Data.names.Count; i++) {
@@ -105,8 +112,6 @@ public class Battle_Handler : MonoBehaviour
         }
 
         spellMenuBehaviour.gameObject.SetActive(false);
-        // THIS IS FOR TESTING POTIONS, TO REMOVE LATER
-        units[0].TakeDamage(50, DamageType.Physical);
     }
 
     private void Update()
@@ -116,6 +121,12 @@ public class Battle_Handler : MonoBehaviour
         }
 
         GetLastGameObjectSelected();
+
+        if (unitTurn >= Team_Data.names.Count) { // AI's turn
+            DoAITurn();
+        } else {
+            enemyTurn = false;
+        }
     }
 
     private void GetLastGameObjectSelected() {
@@ -128,6 +139,7 @@ public class Battle_Handler : MonoBehaviour
     public void SetCurrentAction(string action) {
         switch (action) {
             case "Attack": {
+                Utils.currentLanguage = "hiragana2";
                 PrepareWantedChar();
 
                 drawBoardParent.SetActive(true);
@@ -145,7 +157,9 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
             case "Guard": {
+                Utils.currentLanguage = "hiragana2";
                 PrepareWantedChar();
+
                 drawBoardParent.SetActive(true);
 
                 foreach (GameObject buttonMenu in buttons) {
@@ -174,17 +188,18 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
             case "Spells": {
+                Utils.currentLanguage = "kanji";
+
                 foreach (GameObject buttonMenu in buttons) {
-                    if (buttonMenu.name == "Battle_Menu_1") {
-                        buttonMenu.SetActive(false);
-                    } else if (buttonMenu.name == "Battle_Menu_2") {
+                    if (buttonMenu.name == "Battle_Menu_3") {
                         buttonMenu.SetActive(true);
+                    } else {
+                        buttonMenu.SetActive(false);
                     }
                 }
 
                 currentAction = TurnAction.Spells;
                 LoadSpells();
-                SelectTargets();
                 break;
             }
             case "Run": {
@@ -250,7 +265,7 @@ public class Battle_Handler : MonoBehaviour
         }
 
         if (currentAction == TurnAction.Spells) {
-            allowedTargets = Battle_Entity.Faction.Enemy;
+            allowedTargets = selectedSpell.GetAllowedTargets();
         }
 
         canSelectTarget = true;
@@ -296,7 +311,7 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
             case TurnAction.Spells: {
-                CastSpell();
+                StartCoroutine(WaitForTesseract(CastSpell));
                 break;
             }
             case TurnAction.Run: {
@@ -349,32 +364,54 @@ public class Battle_Handler : MonoBehaviour
         }
     }
 
-    private void CastSpell() {
-        if (targets.Count == 0) {
-            Debug.Log("Please select targets!");
-            return;
-        }
-
+    public void ConfirmSpell() {
         GameObject buttonObject = lastSelectedGameObject;
         if (buttonObject != null) {
             string spellName = buttonObject.GetComponentInChildren<TextMeshProUGUI>().text;
 
             foreach (Battle_Entity_Spells spell in loadedSpells) {
                 if (spellName == spell.GetSpellName()) {
-                    spell.CastSpell(targets, units[unitTurn]);
+                    selectedSpell = spell;
 
                     break;
                 }
             }
         }
+
         foreach (Battle_Entity_Spells spell in loadedSpells) {
             spellMenuBehaviour.RemoveContent(spell.GetSpellName());
         }
+
+        spellMenuBehaviour.gameObject.SetActive(false);
+
+        foreach (GameObject buttonMenu in buttons) {
+            if (buttonMenu.name == "Battle_Menu_2") {
+                buttonMenu.SetActive(true);
+            } else {
+                buttonMenu.SetActive(false);
+            }
+        }
+
+        SelectTargets();
+
+        drawBoardParent.SetActive(true);
+    }
+
+    private void CastSpell() {
+        if (targets.Count == 0) {
+            Debug.Log("Please select targets!");
+            return;
+        }
+
+        if (TesseractHandler.GetRecognizedText() == selectedSpell.GetSpellChars()) {
+            selectedSpell.CastSpell(targets, units[unitTurn]);
+        }
+
         NextTurn();
     }
 
     private void PrepareWantedChar() {
-        wantedChar = Utils.GetRandomCharacter(true, false, false);
+        wantedChar = Utils.GetRandomCharacter(true, true);
         wantedCharText.text = "Please draw " + wantedChar;
         wantedCharText.gameObject.SetActive(true);
     }
@@ -391,21 +428,31 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void DoAttack() {
-        if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
+        if (enemyTurn) {
             units[unitTurn].BasicAttack(targets);
             NextTurn();
-        } else {
-            NextTurn();
+            return;
         }
+
+        if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
+            units[unitTurn].BasicAttack(targets);
+        }
+
+        NextTurn();
     }
 
     private void DoGuard() {
-        if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
+        if (enemyTurn) {
             units[unitTurn].RaiseGuard();
             NextTurn();
-        } else {
-            NextTurn();
+            return;
         }
+
+        if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
+            units[unitTurn].RaiseGuard();
+        }
+
+        NextTurn();
     }
 
     private void DoRun() {
@@ -432,7 +479,7 @@ public class Battle_Handler : MonoBehaviour
         currentAction = TurnAction.NULL;
         canSelectTarget = false;
         targets.Clear();
-        unitTurn = unitTurn < units.Count ? unitTurn++ : 0;
+        unitTurn = unitTurn < units.Count - 1 ? unitTurn + 1 : 0;
 
         if (unitTurn == 0) { // new turn
             foreach (Battle_Entity unit in units) {
@@ -442,5 +489,28 @@ public class Battle_Handler : MonoBehaviour
         }
 
         GoBack();
+    }
+
+    private void DoAITurn() {
+        enemyTurn = true;
+        int action = UnityEngine.Random.Range(0, 2);
+
+        switch(action) {
+            case 0: {
+                currentAction = TurnAction.Attack;
+
+                targets.Add(units[0]);
+                DoAttack();
+
+                break;
+            }
+            case 1: {
+                currentAction = TurnAction.Guard;
+
+                DoGuard();
+
+                break;
+            }
+        }
     }
 }
