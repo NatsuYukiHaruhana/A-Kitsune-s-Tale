@@ -19,17 +19,25 @@ public class CharacterController2D : MonoBehaviour {
 	[SerializeField] private Button_Functionality attackButton;              // Button used for touch control to attack
 	*/[SerializeField] private Button_Functionality menuButton;                // Button used for activating the menu screen
 
-	const float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+	const float groundedRadius = .4f; // Radius of the overlap circle to determine if grounded
 	private bool grounded;            // Whether or not the player is grounded.
-	const float ceilingRadius = .2f;  // Radius of the overlap circle to determine if the player can stand up
+	const float ceilingRadius = .4f;  // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D rigidbody2D;
 	private bool facingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
 	private bool wasCrouching = false;
 
+	[SerializeField]
+	private Animator animator;
+
 	private void Awake() {
 		rigidbody2D = GetComponent<Rigidbody2D>();
-	}
+		animator = GetComponent<Animator>();
+
+        animator.SetBool("isCrouching", false);
+        animator.SetBool("isGrounded", false);
+        animator.SetFloat("moveSpeed", 0.0f);
+    }
 
 	private void FixedUpdate() {
 		grounded = false;
@@ -97,14 +105,19 @@ public class CharacterController2D : MonoBehaviour {
 			else if (move < 0 && facingRight) {
 				// ... flip the player.
 				Flip();
-			}
-		}
+            }
+
+            animator.SetFloat("moveSpeed", Mathf.Floor(Mathf.Abs(targetVelocity.x)));
+        }
 		// If the player should jump...
 		if (grounded && jump) {
 			// Add a vertical force to the player.
 			grounded = false;
 			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
 		}
+
+		animator.SetBool("isCrouching", crouch);
+		animator.SetBool("isGrounded", grounded);
 	}
 
 	private float InputMoveHorizontal() {
