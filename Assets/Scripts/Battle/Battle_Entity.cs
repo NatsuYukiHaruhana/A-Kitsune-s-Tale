@@ -163,6 +163,28 @@ public class Battle_Entity : MonoBehaviour {
         statChanges.RemoveAll(statChange => statChange.GetReadyToRemove() == true);
     }
 
+    public void GrantExperience(float amount) {
+        if (battleStats.currXP + amount >= battleStats.maxXP) {
+            battleStats.currXP = amount - (battleStats.maxXP - battleStats.currXP);
+            LevelUp();
+        } else {
+            battleStats.currXP += amount;
+        }
+    }
+
+    private void LevelUp() {
+        battleStats.maxXP *= 1.5f;
+        battleStats.level++;
+
+        battleStats.maxHP = battleStats.currHP = battleStats.maxHP + 100;
+        battleStats.maxMana = battleStats.currMana = battleStats.maxMana + 100;
+        battleStats.str += 5;
+        battleStats.mag += 5;
+        battleStats.spd += 5;
+        battleStats.def += 5;
+        battleStats.res += 5;
+    }
+
     public Battle_Entity_Stats GetStats() {
         return battleStats;
     }

@@ -39,10 +39,6 @@ public class Utils
         }
 
         InitTextRecognitionData();
-        InitAccessoryData();
-        //InitArmorData();
-        //InitShieldData();
-        //InitWeaponData();
         InitUnitData();
     }
 
@@ -117,13 +113,7 @@ public class Utils
             file = File.Create(filePath);
         }
 
-        ArrayList data = new ArrayList(5) {
-            Team_Data.names,
-            Team_Data.stats,
-            Team_Data.loadouts,
-            Team_Data.spells,
-            Team_Data.items
-        };
+        ArrayList data = Team_Data.GetData();
 
         BinaryFormatter bf = new BinaryFormatter();
         bf.Serialize(file, data);
@@ -145,11 +135,11 @@ public class Utils
         ArrayList data = (ArrayList)bf.Deserialize(file);
         file.Close();
 
-        Team_Data.names    = (List<string>)                     data[0];
-        Team_Data.stats    = (List<Battle_Entity_Stats>)        data[1];
-        Team_Data.loadouts = (List<Battle_Entity_Loadout>)      data[2];
-        Team_Data.spells   = (List<List<Battle_Entity_Spells>>) data[3];
-        Team_Data.items    = (List<Item>)                       data[4];
+        Team_Data.InitData((List<string>) data[0], 
+                        (List<Battle_Entity_Stats>) data[1], 
+                        (List<Battle_Entity_Loadout>) data[2], 
+                        (List<List<Battle_Entity_Spells>>) data[3],
+                        (List<Item>) data[4]);
     }
 
     private static void InitTextRecognitionData() {
@@ -182,78 +172,6 @@ public class Utils
         }
     }
 
-    private static void InitAccessoryData() {
-        string filePath = Application.persistentDataPath + "/item_data/accessory_data.dat";
-        if (File.Exists(filePath) == true) {
-            return;
-        }
-
-        using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write))
-
-        using (StreamWriter sw = new StreamWriter(file)) {
-            Accessory accessory_to_write = new No_Accessory();
-
-            sw.WriteLine("[Acc_Name]=" + accessory_to_write.GetItemName());
-            sw.WriteLine("[Acc_Desc]=" + accessory_to_write.GetItemDesc());
-            sw.WriteLine("[Acc_Equippable]=" + accessory_to_write.GetIsEquippable());
-            sw.WriteLine("[Acc_Type_Slot]=" + accessory_to_write.GetAccessorySlots());
-        }
-    }
-
-    private static void InitArmorData() {
-        string filePath = Application.persistentDataPath + "/item_data/armor_data.dat";
-        if (File.Exists(filePath) == true) {
-            return;
-        }
-
-        using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write))
-
-        using (StreamWriter sw = new StreamWriter(file)) {
-            Accessory accessory_to_write = new No_Accessory();
-
-            sw.WriteLine("[Acc_Name]=" + accessory_to_write.GetItemName());
-            sw.WriteLine("[Acc_Desc]=" + accessory_to_write.GetItemDesc());
-            sw.WriteLine("[Acc_Equippable]=" + accessory_to_write.GetIsEquippable());
-            sw.WriteLine("[Acc_Type_Slot]=" + accessory_to_write.GetAccessorySlots());
-        }
-    }
-
-    private static void InitShieldData() {
-        string filePath = Application.persistentDataPath + "/item_data/shield_data.dat";
-        if (File.Exists(filePath) == true) {
-            return;
-        }
-
-        using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write))
-
-        using (StreamWriter sw = new StreamWriter(file)) {
-            Accessory accessory_to_write = new No_Accessory();
-
-            sw.WriteLine("[Acc_Name]=" + accessory_to_write.GetItemName());
-            sw.WriteLine("[Acc_Desc]=" + accessory_to_write.GetItemDesc());
-            sw.WriteLine("[Acc_Equippable]=" + accessory_to_write.GetIsEquippable());
-            sw.WriteLine("[Acc_Type_Slot]=" + accessory_to_write.GetAccessorySlots());
-        }
-    }
-
-    private static void InitWeaponData() {
-        string filePath = Application.persistentDataPath + "/item_data/weapon_data.dat";
-        if (File.Exists(filePath) == true) {
-            return;
-        }
-
-        using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write))
-
-        using (StreamWriter sw = new StreamWriter(file)) {
-            Accessory accessory_to_write = new No_Accessory();
-
-            sw.WriteLine("[Acc_Name]=" + accessory_to_write.GetItemName());
-            sw.WriteLine("[Acc_Desc]=" + accessory_to_write.GetItemDesc());
-            sw.WriteLine("[Acc_Equippable]=" + accessory_to_write.GetIsEquippable());
-            sw.WriteLine("[Acc_Type_Slot]=" + accessory_to_write.GetAccessorySlots());
-        }
-    }
-
     private static void InitUnitData() {
         string filePath = Application.persistentDataPath + "/team_data_" + saveFile + ".dat";
         FileStream file;
@@ -263,8 +181,7 @@ public class Utils
             return;
         }
 
-        Team_Data.names.Add(username);
-        Team_Data.stats.Add(new Battle_Entity_Stats(1,   // level
+        Battle_Entity_Stats unitStats = new Battle_Entity_Stats(1,   // level
                                                 0,    // currXP
                                                 100,  // maxXP
                                                 100,  // currHP
@@ -275,15 +192,17 @@ public class Utils
                                                 10,   // magic
                                                 10,   // speed
                                                 10,   // defense
-                                                10)); // resistance);
-        Team_Data.loadouts.Add(new Battle_Entity_Loadout());
+                                                10); // resistance);
+
         List<Battle_Entity_Spells> spells = new List<Battle_Entity_Spells> {
             new Fireball()
         };
-        Team_Data.spells.Add(spells);
-        Team_Data.items.Add(new Potion());
-        Team_Data.items.Add(new Potion());
-        Team_Data.items.Add(new Potion());
+
+        Team_Data.AddNewEntry(username, unitStats, new Battle_Entity_Loadout(), spells);
+
+        for (int i = 0; i < 3; i++) {
+            Team_Data.AddItem(new Potion());
+        }
 
         SaveTeamData();
     }

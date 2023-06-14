@@ -82,32 +82,32 @@ public class Battle_Handler : MonoBehaviour
         enemyTurn = false;
 
         Utils.LoadGameData();
-        for (int i = 0; i < Team_Data.names.Count; i++) {
-            LoadUnit(Team_Data.names[i], 
-                Team_Data.stats[i], 
-                Team_Data.loadouts[i], 
-                Team_Data.spells[i], 
-                Team_Data.items,
-                Battle_Entity.Faction.Ally);
+        for (int i = 0; i < Team_Data.count; i++) {
+            ArrayList data = Team_Data.GetUnitData(i); // 0 - name, 1 - stats, 2 - loadout, 3 - spells
+
+            if (data != null) {
+                LoadUnit((string)data[0], (Battle_Entity_Stats)data[1], (Battle_Entity_Loadout)data[2], (List<Battle_Entity_Spells>)data[3], Battle_Entity.Faction.Ally);
+            }
         }
 
-        for (int i = Team_Data.names.Count; i < Team_Data.names.Count + 1; i++) {
+        LoadItems(Team_Data.GetItems());
+
+        for (int i = Team_Data.count; i < Team_Data.count + 1; i++) {
             LoadUnit("Flower",
-                new Battle_Entity_Stats(i + 1,           // level
-                                        0,             // currXP
-                                        100 * (i + 1), // maxXP
+                new Battle_Entity_Stats(i + 1,         // level
+                                        50,            // currXP
+                                        100,           // maxXP
                                         100,           // currHP
                                         100,           // maxHP
                                         100,           // currMana
                                         100,           // maxMana
-                                        20,            // strength
-                                        10,            // magic
+                                        35,            // strength
+                                        35,            // magic
                                         10,            // speed
                                         10,            // defense
-                                        10),          // resistance);
+                                        10),           // resistance);
                 new Battle_Entity_Loadout(),
                 new List<Battle_Entity_Spells>(),
-                new List<Item>(),
                 Battle_Entity.Faction.Enemy);
         }
 
@@ -122,7 +122,7 @@ public class Battle_Handler : MonoBehaviour
 
         GetLastGameObjectSelected();
 
-        if (unitTurn >= Team_Data.names.Count) { // AI's turn
+        if (units[unitTurn].GetFaction() == Battle_Entity.Faction.Enemy) { // AI's turn
             StartCoroutine(EnemyAIWait(DoAITurn));
         } else {
             enemyTurn = false;
@@ -217,8 +217,7 @@ public class Battle_Handler : MonoBehaviour
     private void LoadUnit(string name, 
         Battle_Entity_Stats stats, 
         Battle_Entity_Loadout loadout, 
-        List<Battle_Entity_Spells> spells, 
-        List<Item> items,
+        List<Battle_Entity_Spells> spells,
         Battle_Entity.Faction faction) {
         units.Add(Instantiate(unitPrefab).GetComponent<Battle_Entity>());
         int currentUnit = units.Count - 1;
@@ -230,11 +229,10 @@ public class Battle_Handler : MonoBehaviour
         units[currentUnit].SetStats(stats);
         units[currentUnit].SetLoadout(loadout);
         units[currentUnit].SetSpells(spells);
-        units[currentUnit].SetItems(items);
         units[currentUnit].LoadSprites();
 
         if (faction == Battle_Entity.Faction.Enemy) {
-            units[currentUnit].gameObject.transform.position = unitPositions[currentUnit + (3 - Team_Data.names.Count)];
+            units[currentUnit].gameObject.transform.position = unitPositions[currentUnit + (3 - Team_Data.count)];
         } else if (faction == Battle_Entity.Faction.Ally) {
             units[currentUnit].gameObject.transform.position = unitPositions[currentUnit];
         }
@@ -243,17 +241,22 @@ public class Battle_Handler : MonoBehaviour
         if (faction == Battle_Entity.Faction.Enemy) {
             arrows[currentUnit].SetOffsetX(-1.3f);
             arrows[currentUnit].RotateArrow(0f);
-        } else if (faction == Battle_Entity.Faction.Ally) {
-            foreach(Item item in items) {
-                itemMenuBehaviour.CreateNewContent(item.GetItemName());
-            }
-
-            if (currentUnit + 1 == Team_Data.names.Count) {
-                itemMenuBehaviour.gameObject.SetActive(false);
-            }
         }
+
         arrows[currentUnit].SetTarget(units[currentUnit].gameObject);
         arrows[currentUnit].SetVisible(false);
+    }
+
+    private void LoadItems(List<Item> items) {
+        for (int i = 0; i < Team_Data.count; i++) {
+            units[i].SetItems(items);
+        }
+
+        foreach (Item item in items) {
+            itemMenuBehaviour.CreateNewContent(item.GetItemName());
+        }
+
+        itemMenuBehaviour.gameObject.SetActive(false);
     }
 
     private void SelectTargets() {
@@ -333,7 +336,7 @@ public class Battle_Handler : MonoBehaviour
             string itemName = buttonObject.GetComponentInChildren<TextMeshProUGUI>().text;
             Item itemToRemove = null;
 
-            foreach (Item item in Team_Data.items) {
+            foreach (Item item in Team_Data.GetItems()) {
                 if (itemName == item.GetItemName()) {
                     if (item.GetType().IsSubclassOf(typeof(Item_Not_Equippable)) == true) {
                         ((Item_Not_Equippable)item).UseItem(targets[0]);
@@ -347,7 +350,7 @@ public class Battle_Handler : MonoBehaviour
             }
 
             if (itemToRemove != null) {
-                Team_Data.items.Remove(itemToRemove);
+                Team_Data.RemoveItem(itemToRemove);
 
                 itemMenuBehaviour.RemoveContent(itemName);
             }
@@ -403,9 +406,9 @@ public class Battle_Handler : MonoBehaviour
             return;
         }
 
-        if (TesseractHandler.GetRecognizedText() == selectedSpell.GetSpellChars()) {
+        //if (TesseractHandler.GetRecognizedText() == selectedSpell.GetSpellChars()) {
             selectedSpell.CastSpell(targets, units[unitTurn]);
-        }
+        //}
 
         NextTurn();
     }
@@ -430,7 +433,7 @@ public class Battle_Handler : MonoBehaviour
     IEnumerator EnemyAIWait(Action doAction) {
         yield return new WaitForSeconds(1);
 
-        if (unitTurn > Team_Data.names.Count - 1) {
+        if (units[unitTurn].GetFaction() == Battle_Entity.Faction.Enemy) {
             doAction();
         }
     }
@@ -484,6 +487,54 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void NextTurn() {
+        if (currentAction == TurnAction.Attack || currentAction == TurnAction.Spells) {
+            foreach (Battle_Entity target in targets) {
+                if (target.GetStats().currHP <= 0f) {
+                    if (target.GetFaction() == Battle_Entity.Faction.Ally) {
+                        units.Remove(target);
+
+                        bool foundAlliedUnit = false;
+                        foreach (Battle_Entity unit in units) { 
+                            if (unit.GetFaction() == Battle_Entity.Faction.Ally) {
+                                foundAlliedUnit = true;
+                                break;
+                            }
+                        }
+
+                        if (!foundAlliedUnit) {
+                            SceneManager.LoadScene("Main Menu");
+                        }
+                    }
+
+                    if (target.GetFaction() == Battle_Entity.Faction.Enemy) {
+                        foreach (Battle_Entity unit in units) {
+                            if (unit.GetFaction() == Battle_Entity.Faction.Ally) {
+                                unit.GrantExperience(target.GetStats().currXP);
+
+                                Team_Data.ModifyEntry(unit.GetName(), unit.GetStats(), unit.GetLoadout(), unit.GetSpells());
+                            }
+                        }
+
+                        units.Remove(target);
+                        Destroy(target.gameObject);
+
+                        bool foundEnemyUnit = false;
+                        foreach (Battle_Entity unit in units) {
+                            if (unit.GetFaction() == Battle_Entity.Faction.Enemy) {
+                                foundEnemyUnit = true;
+                                break;
+                            }
+                        }
+
+                        if (!foundEnemyUnit) {
+                            Utils.SaveGameData();
+                            SceneManager.LoadScene("Platforming Scene");
+                        }
+                    }
+                }
+            }
+        }
+
         currentAction = TurnAction.NULL;
         canSelectTarget = false;
         targets.Clear();
