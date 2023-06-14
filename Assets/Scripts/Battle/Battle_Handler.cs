@@ -238,6 +238,7 @@ public class Battle_Handler : MonoBehaviour
         }
 
         arrows.Add(Instantiate(arrowPrefab).GetComponent<ArrowMovement>());
+        arrows[currentUnit].gameObject.name = name + " Arrow";
         if (faction == Battle_Entity.Faction.Enemy) {
             arrows[currentUnit].SetOffsetX(-1.3f);
             arrows[currentUnit].RotateArrow(0f);
@@ -459,9 +460,9 @@ public class Battle_Handler : MonoBehaviour
             return;
         }
 
-        if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
+        //if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
             units[unitTurn].RaiseGuard();
-        }
+        //}
 
         NextTurn();
     }
@@ -515,6 +516,8 @@ public class Battle_Handler : MonoBehaviour
                             }
                         }
 
+                        Destroy(arrows[units.IndexOf(target)].gameObject);
+                        arrows.RemoveAt(units.IndexOf(target));
                         units.Remove(target);
                         Destroy(target.gameObject);
 
@@ -542,7 +545,6 @@ public class Battle_Handler : MonoBehaviour
 
         if (unitTurn == 0) { // new turn
             foreach (Battle_Entity unit in units) {
-                unit.LowerGuard();
                 unit.CheckStatChanges();
             }
         }

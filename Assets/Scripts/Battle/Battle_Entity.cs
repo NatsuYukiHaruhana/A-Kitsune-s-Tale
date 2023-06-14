@@ -29,16 +29,20 @@ public class Battle_Entity : MonoBehaviour {
     private Battle_Entity_Bar hpBar;
     private Battle_Entity_Bar manaBar;
 
+    private SpriteRenderer shieldRenderer;
+    private bool fadeIn;
+    private float fadeSpeed;
+
     private Animator animator;
 
     private void Awake() {
         hpBar = Instantiate(barPrefab, this.transform).GetComponent<Battle_Entity_Bar>();
         hpBar.SetColor(new Color(0, 255, 0));
-        hpBar.transform.localPosition = new Vector3(0f, -0.88f, 0f);
+        hpBar.transform.localPosition = new Vector3(0f, -1.5f, 0f);
 
         manaBar = Instantiate(barPrefab, this.transform).GetComponent<Battle_Entity_Bar>();
         manaBar.SetColor(new Color(0, 0, 255));
-        manaBar.transform.localPosition = new Vector3(0f, 0.88f, 0f);
+        manaBar.transform.localPosition = new Vector3(0f, 1.5f, 0f);
 
         statChanges = new List<Battle_Entity_Stat_Change>();
         isGuarding = false;
@@ -49,11 +53,23 @@ public class Battle_Entity : MonoBehaviour {
 
         items = new List<Item>();
 
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < renderers.Length; i++) {
+            if (renderers[i].gameObject.name == "Shield") {
+                shieldRenderer = renderers[i];
+                break;
+            }
+        }
+        fadeIn = true;
+        fadeSpeed = 0.003f;
+
         animator = GetComponent<Animator>();
     }
 
     void Update() {
-
+        if (isGuarding) {
+            RenderShield();
+        }
     }
 
     public void BasicAttack(List<Battle_Entity> targets) {
@@ -94,6 +110,7 @@ public class Battle_Entity : MonoBehaviour {
 
     public void LowerGuard() {
         isGuarding = false;
+        shieldRenderer.color = new Color(1, 1, 1, 0);
     }
 
     public void Heal(float amount) {
@@ -130,6 +147,7 @@ public class Battle_Entity : MonoBehaviour {
 
         if (isGuarding) {
             damageDealt /= 2f;
+            LowerGuard();
         }
 
         if (damageDealt < battleStats.currHP) {
@@ -183,6 +201,25 @@ public class Battle_Entity : MonoBehaviour {
         battleStats.spd += 5;
         battleStats.def += 5;
         battleStats.res += 5;
+    }
+
+    private void RenderShield() {
+        Color shieldColor = shieldRenderer.color;
+        if (fadeIn) {
+            shieldColor.a += fadeSpeed;
+
+            if (shieldColor.a >= 1f) {
+                fadeIn = false;
+            }
+        } else {
+            shieldColor.a -= fadeSpeed;
+
+            if (shieldColor.a <= 0f) { 
+                fadeIn = true;
+            }
+        }
+
+        shieldRenderer.color = shieldColor;
     }
 
     public Battle_Entity_Stats GetStats() {
