@@ -9,6 +9,9 @@ using TMPro;
 
 public class Battle_Handler : MonoBehaviour
 {
+    public static bool playerStrikeFirst = false;
+    public static bool enemyStrikeFirst = false;
+
     [SerializeField]
     private GameObject unitPrefab;
     [SerializeField]
@@ -112,6 +115,23 @@ public class Battle_Handler : MonoBehaviour
         }
 
         spellMenuBehaviour.gameObject.SetActive(false);
+    }
+
+    private void Start() {
+        for (int i = Team_Data.count; i < Team_Data.count + 1; i++) {
+            if (playerStrikeFirst) {
+                units[i].TakeDamage(units[0].GetStats().str / 2, DamageType.Physical);
+            }
+
+            if (enemyStrikeFirst) {
+                for (int j = 0; j < Team_Data.count; j++) {
+                    units[j].TakeDamage(units[i].GetStats().str / 2, DamageType.Physical);
+                }
+            }
+        }
+
+        playerStrikeFirst = false;
+        enemyStrikeFirst = false;
     }
 
     private void Update()

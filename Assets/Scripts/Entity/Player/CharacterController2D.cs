@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class CharacterController2D : MonoBehaviour {
 	[SerializeField] private float jumpForce = 400f;                         // Amount of force added when the player jumps.
@@ -14,7 +15,6 @@ public class CharacterController2D : MonoBehaviour {
 	/*[SerializeField] private Button_Functionality moveLeftButton;			 // Button used for touch control to move left 
 	[SerializeField] private Button_Functionality moveRightbutton;			 // Button used for touch control to move right
 	[SerializeField] private Button_Functionality jumpButton;				 // Button used for touch control to jump
-	[SerializeField] private Button_Functionality sprintButton;              // Button used for touch control to sprint
 	[SerializeField] private Button_Functionality crouchButton;              // Button used for touch control to crouch
 	[SerializeField] private Button_Functionality attackButton;              // Button used for touch control to attack
 	*/[SerializeField] private Button_Functionality menuButton;                // Button used for activating the menu screen
@@ -29,8 +29,12 @@ public class CharacterController2D : MonoBehaviour {
 
 	[SerializeField]
 	private Animator animator;
+    [SerializeField]
+    private Animator attackAnimator;
+    [SerializeField]
+    private Collider2D attackCollider;
 
-	private void Awake() {
+    private void Awake() {
 		rigidbody2D = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 
@@ -51,13 +55,22 @@ public class CharacterController2D : MonoBehaviour {
 		}
 
 		Move(Input.GetAxisRaw("Horizontal"), Input.GetButton("Crouch"), Input.GetButton("Jump"));
+
+		if (PressAttackButton()) {
+			Attack();
+		}
+
 		if (PressMenuButton()) {
 			Debug.Log("Menu pop-up");
 		}
 	}
 
+	private void Attack() {
+		attackCollider.enabled = true;
+		attackAnimator.enabled = true;
+	}
 
-	public void Move(float move, bool crouch, bool jump) {
+	private void Move(float move, bool crouch, bool jump) {
 		// If crouching, check to see if the character can stand up
 		if (!crouch) {
 			// If the character has a ceiling preventing them from standing up, keep them crouching
@@ -120,7 +133,22 @@ public class CharacterController2D : MonoBehaviour {
 		animator.SetBool("isGrounded", grounded);
 	}
 
-	private float InputMoveHorizontal() {
+    public void OnCollisionEnter2D(Collision2D collision) {
+        if (collision != null) {
+			if (collision.gameObject.CompareTag("Enemy")) {
+				Transform enemyTransform = collision.gameObject.transform;
+				if (enemyTransform.position.x > transform.position.x && !facingRight) {
+					Battle_Handler.enemyStrikeFirst = true;
+				} else if (enemyTransform.position.x < transform.position.x && facingRight) {
+                    Battle_Handler.enemyStrikeFirst = true;
+                }
+
+                SceneManager.LoadScene("Battle Scene");
+            }
+		}
+    }
+
+    private float InputMoveHorizontal() {
 #if UNITY_EDITOR
 		return Input.GetAxisRaw("Horizontal");
 #elif UNITY_ANDROID
@@ -130,9 +158,18 @@ public class CharacterController2D : MonoBehaviour {
 #endif
 	}
 
-	private bool PressMenuButton() {
+    private bool PressAttackButton() {
 #if UNITY_EDITOR
-		if (Input.GetKeyDown(KeyCode.Return)) {
+        if (Input.GetKey(KeyCode.Z)) {
+            return true;
+        }
+#endif
+        return menuButton.IsButtonPressed();
+    }
+
+    private bool PressMenuButton() {
+#if UNITY_EDITOR
+		if (Input.GetKey(KeyCode.Return)) {
 			return true;
 		}
 #endif

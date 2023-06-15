@@ -67,12 +67,4 @@ public class EnemyBehaviour : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision != null) {
-            if (collision.gameObject.CompareTag("Player")) {
-                SceneManager.LoadScene("Battle Scene");
-            }
-        }
-    }
 }
