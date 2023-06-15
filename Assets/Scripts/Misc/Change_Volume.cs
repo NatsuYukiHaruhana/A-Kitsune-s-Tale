@@ -9,10 +9,14 @@ public class Change_Volume : MonoBehaviour {
 
     private void Start() {
         if (forBGM) {
-            slider.value = PlayerPrefs.GetFloat("BGMVolume", 1f);
+            if (slider != null) {
+                slider.value = PlayerPrefs.GetFloat("BGMVolume", 1f);
+            }
             mixer.SetFloat("BGMVolume", Mathf.Log10(PlayerPrefs.GetFloat("BGMVolume", 1f)) * 20);
         } else if (forSFX) {
-            slider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+            if (slider != null) {
+                slider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+            }
             mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume", 1f)) * 20);
         }
     }

@@ -164,14 +164,14 @@ public class SaveMenuHandler : MonoBehaviour
     }
 
     public void DeleteSaveFile() {
-        string filePath = Application.persistentDataPath + "/save_data_" + Utils.saveFile + ".dat";
+        string filePath = Application.persistentDataPath + "/save_data_" + (Utils.saveFile - 1) + ".dat";
 
         saveButtons[Utils.saveFile - 1].GetComponentInChildren<TextMeshProUGUI>().text = "No Data";
         buttonsParent.gameObject.SetActive(false);
 
         File.Delete(filePath);
 
-        filePath = Application.persistentDataPath + "/team_data_" + Utils.saveFile + ".dat";
+        filePath = Application.persistentDataPath + "/team_data_" + (Utils.saveFile - 1) + ".dat";
 
         File.Delete(filePath);
 

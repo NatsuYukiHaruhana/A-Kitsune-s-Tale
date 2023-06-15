@@ -466,9 +466,9 @@ public class Battle_Handler : MonoBehaviour
             return;
         }
 
-        if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
+        //if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
             units[unitTurn].BasicAttack(targets);
-        }
+        //}
 
         NextTurn();
     }

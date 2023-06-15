@@ -33,7 +33,9 @@ public class Battle_Entity : MonoBehaviour {
     private bool fadeIn;
     private float fadeSpeed;
 
-    private Animator animator;
+    private Animator animator, effectAnimator;
+
+    private Sound_Manager sfxManager;
 
     private void Awake() {
         hpBar = Instantiate(barPrefab, this.transform).GetComponent<Battle_Entity_Bar>();
@@ -63,7 +65,14 @@ public class Battle_Entity : MonoBehaviour {
         fadeIn = true;
         fadeSpeed = 0.003f;
 
-        animator = GetComponent<Animator>();
+        Animator[] animators = GetComponentsInChildren<Animator>();
+        animator = animators[0];
+
+        effectAnimator = animators[1];
+    }
+
+    private void Start() {
+        sfxManager = GameObject.Find("SFX Handler").GetComponent<Sound_Manager>();
     }
 
     void Update() {
@@ -98,6 +107,7 @@ public class Battle_Entity : MonoBehaviour {
             }
 
             animator.SetTrigger("isAttacking");
+            sfxManager.PlaySound("Physical Attack");
             foreach (Battle_Entity target in targets) {
                 target.TakeDamage(premitigationDamage, damageType);
             }
@@ -148,6 +158,7 @@ public class Battle_Entity : MonoBehaviour {
         if (isGuarding) {
             damageDealt /= 2f;
             LowerGuard();
+            sfxManager.PlaySound("Block");
         }
 
         if (damageDealt < battleStats.currHP) {
@@ -281,4 +292,11 @@ public class Battle_Entity : MonoBehaviour {
         unitFaction = newFaction;
     }
 
+    public Sound_Manager GetSFXManager() {
+        return sfxManager;
+    }
+
+    public Animator GetEffectAnimator() {
+        return effectAnimator;
+    }
 }
