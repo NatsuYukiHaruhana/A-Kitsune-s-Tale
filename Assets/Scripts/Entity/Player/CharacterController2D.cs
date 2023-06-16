@@ -11,7 +11,6 @@ public class CharacterController2D : MonoBehaviour {
 	[SerializeField] private LayerMask whatIsGround;                         // A mask determining what is ground to the character
 	[SerializeField] private Transform groundCheck;                          // A position marking where to check if the player is grounded.
 	[SerializeField] private Transform ceilingCheck;                         // A position marking where to check for ceilings
-    [SerializeField] private Transform pitCheck;                             // A position marking where to check in case of incoming pit
     [SerializeField] private Collider2D crouchDisableCollider;               // A collider that will be disabled when crouching
 	/*[SerializeField] private Button_Functionality moveLeftButton;			 // Button used for touch control to move left 
 	[SerializeField] private Button_Functionality moveRightbutton;			 // Button used for touch control to move right
@@ -22,7 +21,6 @@ public class CharacterController2D : MonoBehaviour {
 
 	const float groundedRadius = .4f; // Radius of the overlap circle to determine if grounded
 	private bool grounded;            // Whether or not the player is grounded.
-	private bool pitAhead;            // Whether or not there is a pit next to the player.
 	const float ceilingRadius = .4f;  // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D rigidbody2D;
 	private bool facingRight = true;  // For determining which way the player is currently facing.
@@ -56,16 +54,6 @@ public class CharacterController2D : MonoBehaviour {
 				break;
 			}
 		}
-
-		pitAhead = false;
-        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        Collider2D[] collidersPit = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
-        for (int i = 0; i < collidersPit.Length; i++) {
-            if (collidersPit[i].gameObject != gameObject) {
-                pitAhead = true;
-				break;
-            }
-        }
 
         Move(Input.GetAxisRaw("Horizontal"), Input.GetButton("Crouch"), Input.GetButton("Jump"));
 
@@ -205,9 +193,5 @@ public class CharacterController2D : MonoBehaviour {
 
 	public bool GetGrounded() {
 		return grounded;
-	}
-
-	public bool GetPitAhead() {
-		return pitAhead;
 	}
 }
