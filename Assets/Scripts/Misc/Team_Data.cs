@@ -48,8 +48,13 @@ public static class Team_Data
         items.Add(item);
     }
 
-    public static void RemoveItem(Item item) {
-        items.Remove(item);
+    public static void RemoveItem(string itemName) {
+        for (int i = 0; i < items.Count; i++) {
+            if (items[i].GetItemName() == itemName) {
+                items.RemoveAt(i);
+                break;
+            }
+        }
     }
 
     public static void ModifyItems(List<Item> newItems) {

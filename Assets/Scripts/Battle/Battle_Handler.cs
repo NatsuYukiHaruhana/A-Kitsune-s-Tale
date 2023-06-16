@@ -414,7 +414,7 @@ public class Battle_Handler : MonoBehaviour
             }
 
             if (itemToRemove != null) {
-                Team_Data.RemoveItem(itemToRemove);
+                Team_Data.RemoveItem(itemName);
 
                 itemMenuBehaviour.ContentCountDown(itemName);
             }
@@ -530,6 +530,7 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void DoRun() {
+        Utils.SaveGameData();
         SceneManager.LoadScene("Platforming Scene");
     }
 

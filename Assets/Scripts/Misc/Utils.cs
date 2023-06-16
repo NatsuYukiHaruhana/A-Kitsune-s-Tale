@@ -195,7 +195,11 @@ public class Utils
                                                 10); // resistance);
 
         List<Battle_Entity_Spells> spells = new List<Battle_Entity_Spells> {
-            new Fireball()
+            new Fireball(),
+            new Frostbite(),
+            new Lightning(),
+            new Shadow(),
+            new HolyLight()
         };
 
         Team_Data.AddNewEntry(username, unitStats, new Battle_Entity_Loadout(), spells);
