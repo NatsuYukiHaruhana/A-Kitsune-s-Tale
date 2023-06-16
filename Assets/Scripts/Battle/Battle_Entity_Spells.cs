@@ -11,7 +11,7 @@ public abstract class Battle_Entity_Spells
     protected int requiredLevel;
 
     protected string spellName;
-    protected string spellText;
+    protected string spellDesc;
 
     protected string spellChars;
 
@@ -23,13 +23,13 @@ public abstract class Battle_Entity_Spells
     public Battle_Entity_Spells() {
         baseMag = manaCost = 0.0f;
         requiredLevel = 0;
-        spellName = spellText = "null";
+        spellName = spellDesc = "null";
     }
 
     public Battle_Entity_Spells(float baseMag, 
                             float manaCost, 
                             int requiredLevel, 
-                            string spellText, 
+                            string spellDesc, 
                             string spellName, 
                             string spellChars,
                             Battle_Entity.Faction allowedTargets,
@@ -38,7 +38,7 @@ public abstract class Battle_Entity_Spells
         this.baseMag = baseMag;
         this.manaCost = manaCost;
         this.requiredLevel = requiredLevel;
-        this.spellText = spellText;
+        this.spellDesc = spellDesc;
         this.spellName = spellName;
         this.spellChars = spellChars;
         this.allowedTargets = allowedTargets;
@@ -54,6 +54,10 @@ public abstract class Battle_Entity_Spells
 
     public string GetSpellName() {
         return spellName;
+    }
+
+    public string GetSpellDesc() {
+        return spellDesc;
     }
 
     public string GetSpellChars() {

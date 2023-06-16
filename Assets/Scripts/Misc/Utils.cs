@@ -204,6 +204,8 @@ public class Utils
             Team_Data.AddItem(new Potion());
             Team_Data.AddItem(new Mana_Potion());
             Team_Data.AddItem(new Scroll_of_Strength());
+            Team_Data.AddItem(new Scroll_of_Magic());
+            Team_Data.AddItem(new Scroll_of_Protection());
         }
 
         SaveTeamData();

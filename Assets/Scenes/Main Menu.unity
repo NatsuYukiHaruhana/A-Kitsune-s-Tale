@@ -544,9 +544,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 139447482}
-  - component: {fileID: 139447481}
   - component: {fileID: 139447480}
   - component: {fileID: 139447479}
+  - component: {fileID: 139447481}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -598,7 +598,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 13.40625, y: 13.659675}
+  m_Size: {x: 0.9952862, y: 1.0047281}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -614,7 +614,7 @@ Animator:
   m_GameObject: {fileID: 139447478}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e3c9e0aff73d58746b6b4ea20ecc852a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5e572a3783cb7774c92d5ff235c4bd05, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -632,10 +632,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 139447478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d81dfdbaa4f8d33469e5cc45c8b663f9, type: 3}
+  m_Script: {fileID: 11500000, guid: c92404b9d6274a8439937656b446c6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectAnimator: {fileID: 0}
+  spellAnimator: {fileID: 0}
   spriteRend: {fileID: 0}
 --- !u!4 &139447482
 Transform:

@@ -1,0 +1,1580 @@
+fileFormatVersion: 2
+guid: a65dd924c25f5cb4382fe09dc713c1c6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 426194608003649695
+    second: ProtectionUp_0
+  - first:
+      213: 6595030757547613241
+    second: ProtectionUp_1
+  - first:
+      213: 2318152345989649552
+    second: ProtectionUp_2
+  - first:
+      213: -2398234533583024600
+    second: ProtectionUp_3
+  - first:
+      213: 6772796645521072586
+    second: ProtectionUp_4
+  - first:
+      213: 7763238278870381511
+    second: ProtectionUp_5
+  - first:
+      213: 1689018586328550109
+    second: ProtectionUp_6
+  - first:
+      213: 5004754426714935976
+    second: ProtectionUp_7
+  - first:
+      213: -676751929760435568
+    second: ProtectionUp_8
+  - first:
+      213: 1126734589843231403
+    second: ProtectionUp_9
+  - first:
+      213: -4005414284525866144
+    second: ProtectionUp_10
+  - first:
+      213: 1449227143122179982
+    second: ProtectionUp_11
+  - first:
+      213: 4290817377737361066
+    second: ProtectionUp_12
+  - first:
+      213: -6379349383574712958
+    second: ProtectionUp_13
+  - first:
+      213: 6598966751141673785
+    second: ProtectionUp_14
+  - first:
+      213: -1825321470715869660
+    second: ProtectionUp_15
+  - first:
+      213: 892704559122878
+    second: ProtectionUp_16
+  - first:
+      213: 3393728488808665426
+    second: ProtectionUp_17
+  - first:
+      213: -1017512190370931476
+    second: ProtectionUp_18
+  - first:
+      213: 4868199143199040640
+    second: ProtectionUp_19
+  - first:
+      213: 7794342705657478094
+    second: ProtectionUp_20
+  - first:
+      213: -3093873732658399571
+    second: ProtectionUp_21
+  - first:
+      213: 1898937576583105469
+    second: ProtectionUp_22
+  - first:
+      213: 2299068625606133002
+    second: ProtectionUp_23
+  - first:
+      213: 4674496920920520406
+    second: ProtectionUp_24
+  - first:
+      213: -5444706868726964147
+    second: ProtectionUp_25
+  - first:
+      213: 7134227598276325999
+    second: ProtectionUp_26
+  - first:
+      213: -4414075500845957083
+    second: ProtectionUp_27
+  - first:
+      213: -6248712929978066448
+    second: ProtectionUp_28
+  - first:
+      213: 2059502525851581628
+    second: ProtectionUp_29
+  - first:
+      213: 4308760076114839332
+    second: ProtectionUp_30
+  - first:
+      213: 8291492567477783984
+    second: ProtectionUp_31
+  - first:
+      213: 6734520959761610219
+    second: ProtectionUp_32
+  - first:
+      213: -2614998912420286257
+    second: ProtectionUp_33
+  - first:
+      213: -3958298066735664114
+    second: ProtectionUp_34
+  - first:
+      213: -1997013216824522182
+    second: ProtectionUp_35
+  - first:
+      213: -3422959752388554602
+    second: ProtectionUp_36
+  - first:
+      213: -3778367712862652332
+    second: ProtectionUp_37
+  - first:
+      213: -5951008620429909432
+    second: ProtectionUp_38
+  - first:
+      213: -3851841359679878473
+    second: ProtectionUp_39
+  - first:
+      213: 3363926514612202957
+    second: ProtectionUp_40
+  - first:
+      213: -7511486097655700185
+    second: ProtectionUp_41
+  - first:
+      213: -1567907055722501683
+    second: ProtectionUp_42
+  - first:
+      213: -4885140411648951530
+    second: ProtectionUp_43
+  - first:
+      213: -5795126707794768879
+    second: ProtectionUp_44
+  - first:
+      213: 5114803067222985844
+    second: ProtectionUp_45
+  - first:
+      213: 6399443075930182884
+    second: ProtectionUp_46
+  - first:
+      213: -6943439643467642038
+    second: ProtectionUp_47
+  - first:
+      213: -461906675792965712
+    second: ProtectionUp_48
+  - first:
+      213: -7919606687139355617
+    second: ProtectionUp_49
+  - first:
+      213: -5228584728607541481
+    second: ProtectionUp_50
+  - first:
+      213: 6732968486724901110
+    second: ProtectionUp_51
+  - first:
+      213: -3855326966665307664
+    second: ProtectionUp_52
+  - first:
+      213: 161269466852760691
+    second: ProtectionUp_53
+  - first:
+      213: 513935492242672238
+    second: ProtectionUp_54
+  - first:
+      213: -7851475189933986953
+    second: ProtectionUp_55
+  - first:
+      213: -8014498703728827295
+    second: ProtectionUp_56
+  - first:
+      213: -8574614100707013609
+    second: ProtectionUp_57
+  - first:
+      213: -3996374203604876566
+    second: ProtectionUp_58
+  - first:
+      213: -6395020421391475643
+    second: ProtectionUp_59
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 423
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ProtectionUp_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f909e37ecb52ae500800000000000000
+      internalID: 426194608003649695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_1
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93c96623881468b50800000000000000
+      internalID: 6595030757547613241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_2
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09493fdc64bbb2020800000000000000
+      internalID: 2318152345989649552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_3
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82e85b9e562c7bed0800000000000000
+      internalID: -2398234533583024600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_4
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac1ad305aaecdfd50800000000000000
+      internalID: 6772796645521072586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_5
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3b8ce45109cbb60800000000000000
+      internalID: 7763238278870381511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_6
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda45299479907710800000000000000
+      internalID: 1689018586328550109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_7
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2586082a5747540800000000000000
+      internalID: 5004754426714935976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_8
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 2550
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 092b19994b1bb96f0800000000000000
+      internalID: -676751929760435568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba250c7c327f2af00800000000000000
+      internalID: 1126734589843231403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_10
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0637f880ee8e968c0800000000000000
+      internalID: -4005414284525866144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_11
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e87d6a88860bc1410800000000000000
+      internalID: 1449227143122179982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_12
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa6cb1cdbab0c8b30800000000000000
+      internalID: 4290817377737361066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_13
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28d0cede88ff777a0800000000000000
+      internalID: -6379349383574712958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_14
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93bb96e1c4d349b50800000000000000
+      internalID: 6598966751141673785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_15
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42646191bc72ba6e0800000000000000
+      internalID: -1825321470715869660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_16
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9c22af8eb230000800000000000000
+      internalID: 892704559122878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_17
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 2125
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251509f6412f81f20800000000000000
+      internalID: 3393728488808665426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cec9f4acd0211e1f0800000000000000
+      internalID: -1017512190370931476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_19
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0846d32f3515f8340800000000000000
+      internalID: 4868199143199040640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_20
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbfe5405611b2c60800000000000000
+      internalID: 7794342705657478094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_21
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da6fbf07b3a5015d0800000000000000
+      internalID: -3093873732658399571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_22
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbb80e63aa16a5a10800000000000000
+      internalID: 1898937576583105469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_23
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05cf77ebbee7ef10800000000000000
+      internalID: 2299068625606133002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_24
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d6ff1bde262fd040800000000000000
+      internalID: 4674496920920520406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_25
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d40666f33f38074b0800000000000000
+      internalID: -5444706868726964147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_26
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 1700
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f627c0ea33ed10360800000000000000
+      internalID: 7134227598276325999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520825008bd0eb2c0800000000000000
+      internalID: -4414075500845957083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_28
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f9544182bc1849a0800000000000000
+      internalID: -6248712929978066448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_29
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc3763b2a2d49c10800000000000000
+      internalID: 2059502525851581628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_30
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 427c53fd57acbcb30800000000000000
+      internalID: 4308760076114839332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_31
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd0e465f8c411370800000000000000
+      internalID: 8291492567477783984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_32
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be57303c123d57d50800000000000000
+      internalID: 6734520959761610219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_33
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0f7211858a5bbd0800000000000000
+      internalID: -2614998912420286257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_34
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04fa1951ec4119c0800000000000000
+      internalID: -3958298066735664114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_35
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 1275
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a0a675f0f2944e0800000000000000
+      internalID: -1997013216824522182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690db66ad343f70d0800000000000000
+      internalID: -3422959752388554602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_37
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4583404759a809bc0800000000000000
+      internalID: -3778367712862652332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_38
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 842ecf38035c96da0800000000000000
+      internalID: -5951008620429909432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_39
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ba8f19f0b28b8ac0800000000000000
+      internalID: -3851841359679878473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_40
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd6af997511fae20800000000000000
+      internalID: 3363926514612202957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_41
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72562f51137d1c790800000000000000
+      internalID: -7511486097655700185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_42
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc9e4d607dcad3ae0800000000000000
+      internalID: -1567907055722501683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_43
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61b32cd9dae743cb0800000000000000
+      internalID: -4885140411648951530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_44
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 850
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c838196f2939fa0800000000000000
+      internalID: -5795126707794768879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c87ed4a4e6bf640800000000000000
+      internalID: 5114803067222985844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_46
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e4d62562936fc850800000000000000
+      internalID: 6399443075930182884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_47
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b0fb3ae62f3af90800000000000000
+      internalID: -6943439643467642038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_48
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf8afd535af699f0800000000000000
+      internalID: -461906675792965712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_49
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14204c8da7e71290800000000000000
+      internalID: -7919606687139355617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_50
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717b05d34e55077b0800000000000000
+      internalID: -5228584728607541481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_51
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f813277a2f407d50800000000000000
+      internalID: 6732968486724901110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_52
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f91eeadc802f7ac0800000000000000
+      internalID: -3855326966665307664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_53
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 425
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37c10e4c9b1fc3200800000000000000
+      internalID: 161269466852760691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a07947b9dd12700800000000000000
+      internalID: 513935492242672238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_55
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 0
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b2135e9e4f90390800000000000000
+      internalID: -7851475189933986953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_56
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 0
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1642a6f34e7c6c090800000000000000
+      internalID: -8014498703728827295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_57
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 0
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c8d49d7e9d00980800000000000000
+      internalID: -8574614100707013609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_58
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 0
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae2c894e5d60a88c0800000000000000
+      internalID: -3996374203604876566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ProtectionUp_59
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 0
+        width: 421
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c979b1fc25047a0800000000000000
+      internalID: -6395020421391475643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

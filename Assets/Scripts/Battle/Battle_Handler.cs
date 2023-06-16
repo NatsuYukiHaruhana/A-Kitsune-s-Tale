@@ -155,6 +155,37 @@ public class Battle_Handler : MonoBehaviour
         if (eventSystem.currentSelectedGameObject != currentSelectedGameObject_Recent && eventSystem.currentSelectedGameObject != null) {
             lastSelectedGameObject = currentSelectedGameObject_Recent;
             currentSelectedGameObject_Recent = eventSystem.currentSelectedGameObject;
+
+            if (!enemyTurn) {
+                if (currentAction == TurnAction.Items) {
+                    GameObject buttonObject = currentSelectedGameObject_Recent;
+                    string itemName = buttonObject.GetComponentInChildren<TextMeshProUGUI>().text;
+                    itemName = itemName.Remove(itemName.LastIndexOf("X") - 1);
+
+                    foreach (Item item in Team_Data.GetItems()) {
+                        if (itemName == item.GetItemName()) {
+                            if (item.GetType().IsSubclassOf(typeof(Item_Not_Equippable)) == true) {
+                                wantedCharText.text = item.GetItemDesc();
+
+                                break;
+                            }
+
+                            break;
+                        }
+                    }
+                } else if (currentAction == TurnAction.Spells) {
+                    GameObject buttonObject = currentSelectedGameObject_Recent;
+                    string spellName = buttonObject.GetComponentInChildren<TextMeshProUGUI>().text;
+                    
+                    foreach (Battle_Entity_Spells spell in loadedSpells) {
+                        if (spellName == spell.GetSpellName()) {
+                            wantedCharText.text = spell.GetSpellDesc();
+
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 

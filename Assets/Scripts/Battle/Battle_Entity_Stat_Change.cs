@@ -23,7 +23,7 @@
     public Battle_Entity_Stat_Change(Battle_Entity_Stats stats, StatChangeType statChangeType, int turnCount, Battle_Entity target) {
         this.stats = stats;
         this.statChangeType = statChangeType;
-        this.turnCount = turnCount;
+        this.turnCount = turnCount + 1;
         this.target = target;
         readyToRemove = false;
     }

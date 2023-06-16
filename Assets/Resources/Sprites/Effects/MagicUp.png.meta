@@ -1,0 +1,1580 @@
+fileFormatVersion: 2
+guid: e63b458261e6460468ebf55cb9e75b18
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3256391880307732538
+    second: MagicUp_0
+  - first:
+      213: -1081461861702151161
+    second: MagicUp_1
+  - first:
+      213: -5667816766955702704
+    second: MagicUp_2
+  - first:
+      213: 2307533989599680926
+    second: MagicUp_3
+  - first:
+      213: 6408293147862294438
+    second: MagicUp_4
+  - first:
+      213: 6911482601545730725
+    second: MagicUp_5
+  - first:
+      213: -7865740581010654772
+    second: MagicUp_6
+  - first:
+      213: -5408628410404590475
+    second: MagicUp_7
+  - first:
+      213: -7065987653052843352
+    second: MagicUp_8
+  - first:
+      213: 6878356676363557583
+    second: MagicUp_9
+  - first:
+      213: 6312632368097215165
+    second: MagicUp_10
+  - first:
+      213: -6070217620951165091
+    second: MagicUp_11
+  - first:
+      213: -4513567535135758372
+    second: MagicUp_12
+  - first:
+      213: 7095301766423236311
+    second: MagicUp_13
+  - first:
+      213: -9180207966639163321
+    second: MagicUp_14
+  - first:
+      213: -8873243935910780929
+    second: MagicUp_15
+  - first:
+      213: -1314401809251339370
+    second: MagicUp_16
+  - first:
+      213: -5995861729584094228
+    second: MagicUp_17
+  - first:
+      213: -1315439681518309829
+    second: MagicUp_18
+  - first:
+      213: -40972068503962184
+    second: MagicUp_19
+  - first:
+      213: 5913446595113362701
+    second: MagicUp_20
+  - first:
+      213: 6969503417961776703
+    second: MagicUp_21
+  - first:
+      213: 6374591806929736902
+    second: MagicUp_22
+  - first:
+      213: -2815404135259082077
+    second: MagicUp_23
+  - first:
+      213: -770859172880260980
+    second: MagicUp_24
+  - first:
+      213: 3237625632333217377
+    second: MagicUp_25
+  - first:
+      213: -180792941837256683
+    second: MagicUp_26
+  - first:
+      213: 7670640014536868604
+    second: MagicUp_27
+  - first:
+      213: 1479457760169730992
+    second: MagicUp_28
+  - first:
+      213: -1878923246378648793
+    second: MagicUp_29
+  - first:
+      213: -6828538524528355191
+    second: MagicUp_30
+  - first:
+      213: 2073093664357980540
+    second: MagicUp_31
+  - first:
+      213: 7110563914568782041
+    second: MagicUp_32
+  - first:
+      213: -1496774067116906152
+    second: MagicUp_33
+  - first:
+      213: -5679915753693117528
+    second: MagicUp_34
+  - first:
+      213: 21244376635512224
+    second: MagicUp_35
+  - first:
+      213: -7863625542033759571
+    second: MagicUp_36
+  - first:
+      213: 5422741102159909891
+    second: MagicUp_37
+  - first:
+      213: 6281666397614512228
+    second: MagicUp_38
+  - first:
+      213: 5657567139681288980
+    second: MagicUp_39
+  - first:
+      213: -251693244729776849
+    second: MagicUp_40
+  - first:
+      213: -4559452219092592607
+    second: MagicUp_41
+  - first:
+      213: 2495303948750474817
+    second: MagicUp_42
+  - first:
+      213: 4678633042453319096
+    second: MagicUp_43
+  - first:
+      213: -8319554155563490508
+    second: MagicUp_44
+  - first:
+      213: 3460232046234641856
+    second: MagicUp_45
+  - first:
+      213: -3529744079168705131
+    second: MagicUp_46
+  - first:
+      213: -7100491469753461267
+    second: MagicUp_47
+  - first:
+      213: -550346107030244131
+    second: MagicUp_48
+  - first:
+      213: 4473979264589116043
+    second: MagicUp_49
+  - first:
+      213: -753936333863992610
+    second: MagicUp_50
+  - first:
+      213: -7699444820706960765
+    second: MagicUp_51
+  - first:
+      213: 7964425651425136377
+    second: MagicUp_52
+  - first:
+      213: -7280890212831885371
+    second: MagicUp_53
+  - first:
+      213: -3844921136884187901
+    second: MagicUp_54
+  - first:
+      213: -602404981963795700
+    second: MagicUp_55
+  - first:
+      213: 5064531295728037235
+    second: MagicUp_56
+  - first:
+      213: -8038495595734769830
+    second: MagicUp_57
+  - first:
+      213: 1139680577370426016
+    second: MagicUp_58
+  - first:
+      213: 7413022863633378322
+    second: MagicUp_59
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 265
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MagicUp_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cf8ac486d8fec2d0800000000000000
+      internalID: -3256391880307732538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_1
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7045c17aa20edf0f0800000000000000
+      internalID: -1081461861702151161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_2
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0563a990eaed751b0800000000000000
+      internalID: -5667816766955702704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_3
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e999a3d00f1060020800000000000000
+      internalID: 2307533989599680926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_4
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6afd6e65aa4dee850800000000000000
+      internalID: 6408293147862294438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_5
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aa0d68bec48aef50800000000000000
+      internalID: 6911482601545730725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_6
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc93c75bd9647d290800000000000000
+      internalID: -7865740581010654772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_7
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57cafbbed11b0f4b0800000000000000
+      internalID: -5408628410404590475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_8
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1590
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa3d70baa190fd90800000000000000
+      internalID: -7065987653052843352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca161d34f4d47f50800000000000000
+      internalID: 6878356676363557583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_10
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2411a61b9fa9750800000000000000
+      internalID: 6312632368097215165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_11
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5793e13c3142cba0800000000000000
+      internalID: -6070217620951165091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_12
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd76f7e9d369c51c0800000000000000
+      internalID: -4513567535135758372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_13
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7decbd13d53977260800000000000000
+      internalID: 7095301766423236311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_14
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748f2404e79599080800000000000000
+      internalID: -9180207966639163321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_15
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff16aa17a7ebd480800000000000000
+      internalID: -8873243935910780929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_16
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 693717bb48e42cde0800000000000000
+      internalID: -1314401809251339370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_17
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1325
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce3e7cd368b6acca0800000000000000
+      internalID: -5995861729584094228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3ee5a3449e9ebde0800000000000000
+      internalID: -1315439681518309829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_19
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdbb1bee107e6ff0800000000000000
+      internalID: -40972068503962184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_20
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05a9f3f858c01250800000000000000
+      internalID: 5913446595113362701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_21
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f368b70ce66a8b060800000000000000
+      internalID: 6969503417961776703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_22
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c499207979177850800000000000000
+      internalID: 6374591806929736902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_23
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a277ba0bdcade8d0800000000000000
+      internalID: -2815404135259082077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_24
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80ee9c9aab5d45f0800000000000000
+      internalID: -770859172880260980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_25
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16ebbe2eb5b5eec20800000000000000
+      internalID: 3237625632333217377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_26
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 1060
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51874ebf6c1bd7df0800000000000000
+      internalID: -180792941837256683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf20e52d376937a60800000000000000
+      internalID: 7670640014536868604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_28
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b3ac1f8ef6188410800000000000000
+      internalID: 1479457760169730992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_29
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b706b2349bce5e0800000000000000
+      internalID: -1878923246378648793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_30
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 988da6e14682c31a0800000000000000
+      internalID: -6828538524528355191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_31
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c799b2a34bb15cc10800000000000000
+      internalID: 2073093664357980540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_32
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d05598f43ccda260800000000000000
+      internalID: 7110563914568782041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_33
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 859ea7c8ae36a3be0800000000000000
+      internalID: -1496774067116906152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_34
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a30afa27b2ec21b0800000000000000
+      internalID: -5679915753693117528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_35
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 795
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a595d2e5a97b4000800000000000000
+      internalID: 21244376635512224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2a3689b3aced290800000000000000
+      internalID: -7863625542033759571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_37
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304d62f2d42714b40800000000000000
+      internalID: 5422741102159909891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_38
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46812539e46fc2750800000000000000
+      internalID: 6281666397614512228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_39
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41340a5a657b38e40800000000000000
+      internalID: 5657567139681288980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_40
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f252483d35ec18cf0800000000000000
+      internalID: -251693244729776849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_41
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1289e9e1d5299b0c0800000000000000
+      internalID: -4559452219092592607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_42
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ec6ef78b911a220800000000000000
+      internalID: 2495303948750474817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_43
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdc5d1b6f7dde040800000000000000
+      internalID: 4678633042453319096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_44
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 530
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 433630c03910b8c80800000000000000
+      internalID: -8319554155563490508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c52d3486b6350030800000000000000
+      internalID: 3460232046234641856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_46
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d6c1d1674d30fc0800000000000000
+      internalID: -3529744079168705131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_47
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de557a6d0acf57d90800000000000000
+      internalID: -7100491469753461267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_48
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd471faa127cc58f0800000000000000
+      internalID: -550346107030244131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_49
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b823c4edf64c61e30800000000000000
+      internalID: 4473979264589116043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_50
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed2c6cc16ea7985f0800000000000000
+      internalID: -753936333863992610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_51
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a5a0e9ab3162590800000000000000
+      internalID: -7699444820706960765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_52
+      rect:
+        serializedVersion: 2
+        x: 1855
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fe4431cee2578e60800000000000000
+      internalID: 7964425651425136377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_53
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 265
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7898f5de415fa90800000000000000
+      internalID: -7280890212831885371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d70a6e89814aac0800000000000000
+      internalID: -3844921136884187901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_55
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 0
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c035f1f4cd3d3a7f0800000000000000
+      internalID: -602404981963795700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_56
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 0
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37de7b36164d84640800000000000000
+      internalID: 5064531295728037235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_57
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 0
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5fdfaf68d6817090800000000000000
+      internalID: -8038495595734769830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_58
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 0
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa83936275f0df00800000000000000
+      internalID: 1139680577370426016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicUp_59
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 0
+        width: 265
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21c67b2c40950e660800000000000000
+      internalID: 7413022863633378322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
