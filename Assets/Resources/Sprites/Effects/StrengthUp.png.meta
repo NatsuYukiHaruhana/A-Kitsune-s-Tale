@@ -1,0 +1,1580 @@
+fileFormatVersion: 2
+guid: d793525f46515674e9282e6dee45c43b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3074407330728102371
+    second: StrengthUp_0
+  - first:
+      213: -2957257253755823809
+    second: StrengthUp_1
+  - first:
+      213: -6489565556802962593
+    second: StrengthUp_2
+  - first:
+      213: 569833546964405263
+    second: StrengthUp_3
+  - first:
+      213: -5898489302234009545
+    second: StrengthUp_4
+  - first:
+      213: 2342539959259396702
+    second: StrengthUp_5
+  - first:
+      213: -3812580400948012249
+    second: StrengthUp_6
+  - first:
+      213: -5626892596631906064
+    second: StrengthUp_7
+  - first:
+      213: -6316520051469497812
+    second: StrengthUp_8
+  - first:
+      213: -200299818851034867
+    second: StrengthUp_9
+  - first:
+      213: 1193388973856733716
+    second: StrengthUp_10
+  - first:
+      213: 2243381078974158613
+    second: StrengthUp_11
+  - first:
+      213: -4154882293636740658
+    second: StrengthUp_12
+  - first:
+      213: -642168330363313295
+    second: StrengthUp_13
+  - first:
+      213: -3771127500780448262
+    second: StrengthUp_14
+  - first:
+      213: 6269057546963869516
+    second: StrengthUp_15
+  - first:
+      213: 3645022654747589536
+    second: StrengthUp_16
+  - first:
+      213: 5098891635256534570
+    second: StrengthUp_17
+  - first:
+      213: -3736008998394571940
+    second: StrengthUp_18
+  - first:
+      213: -8690758054934564345
+    second: StrengthUp_19
+  - first:
+      213: 1394813169072185215
+    second: StrengthUp_20
+  - first:
+      213: -4605700913135537593
+    second: StrengthUp_21
+  - first:
+      213: -770046119425619735
+    second: StrengthUp_22
+  - first:
+      213: -5552812832793980027
+    second: StrengthUp_23
+  - first:
+      213: -4655742857855827415
+    second: StrengthUp_24
+  - first:
+      213: -1446983703233998442
+    second: StrengthUp_25
+  - first:
+      213: -2600000461520143806
+    second: StrengthUp_26
+  - first:
+      213: 8328390020378592670
+    second: StrengthUp_27
+  - first:
+      213: 1396835886456382214
+    second: StrengthUp_28
+  - first:
+      213: -4677330017726095402
+    second: StrengthUp_29
+  - first:
+      213: 5544005471127583158
+    second: StrengthUp_30
+  - first:
+      213: 2389230498436115865
+    second: StrengthUp_31
+  - first:
+      213: 2506909718748361241
+    second: StrengthUp_32
+  - first:
+      213: 7545954759384625011
+    second: StrengthUp_33
+  - first:
+      213: -4620952627325679546
+    second: StrengthUp_34
+  - first:
+      213: -2456860242768637474
+    second: StrengthUp_35
+  - first:
+      213: -35586681860424774
+    second: StrengthUp_36
+  - first:
+      213: -5117928096176496703
+    second: StrengthUp_37
+  - first:
+      213: 668808918955777268
+    second: StrengthUp_38
+  - first:
+      213: -6050496697923949486
+    second: StrengthUp_39
+  - first:
+      213: 8204567981987621360
+    second: StrengthUp_40
+  - first:
+      213: 523627956998397672
+    second: StrengthUp_41
+  - first:
+      213: 7739630630399547190
+    second: StrengthUp_42
+  - first:
+      213: 4413478741258839680
+    second: StrengthUp_43
+  - first:
+      213: 4344331806024101834
+    second: StrengthUp_44
+  - first:
+      213: 897020223327470359
+    second: StrengthUp_45
+  - first:
+      213: -7177295596505799718
+    second: StrengthUp_46
+  - first:
+      213: -4388608420248488631
+    second: StrengthUp_47
+  - first:
+      213: -8903803173021527029
+    second: StrengthUp_48
+  - first:
+      213: -315656378755188807
+    second: StrengthUp_49
+  - first:
+      213: -6069627052291471944
+    second: StrengthUp_50
+  - first:
+      213: 2138139949490334681
+    second: StrengthUp_51
+  - first:
+      213: -3993179451091531562
+    second: StrengthUp_52
+  - first:
+      213: -3670847956947103795
+    second: StrengthUp_53
+  - first:
+      213: 4758177988197806523
+    second: StrengthUp_54
+  - first:
+      213: 7825205877852406553
+    second: StrengthUp_55
+  - first:
+      213: -7563369025329526352
+    second: StrengthUp_56
+  - first:
+      213: 7884247427892747740
+    second: StrengthUp_57
+  - first:
+      213: -3282794914082365613
+    second: StrengthUp_58
+  - first:
+      213: 4989771125272466478
+    second: StrengthUp_59
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 430
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StrengthUp_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e9c7eaad2d7aaa20800000000000000
+      internalID: 3074407330728102371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_1
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f39df682236b5f6d0800000000000000
+      internalID: -2957257253755823809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_2
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b3620628e60f5a0800000000000000
+      internalID: -6489565556802962593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_3
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0c0ae3879478e700800000000000000
+      internalID: 569833546964405263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_4
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73076ec2b3b542ea0800000000000000
+      internalID: -5898489302234009545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_5
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5a70df7eaf528020800000000000000
+      internalID: 2342539959259396702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_6
+      rect:
+        serializedVersion: 2
+        x: 2574
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b90e3435ef61bc0800000000000000
+      internalID: -3812580400948012249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_7
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f8da74fef249e1b0800000000000000
+      internalID: -5626892596631906064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_8
+      rect:
+        serializedVersion: 2
+        x: 3432
+        y: 2622
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a4783ca763758a0800000000000000
+      internalID: -6316520051469497812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d091fc04064683df0800000000000000
+      internalID: -200299818851034867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_10
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41a3999e2f4cf8010800000000000000
+      internalID: 1193388973856733716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_11
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51756149437122f10800000000000000
+      internalID: 2243381078974158613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_12
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec9c8344194e656c0800000000000000
+      internalID: -4154882293636740658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_13
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17360be4e4f8617f0800000000000000
+      internalID: -642168330363313295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_14
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af55641b4834aabc0800000000000000
+      internalID: -3771127500780448262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_15
+      rect:
+        serializedVersion: 2
+        x: 2574
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f5343cf9a200750800000000000000
+      internalID: 6269057546963869516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_16
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab3b76dac8b59230800000000000000
+      internalID: 3645022654747589536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_17
+      rect:
+        serializedVersion: 2
+        x: 3432
+        y: 2185
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a262dab5de6e2c640800000000000000
+      internalID: 5098891635256534570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5357053c97072cc0800000000000000
+      internalID: -3736008998394571940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_19
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702b2ca3899346780800000000000000
+      internalID: -8690758054934564345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_20
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f959eef2f5b5310800000000000000
+      internalID: 1394813169072185215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_21
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7423ddaeb634510c0800000000000000
+      internalID: -4605700913135537593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_22
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e8c7fe522f3055f0800000000000000
+      internalID: -770046119425619735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_23
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583951d062270f2b0800000000000000
+      internalID: -5552812832793980027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_24
+      rect:
+        serializedVersion: 2
+        x: 2574
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92201f7b98a736fb0800000000000000
+      internalID: -4655742857855827415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_25
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69155f40df74bebe0800000000000000
+      internalID: -1446983703233998442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_26
+      rect:
+        serializedVersion: 2
+        x: 3432
+        y: 1748
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a7d3b0b51faebd0800000000000000
+      internalID: -2600000461520143806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95039b0992649370800000000000000
+      internalID: 8328390020378592670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_28
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60320c586de826310800000000000000
+      internalID: 1396835886456382214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_29
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df1a246129c61fb0800000000000000
+      internalID: -4677330017726095402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_30
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9b1634a9340fc40800000000000000
+      internalID: 5544005471127583158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_31
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d60d9ca70482120800000000000000
+      internalID: 2389230498436115865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_32
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91278f56b155ac220800000000000000
+      internalID: 2506909718748361241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_33
+      rect:
+        serializedVersion: 2
+        x: 2574
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37fe94c9fdd98b860800000000000000
+      internalID: 7545954759384625011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_34
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 648485c71141fdfb0800000000000000
+      internalID: -4620952627325679546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_35
+      rect:
+        serializedVersion: 2
+        x: 3432
+        y: 1311
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed1defe40aa77edd0800000000000000
+      internalID: -2456860242768637474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb79f4f912918ff0800000000000000
+      internalID: -35586681860424774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_37
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf9861338779f8b0800000000000000
+      internalID: -5117928096176496703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_38
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fcd8f41b26184900800000000000000
+      internalID: 668808918955777268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_39
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ca1956f41580ca0800000000000000
+      internalID: -6050496697923949486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_40
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f96ae52c1b7cd170800000000000000
+      internalID: 8204567981987621360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_41
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ee5a534adc444700800000000000000
+      internalID: 523627956998397672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_42
+      rect:
+        serializedVersion: 2
+        x: 2574
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63792b15d01b86b60800000000000000
+      internalID: 7739630630399547190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_43
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086a8741883df3d30800000000000000
+      internalID: 4413478741258839680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_44
+      rect:
+        serializedVersion: 2
+        x: 3432
+        y: 874
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf6f74a2ca2a4c30800000000000000
+      internalID: 4344331806024101834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71386c7f32bd27c00800000000000000
+      internalID: 897020223327470359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_46
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3eb429eaf156c90800000000000000
+      internalID: -7177295596505799718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_47
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945fcc4c4e78813c0800000000000000
+      internalID: -4388608420248488631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_48
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b045e0240365f6480800000000000000
+      internalID: -8903803173021527029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_49
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7f53922309e9bf0800000000000000
+      internalID: -315656378755188807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_50
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b5c01daa5a54cba0800000000000000
+      internalID: -6069627052291471944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_51
+      rect:
+        serializedVersion: 2
+        x: 2574
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db6179a4f23cad10800000000000000
+      internalID: 2138139949490334681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_52
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d8cc4d22706598c0800000000000000
+      internalID: -3993179451091531562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_53
+      rect:
+        serializedVersion: 2
+        x: 3432
+        y: 437
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf03bd6b378e0dc0800000000000000
+      internalID: -3670847956947103795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb1fc9c9ba1780240800000000000000
+      internalID: 4758177988197806523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_55
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 0
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91301b34947b89c60800000000000000
+      internalID: 7825205877852406553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_56
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 0
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b98a04a1f3890790800000000000000
+      internalID: -7563369025329526352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_57
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 0
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd95dc53497a6d60800000000000000
+      internalID: 7884247427892747740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_58
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 0
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f59ab2b6b2172d0800000000000000
+      internalID: -3282794914082365613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrengthUp_59
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 0
+        width: 429
+        height: 437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e24dd58c66a3f3540800000000000000
+      internalID: 4989771125272466478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

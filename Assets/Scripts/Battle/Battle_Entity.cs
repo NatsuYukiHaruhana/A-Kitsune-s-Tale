@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor.Animations;
 using UnityEditorInternal;
 using UnityEngine;
+using static UnityEngine.CullingGroup;
 
 public class Battle_Entity : MonoBehaviour {
     public enum Faction {
@@ -177,8 +178,15 @@ public class Battle_Entity : MonoBehaviour {
         animator.SetTrigger("isHurt");
     }
 
+    public void RestoreMana(float amount) {
+        battleStats.currMana = Mathf.Min(battleStats.currMana + amount, battleStats.maxMana);
+
+        manaBar.SetTargetPercentage(battleStats.currMana / battleStats.maxMana);
+        manaBar.gameObject.SetActive(true);
+    }
+
     public void ReduceMana(float amount) {
-        battleStats.currMana -= amount;
+        battleStats.currMana = Mathf.Max(battleStats.currMana - amount, 0);
 
         manaBar.SetTargetPercentage(battleStats.currMana / battleStats.maxMana);
         manaBar.gameObject.SetActive(true);
@@ -186,6 +194,7 @@ public class Battle_Entity : MonoBehaviour {
 
     public void AddStatChange(Battle_Entity_Stat_Change newStatChange) {
         statChanges.Add(newStatChange);
+        statChanges[statChanges.Count - 1].ApplyStatChanges();
     }
 
     public void CheckStatChanges() {

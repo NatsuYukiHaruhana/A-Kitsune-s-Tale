@@ -13,12 +13,14 @@ public class ScrollViewBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject contentToFillPrefab;
 
+    [SerializeField]
+    private RectTransform contentRectTrans;
+    
     private List<GameObject> contentList;
-
-    VerticalLayoutGroup verticalLayoutGroup;
 
     private void Awake() {
         contentList = new List<GameObject>();
+        contentRectTrans.sizeDelta = new Vector2(contentRectTrans.sizeDelta.x, 0);
     }
 
     // Update is called once per frame
@@ -29,13 +31,14 @@ public class ScrollViewBehaviour : MonoBehaviour
     public void CreateNewContent(string contentText) {
         contentList.Add(Instantiate(contentToFillPrefab, content.transform));
         contentList[contentList.Count - 1].GetComponentInChildren<TextMeshProUGUI>().text = contentText;
+        contentRectTrans.sizeDelta = new Vector2(contentRectTrans.sizeDelta.x, contentRectTrans.sizeDelta.y + 100f);
     }
 
     public int GetContentCount(string contentText) {
         int count = 0;
         
         foreach(GameObject content in contentList) {
-            string text = contentList[contentList.Count - 1].GetComponentInChildren<TextMeshProUGUI>().text;
+            string text = content.GetComponentInChildren<TextMeshProUGUI>().text;
 
             string compareText = text.Remove(text.LastIndexOf('X') - 1);
             if (compareText == contentText) {
@@ -67,12 +70,13 @@ public class ScrollViewBehaviour : MonoBehaviour
         if (contentObjectToRemove != null) {
             Destroy(contentObjectToRemove);
             contentList.Remove(contentObjectToRemove);
+            contentRectTrans.sizeDelta = new Vector2(contentRectTrans.sizeDelta.x, contentRectTrans.sizeDelta.y - 100f);
         }
     }
 
     public void ContentCountDown(string contentText) {
         foreach (GameObject content in contentList) {
-            string text = contentList[contentList.Count - 1].GetComponentInChildren<TextMeshProUGUI>().text;
+            string text = content.GetComponentInChildren<TextMeshProUGUI>().text;
 
             string compareText = text.Remove(text.LastIndexOf('X') - 1);
             if (compareText == contentText) {
@@ -81,7 +85,7 @@ public class ScrollViewBehaviour : MonoBehaviour
                 if (count == 1) {
                     RemoveContent(text);
                 } else {
-                    contentList[contentList.Count - 1].GetComponentInChildren<TextMeshProUGUI>().text = compareText + " X " + (count - 1);
+                    content.GetComponentInChildren<TextMeshProUGUI>().text = compareText + " X " + (count - 1);
                 }
                 break;
             }

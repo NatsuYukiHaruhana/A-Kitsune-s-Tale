@@ -138,6 +138,8 @@ public class Battle_Handler : MonoBehaviour
     {
         if (canSelectTarget) {
             DoTargetSelection();
+        } else {
+            DoUnitDetailShow();
         }
 
         GetLastGameObjectSelected();
@@ -150,7 +152,7 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void GetLastGameObjectSelected() {
-        if (eventSystem.currentSelectedGameObject != currentSelectedGameObject_Recent) {
+        if (eventSystem.currentSelectedGameObject != currentSelectedGameObject_Recent && eventSystem.currentSelectedGameObject != null) {
             lastSelectedGameObject = currentSelectedGameObject_Recent;
             currentSelectedGameObject_Recent = eventSystem.currentSelectedGameObject;
         }
@@ -319,7 +321,7 @@ public class Battle_Handler : MonoBehaviour
         drawBoardParent.SetActive(false);
         canSelectTarget = false;
         targets.Clear();
-        wantedCharText.gameObject.SetActive(false);
+        wantedCharText.text = "";
         foreach (ArrowMovement arrow in arrows) {
             arrow.SetVisible(false);
         }
@@ -447,7 +449,6 @@ public class Battle_Handler : MonoBehaviour
     private void PrepareWantedChar() {
         wantedChar = Utils.GetRandomCharacter(true, true);
         wantedCharText.text = "Please draw " + wantedChar;
-        wantedCharText.gameObject.SetActive(true);
     }
 
     IEnumerator WaitForTesseract(Action doAction) {
@@ -499,6 +500,14 @@ public class Battle_Handler : MonoBehaviour
 
     private void DoRun() {
         SceneManager.LoadScene("Platforming Scene");
+    }
+
+    private void DoUnitDetailShow() {
+        for (int i = 0; i < unitButtons.Count; i++) {
+            if (unitButtons[i].IsButtonPressed()) {
+                wantedCharText.text = units[i].GetName() + "\n" + units[i].GetStats().ToString();
+            }
+        }
     }
 
     private void DoTargetSelection() {
@@ -572,6 +581,7 @@ public class Battle_Handler : MonoBehaviour
         canSelectTarget = false;
         targets.Clear();
         unitTurn = unitTurn < units.Count - 1 ? unitTurn + 1 : 0;
+        wantedCharText.text = "";
 
         if (unitTurn == 0) { // new turn
             foreach (Battle_Entity unit in units) {

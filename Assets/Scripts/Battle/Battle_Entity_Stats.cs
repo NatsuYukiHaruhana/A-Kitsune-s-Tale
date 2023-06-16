@@ -100,4 +100,15 @@ public struct Battle_Entity_Stats
 
         return retStats;
     }
+
+    override public string ToString() {
+        return "Level: " + level + "\n" +
+                "HP: " + currHP + "/" + maxHP + "\n" +
+                "Mana: " + currMana + "/" + maxMana + "\n" +
+                "Str: " + str + "\n" +
+                "Mag: " + mag + "\n" +
+                "Spd: " + spd + "\n" +
+                "Def: " + def + "\n" +
+                "Res: " + res;
+    }
 }

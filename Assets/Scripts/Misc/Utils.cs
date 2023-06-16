@@ -202,6 +202,8 @@ public class Utils
 
         for (int i = 0; i < 3; i++) {
             Team_Data.AddItem(new Potion());
+            Team_Data.AddItem(new Mana_Potion());
+            Team_Data.AddItem(new Scroll_of_Strength());
         }
 
         SaveTeamData();
