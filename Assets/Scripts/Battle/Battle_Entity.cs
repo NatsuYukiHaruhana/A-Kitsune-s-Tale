@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Animations;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Battle_Entity : MonoBehaviour {
@@ -110,6 +111,9 @@ public class Battle_Entity : MonoBehaviour {
             sfxManager.PlaySound("Physical Attack");
             foreach (Battle_Entity target in targets) {
                 target.TakeDamage(premitigationDamage, damageType);
+                Animator targetAnimator = target.GetEffectAnimator();
+                targetAnimator.runtimeAnimatorController = Resources.Load("Animations/Effects/Slash") as RuntimeAnimatorController;
+                targetAnimator.enabled = true;
             }
         }
     }

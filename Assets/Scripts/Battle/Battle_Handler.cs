@@ -274,7 +274,16 @@ public class Battle_Handler : MonoBehaviour
         }
 
         foreach (Item item in items) {
-            itemMenuBehaviour.CreateNewContent(item.GetItemName());
+            int count = itemMenuBehaviour.GetContentCount(item.GetItemName());
+            
+            string text = item.GetItemName() + " X " + (count + 1);
+            string removeText = item.GetItemName() + " X " + count;
+
+            if (count == 0) {
+                itemMenuBehaviour.CreateNewContent(text);
+            } else { 
+                itemMenuBehaviour.ReplaceContent(removeText, text);
+            }
         }
 
         itemMenuBehaviour.gameObject.SetActive(false);
@@ -355,6 +364,7 @@ public class Battle_Handler : MonoBehaviour
         GameObject buttonObject = lastSelectedGameObject;
         if (buttonObject != null) {
             string itemName = buttonObject.GetComponentInChildren<TextMeshProUGUI>().text;
+            itemName = itemName.Remove(itemName.LastIndexOf("X") - 1);
             Item itemToRemove = null;
 
             foreach (Item item in Team_Data.GetItems()) {
@@ -373,7 +383,7 @@ public class Battle_Handler : MonoBehaviour
             if (itemToRemove != null) {
                 Team_Data.RemoveItem(itemToRemove);
 
-                itemMenuBehaviour.RemoveContent(itemName);
+                itemMenuBehaviour.ContentCountDown(itemName);
             }
         }
         NextTurn();
