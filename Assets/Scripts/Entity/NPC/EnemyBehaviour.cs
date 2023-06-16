@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -20,8 +21,21 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start() {
+        BoxCollider2D col2D = gameObject.AddComponent<BoxCollider2D>();
+        col2D.size = new Vector2(0.66f, 1.23f);
+        col2D.offset = new Vector2(0f, -0.39f);
+        BoxCollider2D col2Dtrigger = gameObject.AddComponent<BoxCollider2D>();
+        col2Dtrigger.isTrigger = true;
+        col2Dtrigger.size = new Vector2(0.66f, 1.23f);
+        col2Dtrigger.offset = new Vector2(0f, -0.39f);
+
+        SpriteRenderer spriteRend = gameObject.GetComponent<SpriteRenderer>();
+
         boundaryCheck.transform.localPosition = new Vector3(boundaryCheck.transform.localPosition.x + moveSpeed * movementSmoothing / 2f,
-                                                            boundaryCheck.transform.localPosition.y, 
+                                                            -spriteRend.size.y / 2,
                                                             boundaryCheck.transform.localPosition.z);
     }
 
