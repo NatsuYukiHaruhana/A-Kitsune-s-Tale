@@ -53,11 +53,16 @@ public class SaveMenuHandler : MonoBehaviour
         switch (mode) {
             case "New Game": {
                 saveMode = SaveFileMode.NEW_GAME;
+                if (Utils.saveFile != 0) {
+                    saveButtons[Utils.saveFile - 1].GetComponentInChildren<TextMeshProUGUI>().text = "No Data";
+                }
+                CancelCreateNewSave();
                 break;
             }
 
             case "Continue": {
                 saveMode = SaveFileMode.CONTINUE;
+                CancelCreateNewSave();
                 break;
             }
             
@@ -164,14 +169,14 @@ public class SaveMenuHandler : MonoBehaviour
     }
 
     public void DeleteSaveFile() {
-        string filePath = Application.persistentDataPath + "/save_data_" + (Utils.saveFile - 1) + ".dat";
+        string filePath = Application.persistentDataPath + "/save_data_" + (Utils.saveFile) + ".dat";
 
         saveButtons[Utils.saveFile - 1].GetComponentInChildren<TextMeshProUGUI>().text = "No Data";
         buttonsParent.gameObject.SetActive(false);
 
         File.Delete(filePath);
 
-        filePath = Application.persistentDataPath + "/team_data_" + (Utils.saveFile - 1) + ".dat";
+        filePath = Application.persistentDataPath + "/team_data_" + (Utils.saveFile) + ".dat";
 
         File.Delete(filePath);
 
