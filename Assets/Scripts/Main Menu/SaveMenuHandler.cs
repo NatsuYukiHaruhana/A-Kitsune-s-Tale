@@ -200,11 +200,13 @@ public class SaveMenuHandler : MonoBehaviour
         bf.Serialize(file, data);
         file.Close();
 
+        Utils.LoadLevelData(1);
         SceneManager.LoadScene("Platforming Scene");
     }
 
     private void LoadGame() {
         Utils.InitGameData();
+        Utils.LoadLevelData(1);
         SceneManager.LoadScene("Platforming Scene");
     }
 

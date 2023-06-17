@@ -11,6 +11,8 @@ TagManager:
   - DrawBoard
   - BattleMenu
   - Enemy
+  - Background
+  - Interactable
   layers:
   - Default
   - TransparentFX

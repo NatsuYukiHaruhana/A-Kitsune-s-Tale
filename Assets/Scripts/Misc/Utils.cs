@@ -15,6 +15,9 @@ public class Utils
 
     public static string enemyToBattle = "null";
 
+    public static List<string> enemyNames = new List<string>();
+    public static List<Vector3> enemyPos = new List<Vector3>();
+
     public static Vector3 GetMouseWorldPosition() {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPos.z = 0f;
@@ -43,6 +46,7 @@ public class Utils
         InitTextRecognitionData();
         InitUnitData();
         InitEnemyData();
+        InitLevelData();
     }
 
     public static void SaveGameData() {
@@ -336,5 +340,84 @@ public class Utils
         }
 
         return playerPos;
+    }
+
+    public static void InitLevelData() {
+        string filePath = Application.persistentDataPath + "/level_data.dat";
+        FileStream file;
+
+        if (File.Exists(filePath) == true) {
+            file = File.OpenWrite(filePath);
+        } else {
+            file = File.Create(filePath);
+        }
+
+        string levelData = "[Level]: 1\n";
+        string enemyData = "[Enemies]:\n" +
+                            "Flower: +60.00, -1.00,\n";
+        string playerData = "[Player]: -3.00, -1.00,";
+
+        ArrayList levels = new ArrayList() { levelData, enemyData, playerData };
+
+        ArrayList data = new ArrayList() { levels };
+
+        BinaryFormatter bf = new BinaryFormatter();
+        bf.Serialize(file, data);
+        file.Close();
+    }
+
+    public static void LoadLevelData(int level) {
+        string filePath = Application.persistentDataPath + "/level_data.dat";
+        FileStream file;
+
+        if (!File.Exists(filePath)) {
+            Debug.LogError(filePath + " does not exist! Can't load level data!");
+            return;
+        }
+
+        file = File.OpenRead(filePath);
+
+        BinaryFormatter bf = new BinaryFormatter();
+        ArrayList data = (ArrayList)bf.Deserialize(file);
+        file.Close();
+
+        ArrayList levelsData = (ArrayList)data[0];
+
+        for (int i = 0; i < levelsData.Count / 3; i++) {
+            string levelNumber = (string)levelsData[i];
+            
+            if (int.Parse(levelNumber.Substring(levelNumber.LastIndexOf(':') + 2)) == level) {
+                string playerData = (string)levelsData[i + 2];
+                SavePlayerPosition(ParsePosition(playerData));
+                
+                string enemyData = (string)levelsData[i + 1];
+
+                enemyData = enemyData.Substring(enemyData.IndexOf('\n') + 1);
+                while (enemyData.Contains(":")) {
+                    enemyNames.Add(enemyData.Substring(0, enemyData.IndexOf(':')));
+                    enemyPos.Add(ParsePosition(enemyData.Substring(enemyData.IndexOf(':') + 1, enemyData.IndexOf('\n') - enemyData.IndexOf(':') - 1)));
+
+                    enemyData = enemyData.Substring(enemyData.IndexOf('\n') + 1);
+                }
+            }
+        }
+    }
+
+    public static Vector3 ParsePosition(string str) {
+        Vector3 pos = Vector3.zero;
+
+        pos.x = float.Parse(str.Substring(str.IndexOf(':') + 2, str.IndexOf(',') - str.IndexOf(':') - 2));
+
+        str = str.Substring(str.IndexOf(',') + 2);
+
+        pos.y = float.Parse(str.Substring(0, str.IndexOf(',')));
+
+        str = str.Substring(str.IndexOf(',') + 1);
+
+        if (str.Contains(",")) {
+            pos.z = float.Parse(str.Substring(0, str.IndexOf(',')));
+        }
+
+        return pos;
     }
 }
