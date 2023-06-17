@@ -26,17 +26,27 @@ public class CharacterController2D : MonoBehaviour {
 	private bool facingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 velocity = Vector3.zero;
 	private bool wasCrouching = false;
+	private SpriteRenderer spriteRend;
 
-	[SerializeField]
-	private Animator animator;
+    private bool fadeIn;
+    private float fadeSpeed;
+
+    private Animator animator;
     [SerializeField]
     private Animator attackAnimator;
     [SerializeField]
     private Collider2D attackCollider;
+    [SerializeField]
+    private Collider2D triggerCollider;
+
 
     private void Awake() {
 		rigidbody2D = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+		spriteRend = GetComponent<SpriteRenderer>();
+
+        fadeIn = true;
+        fadeSpeed = 0.3f;
 
         animator.SetBool("isCrouching", false);
         animator.SetBool("isGrounded", false);
@@ -66,7 +76,38 @@ public class CharacterController2D : MonoBehaviour {
 		if (PressMenuButton()) {
 			Debug.Log("Menu pop-up");
 		}
+
+		if (!triggerCollider.enabled) {
+			InvincibilityFrames();
+		}
 	}
+
+	private void InvincibilityFrames() {
+        Color spriteColor = spriteRend.color;
+        if (fadeIn) {
+            spriteColor.a += fadeSpeed;
+
+            if (spriteColor.a >= 1f) {
+                fadeIn = false;
+            }
+        } else {
+            spriteColor.a -= fadeSpeed;
+
+            if (spriteColor.a <= 0f) {
+                fadeIn = true;
+            }
+        }
+
+        spriteRend.color = spriteColor;
+    }
+
+	public void ResetSpriteTransparency() {
+        Color spriteColor = spriteRend.color;
+
+        spriteColor.a = 1f;
+
+        spriteRend.color = spriteColor;
+    }
 
 	private void Attack() {
 		attackCollider.enabled = true;
@@ -136,21 +177,25 @@ public class CharacterController2D : MonoBehaviour {
 		animator.SetBool("isGrounded", grounded);
 	}
 
-    public void OnCollisionEnter2D(Collision2D collision) {
+    public void OnTriggerEnter2D(Collider2D collision) {
+		if (!triggerCollider.enabled) {
+			return;
+		}
+
         if (collision != null) {
-			if (collision.gameObject.CompareTag("Enemy")) {
-				Transform enemyTransform = collision.gameObject.transform;
-				if (enemyTransform.position.x > transform.position.x && !facingRight) {
-					Battle_Handler.enemyStrikeFirst = true;
-				} else if (enemyTransform.position.x < transform.position.x && facingRight) {
+            if (collision.gameObject.CompareTag("Enemy")) {
+                Transform enemyTransform = collision.gameObject.transform;
+                if (enemyTransform.position.x > transform.position.x && !facingRight) {
+                    Battle_Handler.enemyStrikeFirst = true;
+                } else if (enemyTransform.position.x < transform.position.x && facingRight) {
                     Battle_Handler.enemyStrikeFirst = true;
                 }
 
-				Utils.SavePlayerPosition(transform.position);
-				Utils.enemyToBattle = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetEnemyName();
+                Utils.SavePlayerPosition(transform.position);
+                Utils.enemyToBattle = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetEnemyName();
                 SceneManager.LoadScene("Battle Scene");
             }
-		}
+        }
     }
 
     private float InputMoveHorizontal() {
@@ -197,5 +242,9 @@ public class CharacterController2D : MonoBehaviour {
 
 	public bool GetGrounded() {
 		return grounded;
+	}
+
+	public Collider2D GetTriggerCollider() {
+		return triggerCollider;
 	}
 }

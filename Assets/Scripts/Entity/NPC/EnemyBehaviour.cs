@@ -38,6 +38,10 @@ public class EnemyBehaviour : MonoBehaviour
         enemyName = newEnemyName;
         moveSpeed = newMoveSpeed;
 
+        if (moveSpeed == 0f) {
+            rigidbody2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        }
+
         animator.runtimeAnimatorController = Resources.Load("Animations/" + enemyName + "/" + enemyName) as RuntimeAnimatorController;
 
         SpriteRenderer spriteRend = gameObject.GetComponent<SpriteRenderer>();

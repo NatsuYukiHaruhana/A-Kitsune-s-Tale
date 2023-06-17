@@ -1,16 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Timers;
 using UnityEngine;
 
 public class Platforming_Stage_Handler : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private Enemy_Handler enemyHandler;
 
     private Transform playerTrans;
     private Vector3 respawnPlayerPos;
     private Rigidbody2D playerRB;
     private bool respawnSet;
+
+    long invincibilityTimer;
 
     private CharacterController2D playerController;
 
@@ -19,10 +26,14 @@ public class Platforming_Stage_Handler : MonoBehaviour
     private void Awake() {
         playerTrans = player.transform;
         respawnSet = false;
+
+        invincibilityTimer = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond + 3000;
     }
 
     private void Start() {
         playerController = player.GetComponent<CharacterController2D>();
+        playerController.GetTriggerCollider().enabled = false;
+
         playerRB = player.GetComponent<Rigidbody2D>();
     }
 
@@ -32,12 +43,17 @@ public class Platforming_Stage_Handler : MonoBehaviour
         if (respawnSet) {
             CheckPlayerFall();
         }
+
+        DoInvincibilityFrames();
     }
 
     private void CheckPlayerFall() {
         if (playerTrans.position.y < yLimit) {
             playerTrans.position = respawnPlayerPos;
             playerRB.velocity = new Vector3(0f, 0f, 0f);
+
+            playerController.GetTriggerCollider().enabled = false;
+            invincibilityTimer = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond + 3000;
         }
     }
 
@@ -61,6 +77,13 @@ public class Platforming_Stage_Handler : MonoBehaviour
                     respawnSet = true;
                 }
             }
+        }
+    }
+
+    private void DoInvincibilityFrames() {
+        if (invincibilityTimer < DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond) {
+            playerController.GetTriggerCollider().enabled = true;
+            playerController.ResetSpriteTransparency();
         }
     }
 }

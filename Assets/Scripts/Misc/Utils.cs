@@ -354,7 +354,8 @@ public class Utils
 
         string levelData = "[Level]: 1\n";
         string enemyData = "[Enemies]:\n" +
-                            "Flower: +60.00, -1.00,\n";
+                            "Flower: +60.00, -1.00,\n" +
+                            "Serpent: +120.00, +8.00,\n";
         string playerData = "[Player]: -3.00, -1.00,";
 
         ArrayList levels = new ArrayList() { levelData, enemyData, playerData };
