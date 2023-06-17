@@ -13,6 +13,8 @@ public class Utils
     public static string username = "";
     public static string currentLanguage = "null";
 
+    public static string enemyToBattle = "null";
+
     public static Vector3 GetMouseWorldPosition() {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPos.z = 0f;
@@ -40,6 +42,7 @@ public class Utils
 
         InitTextRecognitionData();
         InitUnitData();
+        InitEnemyData();
     }
 
     public static void SaveGameData() {
@@ -215,4 +218,59 @@ public class Utils
         SaveTeamData();
     }
 
+    private static void InitEnemyData() {
+        string filePath = Application.persistentDataPath + "/enemy_data.dat";
+        FileStream file;
+
+        if (File.Exists(filePath) == true) {
+            file = File.OpenWrite(filePath);
+        } else {
+            file = File.Create(filePath);
+        }
+
+        // Format: "Enemy_Name: sizeX sizeY offsetX offsetY"
+        string dataString = "Flower: +0.66 +1.23 +0.00 -0.39\n" +
+                            "Masked Doctor: +0.94 +1.26 -0.28 -0.37\n" +
+                            "Cavern Slime: +0.57 +0.60 -0.12 -0.20" +
+                            "Serpent: +0.50 +1.67 -0.34 -0.14";
+
+        ArrayList data = new ArrayList() { dataString };
+
+        BinaryFormatter bf = new BinaryFormatter();
+        bf.Serialize(file, data);
+        file.Close();
+    }
+
+    public static List<float> LoadEnemyData(string enemyName) {
+        string filePath = Application.persistentDataPath + "/enemy_data.dat";
+        FileStream file;
+
+        if (File.Exists(filePath) == true) {
+            file = File.OpenRead(filePath);
+        } else {
+            Debug.LogError("No enemy_data.dat file found!");
+            return null;
+        }
+
+
+        BinaryFormatter bf = new BinaryFormatter();
+
+        ArrayList data = (ArrayList)bf.Deserialize(file);
+        file.Close();
+
+        string dataString = (string)data[0];
+
+        if (!dataString.Contains(enemyName)) {
+            Debug.LogError("No enemy named " + enemyName + " found!");
+            return null;
+        }
+
+        List<float> list = new List<float>(4);
+
+        for (int i = 0; i < 4; i++) { 
+            list.Add(float.Parse(dataString.Substring(dataString.IndexOf(enemyName) + enemyName.Length + 2 + i * 6, 5)));
+        }
+
+        return list;
+    }
 }

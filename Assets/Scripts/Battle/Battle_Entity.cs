@@ -297,7 +297,13 @@ public class Battle_Entity : MonoBehaviour {
         if (unitName == Utils.username) {
             animator.runtimeAnimatorController = Resources.Load("Animations/Player/Player_Combat") as RuntimeAnimatorController;
         } else {
-            animator.runtimeAnimatorController = Resources.Load("Animations/" + unitName + "/" + unitName + "_Combat") as RuntimeAnimatorController;
+            animator.runtimeAnimatorController = Resources.Load("Animations/" + unitName + "/" + unitName) as RuntimeAnimatorController;
+
+            Transform[] transforms = GetComponentsInChildren<Transform>();
+
+            for (int i = 0; i < transforms.Length; i++) {
+                transforms[i].localScale = new Vector3(transforms[i].localScale.x * -1f, transforms[i].localScale.y, transforms[i].localScale.z);
+            }
         }
     }
 

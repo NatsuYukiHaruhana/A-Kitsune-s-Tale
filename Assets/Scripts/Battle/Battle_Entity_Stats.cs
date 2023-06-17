@@ -103,6 +103,7 @@ public struct Battle_Entity_Stats
 
     override public string ToString() {
         return "Level: " + level + "\n" +
+                "XP: " + currXP + "/" + maxXP + "\n" +
                 "HP: " + currHP + "/" + maxHP + "\n" +
                 "Mana: " + currMana + "/" + maxMana + "\n" +
                 "Str: " + str + "\n" +

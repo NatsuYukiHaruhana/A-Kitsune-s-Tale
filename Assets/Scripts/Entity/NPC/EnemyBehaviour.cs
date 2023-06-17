@@ -11,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     const float groundedRadius = .2f;       // Radius of the overlap circle to determine if grounded
 
     private Rigidbody2D rigidbody2D;
+    private Animator animator;
 
     [SerializeField]
     private float moveSpeed;
@@ -19,24 +20,11 @@ public class EnemyBehaviour : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private bool facingRight = true;
 
+    private string enemyName;
+
     private void Awake() {
         rigidbody2D = GetComponent<Rigidbody2D>();
-    }
-
-    private void Start() {
-        BoxCollider2D col2D = gameObject.AddComponent<BoxCollider2D>();
-        col2D.size = new Vector2(0.66f, 1.23f);
-        col2D.offset = new Vector2(0f, -0.39f);
-        BoxCollider2D col2Dtrigger = gameObject.AddComponent<BoxCollider2D>();
-        col2Dtrigger.isTrigger = true;
-        col2Dtrigger.size = new Vector2(0.66f, 1.23f);
-        col2Dtrigger.offset = new Vector2(0f, -0.39f);
-
-        SpriteRenderer spriteRend = gameObject.GetComponent<SpriteRenderer>();
-
-        boundaryCheck.transform.localPosition = new Vector3(boundaryCheck.transform.localPosition.x + moveSpeed * movementSmoothing / 2f,
-                                                            -spriteRend.size.y / 2,
-                                                            boundaryCheck.transform.localPosition.z);
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -44,6 +32,29 @@ public class EnemyBehaviour : MonoBehaviour
     {
         CheckForFlip();
         DoMovement();
+    }
+
+    public void InitEnemy(string newEnemyName, float newMoveSpeed) {
+        enemyName = newEnemyName;
+        moveSpeed = newMoveSpeed;
+
+        animator.runtimeAnimatorController = Resources.Load("Animations/" + enemyName + "/" + enemyName) as RuntimeAnimatorController;
+
+        SpriteRenderer spriteRend = gameObject.GetComponent<SpriteRenderer>();
+
+        boundaryCheck.transform.localPosition = new Vector3(boundaryCheck.transform.localPosition.x + moveSpeed * movementSmoothing / 2f,
+                                                            -spriteRend.size.y / 2,
+                                                            boundaryCheck.transform.localPosition.z);
+
+        List<float> colliderData = Utils.LoadEnemyData(enemyName);
+
+        BoxCollider2D col2D = gameObject.AddComponent<BoxCollider2D>();
+        col2D.size = new Vector2(colliderData[0], colliderData[1]);
+        col2D.offset = new Vector2(colliderData[2], colliderData[3]);
+        BoxCollider2D col2Dtrigger = gameObject.AddComponent<BoxCollider2D>();
+        col2Dtrigger.isTrigger = true;
+        col2Dtrigger.size = new Vector2(colliderData[0], colliderData[1]);
+        col2Dtrigger.offset = new Vector2(colliderData[2], colliderData[3]);
     }
 
     private void DoMovement() {
@@ -80,5 +91,9 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public string GetEnemyName() {
+        return enemyName;
     }
 }

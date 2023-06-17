@@ -144,6 +144,7 @@ public class CharacterController2D : MonoBehaviour {
                     Battle_Handler.enemyStrikeFirst = true;
                 }
 
+				Utils.enemyToBattle = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetEnemyName();
                 SceneManager.LoadScene("Battle Scene");
             }
 		}

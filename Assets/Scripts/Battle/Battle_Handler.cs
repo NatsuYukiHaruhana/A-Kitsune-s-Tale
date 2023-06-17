@@ -96,19 +96,8 @@ public class Battle_Handler : MonoBehaviour
         LoadItems(Team_Data.GetItems());
 
         for (int i = Team_Data.count; i < Team_Data.count + 1; i++) {
-            LoadUnit("Flower",
-                new Battle_Entity_Stats(i + 1,         // level
-                                        50,            // currXP
-                                        100,           // maxXP
-                                        100,           // currHP
-                                        100,           // maxHP
-                                        100,           // currMana
-                                        100,           // maxMana
-                                        35,            // strength
-                                        35,            // magic
-                                        10,            // speed
-                                        10,            // defense
-                                        10),           // resistance);
+            LoadUnit(Utils.enemyToBattle,
+                GenerateStats(),
                 new Battle_Entity_Loadout(),
                 new List<Battle_Entity_Spells>(),
                 Battle_Entity.Faction.Enemy);
@@ -645,5 +634,27 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private Battle_Entity_Stats GenerateStats() {
+        Battle_Entity_Stats stats = new Battle_Entity_Stats();
+
+        // Set level to be close to the player's level
+        stats.level = Mathf.Max(UnityEngine.Random.Range(units[0].GetStats().level - 1, units[0].GetStats().level + 2), 1);
+
+        // Set experience given to be a fourth of the level * 100
+        stats.maxXP = stats.level * 100;
+        stats.currXP = stats.maxXP / 4f;
+
+        // Set stats according to an arbitrary range
+        stats.currHP = stats.maxHP = UnityEngine.Random.Range(100 * stats.level / 2, 100 * stats.level);
+        stats.currMana = stats.maxMana = UnityEngine.Random.Range(100 * stats.level / 2, 100 * stats.level);
+        stats.res = UnityEngine.Random.Range(10 * stats.level / 2, 10 * stats.level);
+        stats.str = UnityEngine.Random.Range(10 * stats.level / 2, 10 * stats.level);
+        stats.mag = UnityEngine.Random.Range(10 * stats.level / 2, 10 * stats.level);
+        stats.spd = UnityEngine.Random.Range(10 * stats.level / 2, 10 * stats.level);
+        stats.def = UnityEngine.Random.Range(10 * stats.level / 2, 10 * stats.level);
+
+        return stats;
     }
 }

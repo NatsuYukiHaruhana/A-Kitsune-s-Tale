@@ -25,6 +25,7 @@ public class Player_Platforming_Attack : MonoBehaviour
                     Battle_Handler.playerStrikeFirst = true;
                 }
 
+                Utils.enemyToBattle = collision.gameObject.GetComponent<EnemyBehaviour>().GetEnemyName();
                 SceneManager.LoadScene("Battle Scene");
             }
         }
