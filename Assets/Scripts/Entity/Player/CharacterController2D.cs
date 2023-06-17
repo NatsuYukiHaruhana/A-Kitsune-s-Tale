@@ -41,6 +41,8 @@ public class CharacterController2D : MonoBehaviour {
         animator.SetBool("isCrouching", false);
         animator.SetBool("isGrounded", false);
         animator.SetFloat("moveSpeed", 0.0f);
+
+		transform.position = Utils.LoadPlayerPosition();
     }
 
 	private void FixedUpdate() {
@@ -144,6 +146,7 @@ public class CharacterController2D : MonoBehaviour {
                     Battle_Handler.enemyStrikeFirst = true;
                 }
 
+				Utils.SavePlayerPosition(transform.position);
 				Utils.enemyToBattle = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetEnemyName();
                 SceneManager.LoadScene("Battle Scene");
             }

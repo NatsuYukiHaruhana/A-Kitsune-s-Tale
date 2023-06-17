@@ -44,7 +44,7 @@ public class SaveMenuHandler : MonoBehaviour
                 ArrayList data = (ArrayList)bf.Deserialize(file);
                 file.Close();
 
-                saveButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = (string)data[0];
+                saveButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = ((string)data[0]).Substring(0, ((string)data[0]).IndexOf('\n'));
             }
         }
     }
@@ -87,7 +87,7 @@ public class SaveMenuHandler : MonoBehaviour
                 ArrayList data = (ArrayList)bf.Deserialize(file);
                 file.Close();
 
-                saveButtons[Utils.saveFile - 1].GetComponentInChildren<TextMeshProUGUI>().text = (string)data[0];
+                saveButtons[Utils.saveFile - 1].GetComponentInChildren<TextMeshProUGUI>().text = ((string)data[0]).Substring(0, ((string)data[0]).IndexOf('\n'));
             }
         }
 
@@ -132,7 +132,7 @@ public class SaveMenuHandler : MonoBehaviour
                 ArrayList data = (ArrayList)bf.Deserialize(file);
                 file.Close();
 
-                Utils.username = (string) data[0];
+                Utils.username = ((string)data[0]).Substring(0, ((string)data[0]).IndexOf('\n'));
 
                 break;
             }

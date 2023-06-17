@@ -273,4 +273,68 @@ public class Utils
 
         return list;
     }
+
+    public static void SavePlayerPosition(Vector3 playerPos) {
+        string filePath = Application.persistentDataPath + "/save_data_" + saveFile + ".dat";
+        FileStream file;
+
+        if (!File.Exists(filePath)) {
+            Debug.LogError(filePath + " does not exist! Can't write player position!");
+            return;
+        }
+
+        file = File.OpenRead(filePath);
+
+        BinaryFormatter bf = new BinaryFormatter();
+        ArrayList data = (ArrayList)bf.Deserialize(file);
+        file.Close();
+
+        string dataToWrite = null;
+        if (!((string)data[0]).Contains("[Position]: x=")) {
+            dataToWrite = (string)data[0] + "\n[Position]: x=" + playerPos.x.ToString("0.00") + " y=" + playerPos.y.ToString("0.00") + " z=" + playerPos.z.ToString("0.00");
+        } else {
+            dataToWrite = ((string)data[0]).Replace(((string)data[0]).Substring(((string)data[0]).IndexOf("[Position]: x=")), 
+                                                        "\n[Position]: x=" + playerPos.x.ToString("0.00") + " y=" + playerPos.y.ToString("0.00") + " z=" + playerPos.z.ToString("0.00"));
+        }
+
+        file = File.OpenWrite(filePath);
+
+        data = new ArrayList() { dataToWrite };
+
+        bf.Serialize(file, data);
+        file.Close();
+    }
+
+    public static Vector3 LoadPlayerPosition() {
+        Vector3 playerPos = Vector3.zero;
+
+        string filePath = Application.persistentDataPath + "/save_data_" + saveFile + ".dat";
+        FileStream file;
+
+        if (!File.Exists(filePath)) {
+            Debug.LogError(filePath + " does not exist! Can't write player position!");
+            return playerPos;
+        }
+
+        file = File.OpenRead(filePath);
+
+        BinaryFormatter bf = new BinaryFormatter();
+        ArrayList data = (ArrayList)bf.Deserialize(file);
+        file.Close();
+
+        string dataRead = (string)data[0];
+
+        if (dataRead.Contains("[Position]: x=")) {
+            int length = dataRead[dataRead.IndexOf("x=") + 2] == '-' ? 5 : 4;
+            playerPos.x = float.Parse(dataRead.Substring(dataRead.IndexOf("x=") + 2, length));
+
+            length = dataRead[dataRead.IndexOf("y=") + 2] == '-' ? 5 : 4;
+            playerPos.y = float.Parse(dataRead.Substring(dataRead.IndexOf("y=") + 2, length));
+
+            length = dataRead[dataRead.IndexOf("z=") + 2] == '-' ? 5 : 4;
+            playerPos.z = float.Parse(dataRead.Substring(dataRead.IndexOf("z=") + 2, length));
+        }
+
+        return playerPos;
+    }
 }
