@@ -44,10 +44,9 @@ public class Popup : MonoBehaviour {
     }
 
     public void BeginLower() {
-        if (!doRaise) {
-            doLower = true;
-            doMove = false;
-        }
+        doRaise = false;
+        doLower = true;
+        doMove = false;
     }
 
     private void Raise() {

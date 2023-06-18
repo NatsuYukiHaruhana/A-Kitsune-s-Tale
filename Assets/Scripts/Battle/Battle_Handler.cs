@@ -133,10 +133,8 @@ public class Battle_Handler : MonoBehaviour
 
         GetLastGameObjectSelected();
 
-        if (units[unitTurn].GetFaction() == Battle_Entity.Faction.Enemy) { // AI's turn
+        if (enemyTurn) { // AI's turn
             StartCoroutine(EnemyAIWait(DoAITurn));
-        } else {
-            enemyTurn = false;
         }
     }
 
@@ -181,7 +179,7 @@ public class Battle_Handler : MonoBehaviour
     public void SetCurrentAction(string action) {
         switch (action) {
             case "Attack": {
-                Utils.currentLanguage = "hiragana2";
+                Utils.currentLanguage = "hiragana3";
                 PrepareWantedChar();
 
                 drawBoardParent.SetActive(true);
@@ -199,7 +197,7 @@ public class Battle_Handler : MonoBehaviour
                 break;
             }
             case "Guard": {
-                Utils.currentLanguage = "hiragana2";
+                Utils.currentLanguage = "hiragana3";
                 PrepareWantedChar();
 
                 drawBoardParent.SetActive(true);
@@ -345,6 +343,14 @@ public class Battle_Handler : MonoBehaviour
         foreach (ArrowMovement arrow in arrows) {
             arrow.SetVisible(false);
         }
+    }
+
+    public void ClearCanvas() {
+        DrawController.Clear();
+    }
+
+    public void UndoCanvas() {
+        DrawController.Undo();
     }
 
     public void DoAction() {
@@ -497,9 +503,13 @@ public class Battle_Handler : MonoBehaviour
             return;
         }
 
-        //if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
-            units[unitTurn].BasicAttack(targets);
-        //}
+        string recognizedText = TesseractHandler.GetRecognizedText();
+        foreach (char c in recognizedText) {
+            if (c == wantedChar) {
+                units[unitTurn].BasicAttack(targets);
+                break;
+            }
+        }
 
         NextTurn();
     }
@@ -511,9 +521,13 @@ public class Battle_Handler : MonoBehaviour
             return;
         }
 
-        //if (TesseractHandler.GetRecognizedText()[0] == wantedChar) {
-            units[unitTurn].RaiseGuard();
-        //}
+        string recognizedText = TesseractHandler.GetRecognizedText();
+        foreach (char c in recognizedText) {
+            if (c == wantedChar) {
+                units[unitTurn].BasicAttack(targets);
+                break;
+            }
+        }
 
         NextTurn();
     }
@@ -604,6 +618,14 @@ public class Battle_Handler : MonoBehaviour
         unitTurn = unitTurn < units.Count - 1 ? unitTurn + 1 : 0;
         wantedCharText.text = "";
 
+        if (units[unitTurn].GetFaction() == Battle_Entity.Faction.Enemy) {
+            enemyTurn = true;
+            buttons[0].SetActive(false);
+        } else {
+            enemyTurn = false;
+            buttons[0].SetActive(true);
+        }
+
         if (unitTurn == 0) { // new turn
             foreach (Battle_Entity unit in units) {
                 unit.CheckStatChanges();
@@ -614,7 +636,6 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void DoAITurn() {
-        enemyTurn = true;
         int action = UnityEngine.Random.Range(0, 2);
 
         switch(action) {

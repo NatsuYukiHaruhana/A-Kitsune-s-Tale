@@ -19,6 +19,8 @@ public class Utils
     public static List<string> enemyNames = new List<string>();
     public static List<Vector3> enemyPos = new List<Vector3>();
 
+    public static string saveToFile = "null";
+
     public static Vector3 GetMouseWorldPosition() {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPos.z = 0f;
@@ -85,7 +87,8 @@ public class Utils
 
         switch (currentLanguage) {
             case "hiragana":
-            case "hiragana2": {
+            case "hiragana2":
+            case "hiragana3": {
                 fileToUse = 0;
                 break;
             }
@@ -106,7 +109,7 @@ public class Utils
         using (FileStream file = File.OpenRead(allowedFiles[fileToUse])) {
             using (StreamReader sr = new StreamReader(file, System.Text.Encoding.UTF8)) {
                 string line = sr.ReadLine();
-                return line[UnityEngine.Random.Range(0, 10)];
+                return line[UnityEngine.Random.Range(0, 5)];
             }
         }
     }

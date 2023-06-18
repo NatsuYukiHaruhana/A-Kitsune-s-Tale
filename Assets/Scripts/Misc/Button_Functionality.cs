@@ -8,7 +8,7 @@ public class Button_Functionality : MonoBehaviour
 
     public bool IsButtonPressed() {
 #if UNITY_EDITOR || UNITY_WIN
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             if (Utils.CheckPointIsWithinRadius(transform.position, Utils.GetMouseWorldPosition(), radius)) {
                 return true;
             }
