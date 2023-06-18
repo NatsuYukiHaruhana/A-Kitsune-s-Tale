@@ -14,6 +14,7 @@ public class Utils
     public static string currentLanguage = "null";
 
     public static string enemyToBattle = "null";
+    public static int enemyToBattleIndex = -1;
 
     public static List<string> enemyNames = new List<string>();
     public static List<Vector3> enemyPos = new List<Vector3>();

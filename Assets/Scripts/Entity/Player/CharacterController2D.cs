@@ -39,6 +39,8 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField]
     private Collider2D triggerCollider;
 
+	private bool readingPopup;
+
 
     private void Awake() {
 		rigidbody2D = GetComponent<Rigidbody2D>();
@@ -53,6 +55,8 @@ public class CharacterController2D : MonoBehaviour {
         animator.SetFloat("moveSpeed", 0.0f);
 
 		transform.position = Utils.LoadPlayerPosition();
+
+		readingPopup = false;
     }
 
 	private void FixedUpdate() {
@@ -177,13 +181,16 @@ public class CharacterController2D : MonoBehaviour {
 		animator.SetBool("isGrounded", grounded);
 	}
 
-    public void OnTriggerEnter2D(Collider2D collision) {
-		if (!triggerCollider.enabled) {
-			return;
-		}
-
-        if (collision != null) {
+    public void OnTriggerStay2D(Collider2D collision) {
+		if (collision != null) {
             if (collision.gameObject.CompareTag("Enemy")) {
+                if (!triggerCollider.enabled) {
+                    return;
+                }
+                if (collision.gameObject.GetComponent<EnemyBehaviour>().GetIsInvincible()) {
+					return;
+				}
+
                 Transform enemyTransform = collision.gameObject.transform;
                 if (enemyTransform.position.x > transform.position.x && !facingRight) {
                     Battle_Handler.enemyStrikeFirst = true;
@@ -193,7 +200,28 @@ public class CharacterController2D : MonoBehaviour {
 
                 Utils.SavePlayerPosition(transform.position);
                 Utils.enemyToBattle = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetEnemyName();
+				Utils.enemyToBattleIndex = enemyTransform.gameObject.GetComponent<EnemyBehaviour>().GetIndex();
                 SceneManager.LoadScene("Battle Scene");
+            }
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision) {
+        if (collision != null) {
+			if (collision.gameObject.CompareTag("Popup")) {
+				if (!readingPopup) {
+					collision.gameObject.GetComponentInChildren<Popup>().BeginRaise();
+					readingPopup = true;
+				}
+            }
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision) {
+        if (collision != null) {
+            if (collision.gameObject.CompareTag("Popup")) {
+                collision.gameObject.GetComponentInChildren<Popup>().BeginLower();
+				readingPopup = false;
             }
         }
     }

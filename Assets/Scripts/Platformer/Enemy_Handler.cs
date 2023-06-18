@@ -20,8 +20,12 @@ public class Enemy_Handler : MonoBehaviour {
             enemies.Add(Instantiate(enemyPrefab, this.transform).GetComponent<EnemyBehaviour>());
 
             float moveSpeed = Utils.enemyNames[i] == "Flower" ? 0f : 5f;
-            enemies[i].InitEnemy(Utils.enemyNames[i], moveSpeed);
+            enemies[i].InitEnemy(Utils.enemyNames[i], moveSpeed, i);
             enemies[i].transform.position = Utils.enemyPos[i];
+        }
+
+        if (Utils.enemyToBattleIndex != -1) {
+            enemies[Utils.enemyToBattleIndex].SetRespawn();
         }
     }
 }

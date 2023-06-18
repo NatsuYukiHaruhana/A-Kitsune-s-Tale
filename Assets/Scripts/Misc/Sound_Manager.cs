@@ -14,6 +14,12 @@ public class Sound_Manager : MonoBehaviour {
         }
     }
 
+    public void PlaySound(int index) {
+        if (index < SFXs.Count && index >= 0) {
+            audioSrc.PlayOneShot(SFXs[index]);
+        }
+    }
+
     public void PlaySound(AudioClip SFX) {
         audioSrc.PlayOneShot(SFX);
     }

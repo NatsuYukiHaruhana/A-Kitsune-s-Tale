@@ -109,7 +109,7 @@ public class Battle_Handler : MonoBehaviour
     private void Start() {
         for (int i = Team_Data.count; i < Team_Data.count + 1; i++) {
             if (playerStrikeFirst) {
-                units[i].TakeDamage(units[0].GetStats().str / 2, DamageType.Physical);
+                units[i].TakeDamage(units[0].GetStats().str, DamageType.Physical);
             }
 
             if (enemyStrikeFirst) {
