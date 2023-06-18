@@ -8,7 +8,7 @@ public class Button_Functionality : MonoBehaviour
 
     public bool IsButtonPressed() {
 #if UNITY_EDITOR || UNITY_WIN
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButton(0)) {
             if (Utils.CheckPointIsWithinRadius(transform.position, Utils.GetMouseWorldPosition(), radius)) {
                 return true;
             }
@@ -16,12 +16,8 @@ public class Button_Functionality : MonoBehaviour
 #elif UNITY_ANDROID
         for (int i = 0; i < Input.touchCount; i++) {
             Touch touch = Input.GetTouch(i);
-            switch(touch.phase) {
-                case TouchPhase.Ended:
-                    if (Utils.CheckPointIsWithinRadius(transform.position, Utils.GetTouchWorldPosition(touch), radius)) {
-                        return true;
-                    }
-                    break;
+            if (Utils.CheckPointIsWithinRadius(transform.position, Utils.GetTouchWorldPosition(touch), radius)) {
+                return true;
             }
         }
 #else

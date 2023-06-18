@@ -1,10 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.Animations;
-using UnityEditorInternal;
 using UnityEngine;
-using static UnityEngine.CullingGroup;
 
 public class Battle_Entity : MonoBehaviour {
     public enum Faction {

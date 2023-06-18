@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Battle Scene.unity
     guid: b63befffec173be4cacf8839184095a8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Draw Test.unity
     guid: e2e52f14f726e6d40a4e05536ac36102
   - enabled: 1
     path: Assets/Scenes/Platforming Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tesseract Test Scene.unity
     guid: c90912a4b3bc59f4f832b9b390df42d0
   m_configObjects: {}

@@ -12,13 +12,12 @@ public class CharacterController2D : MonoBehaviour {
 	[SerializeField] private Transform groundCheck;                          // A position marking where to check if the player is grounded.
 	[SerializeField] private Transform ceilingCheck;                         // A position marking where to check for ceilings
     [SerializeField] private Collider2D crouchDisableCollider;               // A collider that will be disabled when crouching
-	/*[SerializeField] private Button_Functionality moveLeftButton;			 // Button used for touch control to move left 
-	[SerializeField] private Button_Functionality moveRightbutton;			 // Button used for touch control to move right
+	[SerializeField] private Button_Functionality moveLeftButton;			 // Button used for touch control to move left 
+	[SerializeField] private Button_Functionality moveRightButton;			 // Button used for touch control to move right
 	[SerializeField] private Button_Functionality jumpButton;				 // Button used for touch control to jump
 	[SerializeField] private Button_Functionality crouchButton;              // Button used for touch control to crouch
 	[SerializeField] private Button_Functionality attackButton;              // Button used for touch control to attack
-	*/[SerializeField] private Button_Functionality menuButton;                // Button used for activating the menu screen
-
+	
 	const float groundedRadius = .4f; // Radius of the overlap circle to determine if grounded
 	private bool grounded;            // Whether or not the player is grounded.
 	const float ceilingRadius = .4f;  // Radius of the overlap circle to determine if the player can stand up
@@ -57,9 +56,16 @@ public class CharacterController2D : MonoBehaviour {
 		transform.position = Utils.LoadPlayerPosition();
 
 		readingPopup = false;
+#if UNITY_ANDROID
+		moveLeftButton.gameObject.SetActive(true);
+		moveRightButton.gameObject.SetActive(true);
+		jumpButton.gameObject.SetActive(true);
+		crouchButton.gameObject.SetActive(true);
+		attackButton.gameObject.SetActive(true);
+#endif
     }
 
-	private void FixedUpdate() {
+    private void FixedUpdate() {
 		grounded = false;
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -71,14 +77,10 @@ public class CharacterController2D : MonoBehaviour {
 			}
 		}
 
-        Move(Input.GetAxisRaw("Horizontal"), Input.GetButton("Crouch"), Input.GetButton("Jump"));
+        Move(InputMoveHorizontal(), PressCrouchButton(), PressJumpButton());
 
 		if (PressAttackButton()) {
 			Attack();
-		}
-
-		if (PressMenuButton()) {
-			Debug.Log("Menu pop-up");
 		}
 
 		if (!triggerCollider.enabled) {
@@ -228,33 +230,51 @@ public class CharacterController2D : MonoBehaviour {
 
     private float InputMoveHorizontal() {
 #if UNITY_EDITOR
-		return Input.GetAxisRaw("Horizontal");
+        return Input.GetAxisRaw("Horizontal");
 #elif UNITY_ANDROID
+		if (moveLeftButton.IsButtonPressed()) {
+			return -1;
+		}
 		
+		if (moveRightButton.IsButtonPressed()) {
+			return 1;
+		}
+
+		return 0;
 #else
 		return Input.GetAxisRaw("Horizontal");
 #endif
-	}
+    }
 
     private bool PressAttackButton() {
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_WIN
         if (Input.GetKey(KeyCode.Z)) {
             return true;
         }
 #endif
-        return menuButton.IsButtonPressed();
+        return attackButton.IsButtonPressed();
     }
 
-    private bool PressMenuButton() {
-#if UNITY_EDITOR
-		if (Input.GetKey(KeyCode.Return)) {
-			return true;
-		}
+    private bool PressCrouchButton() {
+#if UNITY_EDITOR || UNITY_WIN
+        if (Input.GetButton("Crouch")) {
+            return true;
+        }
 #endif
-		return menuButton.IsButtonPressed();
-	}
+        return crouchButton.IsButtonPressed();
+    }
 
-	private void Flip() {
+    private bool PressJumpButton() {
+#if UNITY_EDITOR || UNITY_WIN
+        if (Input.GetButton("Jump")) {
+            return true;
+        }
+#endif
+        return jumpButton.IsButtonPressed();
+    }
+
+
+    private void Flip() {
 		// Switch the way the player is labelled as facing.
 		facingRight = !facingRight;
 

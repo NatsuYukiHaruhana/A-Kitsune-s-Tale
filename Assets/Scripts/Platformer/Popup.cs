@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
-using static UnityEditor.PlayerSettings;
 
 public class Popup : MonoBehaviour {
     [SerializeField]
@@ -38,13 +36,18 @@ public class Popup : MonoBehaviour {
     }
 
     public void BeginRaise() {
+        if (doLower) {
+            doLower = false;
+        }
         doRaise = true;
         spriteRend.enabled = true;
     }
 
     public void BeginLower() {
-        doLower = true;
-        doMove = false;
+        if (!doRaise) {
+            doLower = true;
+            doMove = false;
+        }
     }
 
     private void Raise() {
