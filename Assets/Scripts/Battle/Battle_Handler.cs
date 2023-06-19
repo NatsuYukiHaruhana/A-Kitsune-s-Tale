@@ -21,9 +21,13 @@ public class Battle_Handler : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI wantedCharText;
     [SerializeField]
+    private TextMeshProUGUI successText;
+    [SerializeField]
     private ScrollViewBehaviour itemMenuBehaviour;
     [SerializeField]
     private ScrollViewBehaviour spellMenuBehaviour;
+    [SerializeField]
+    private Sound_Manager voiceManager;
 
     [SerializeField]
     private List<GameObject> buttons;
@@ -53,7 +57,6 @@ public class Battle_Handler : MonoBehaviour
     private List<Battle_Entity> targets;
     private int unitTurn;
     private bool canSelectTarget;
-    private char wantedChar;
 
     private EventSystem eventSystem;
     private GameObject lastSelectedGameObject;
@@ -177,6 +180,7 @@ public class Battle_Handler : MonoBehaviour
     }
 
     public void SetCurrentAction(string action) {
+        successText.text = "";
         switch (action) {
             case "Attack": {
                 Utils.currentLanguage = "hiragana3";
@@ -215,10 +219,10 @@ public class Battle_Handler : MonoBehaviour
             }
             case "Items": {
                 foreach (GameObject buttonMenu in buttons) {
-                    if (buttonMenu.name == "Battle_Menu_1") {
-                        buttonMenu.SetActive(false);
-                    } else if (buttonMenu.name == "Battle_Menu_2") {
+                    if (buttonMenu.name == "Battle_Menu_4") {
                         buttonMenu.SetActive(true);
+                    } else {
+                        buttonMenu.SetActive(false);
                     }
                 }
 
@@ -473,8 +477,7 @@ public class Battle_Handler : MonoBehaviour
     }
 
     private void PrepareWantedChar() {
-        wantedChar = Utils.GetRandomCharacter(true, true);
-        wantedCharText.text = "Please draw " + wantedChar;
+        wantedCharText.text = "Please draw\n" + Utils.KanaToRomaji(Utils.PrepareWantedChar(true, true).ToString());
     }
 
     IEnumerator WaitForTesseract(Action doAction) {
@@ -504,13 +507,24 @@ public class Battle_Handler : MonoBehaviour
         }
 
         string recognizedText = TesseractHandler.GetRecognizedText();
+        bool found = false;
         foreach (char c in recognizedText) {
-            if (c == wantedChar) {
+            if (c == Utils.wantedChar) {
                 units[unitTurn].BasicAttack(targets);
+                found = true;
                 break;
             }
         }
 
+        if (found) {
+            Utils.ModifyKanaData(Utils.wantedChar.ToString(), +10f);
+            successText.text = "Correct!";
+            voiceManager.PlaySound(Utils.wantedChar.ToString());
+        } else {
+            Utils.ModifyKanaData(Utils.wantedChar.ToString(), -10f);
+            successText.text = "Wrong! We asked for: " + Utils.wantedChar + "!";
+        }
+        Utils.wantedChar = '\0';
         NextTurn();
     }
 
@@ -522,13 +536,24 @@ public class Battle_Handler : MonoBehaviour
         }
 
         string recognizedText = TesseractHandler.GetRecognizedText();
+        bool found = false;
         foreach (char c in recognizedText) {
-            if (c == wantedChar) {
+            if (c == Utils.wantedChar) {
                 units[unitTurn].BasicAttack(targets);
+                found = true;
                 break;
             }
         }
 
+        if (found) {
+            Utils.ModifyKanaData(Utils.wantedChar.ToString(), +10f);
+            successText.text = "Correct!";
+            voiceManager.PlaySound(Utils.wantedChar.ToString());
+        } else {
+            Utils.ModifyKanaData(Utils.wantedChar.ToString(), -10f);
+            successText.text = "Wrong! We asked for: " + Utils.wantedChar + "!";
+        }
+        Utils.wantedChar = '\0';
         NextTurn();
     }
 

@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection.Emit;
+using System.Linq;
 
 public class Utils
 {
@@ -23,6 +24,21 @@ public class Utils
 
     public static int numberOfLearnedHiragana = 0;
     public static List<Pair<string, float>> kanaPercentageLearned = new List<Pair<string, float>>();
+
+    private static Dictionary<string, string> kanaToRomaji = new Dictionary<string, string>() {
+        { "あ", "a" },
+        { "い", "i" },
+        { "う", "u" },
+        { "え", "e" },
+        { "お", "o" },
+        { "か", "ka" },
+        { "き", "ki" },
+        { "く", "ku" },
+        { "け", "ke" },
+        { "こ", "ko" }
+    };
+
+    public static char wantedChar = '\0';
 
     public static Vector3 GetMouseWorldPosition() {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -49,7 +65,6 @@ public class Utils
             Directory.CreateDirectory(dirPath);
         }
 
-        InitTextRecognitionData();
         InitUnitData();
         InitEnemyData();
         InitLevelData();
@@ -64,57 +79,58 @@ public class Utils
         LoadTeamData();
     }
 
-    public static char GetRandomCharacter(bool allowHiragana, bool allowKatakana) {
-        List<string> allowedFiles = new List<string>();
-        if (allowHiragana) {
-            string filePath = Application.persistentDataPath + "/hiragana.dat";
+    public static char PrepareWantedChar(bool allowHiragana, bool allowKatakana) {
+        if (wantedChar != '\0') {
+            return wantedChar;
+        }
 
-            if (!File.Exists(filePath)) {
-                Debug.LogError("hiragana.dat was not found in " + Application.persistentDataPath + "!");
-            }
-            allowedFiles.Add(filePath);
+        int count = 0;
+        if (allowHiragana) {
+            count++;
         }
         if (allowKatakana) {
-            string filePath = Application.persistentDataPath + "/katakana.dat";
-
-            if (!File.Exists(filePath)) {
-                Debug.LogError("katakana.dat was not found in " + Application.persistentDataPath + "!");
-            }
-            allowedFiles.Add(filePath);
+            count++;
         }
 
-        if (allowedFiles.Count == 0) {
+        if (count == 0) {
             return '\0';
         }
 
-        int fileToUse;
+        SortedList<string, float> possibleChars = new SortedList<string, float>();
+        foreach (Pair<string, float> pair in kanaPercentageLearned) {
+            possibleChars.Add(pair.First, pair.Second);
+        }
 
-        switch (currentLanguage) {
-            case "hiragana":
-            case "hiragana2":
-            case "hiragana3": {
-                fileToUse = 0;
-                break;
-            }
-            case "katakana": {
-                fileToUse = 1;
-                break;
-            }
-            default: {
-                fileToUse = -1;
+        SpacedRepetitionImplementation(ref possibleChars, UnityEngine.Random.Range(0f, 1f) < 0.75f);
+
+        return wantedChar;
+    }
+
+    private static void SpacedRepetitionImplementation(ref SortedList<string, float> possibleChars, bool selectLowestValue) {
+        List<KeyValuePair<string, float>> ordered = possibleChars.OrderBy(pair => pair.Value).ToList();
+
+        float lowestValue = ordered[0].Value;
+        int amountWithLowestValue = 1;
+
+        for (int i = 1; i < ordered.Count; i++) {
+            if (ordered[i].Value == lowestValue) {
+                amountWithLowestValue++;
+            } else {
                 break;
             }
         }
 
-        if (fileToUse == -1) {
-            return '\0';
-        }
+        if (selectLowestValue || amountWithLowestValue == ordered.Count) {
+            wantedChar = ordered[UnityEngine.Random.Range(0, amountWithLowestValue)].Key[0];
+        } else {
+            SortedList<string, float> newList = new SortedList<string, float>();
 
-        using (FileStream file = File.OpenRead(allowedFiles[fileToUse])) {
-            using (StreamReader sr = new StreamReader(file, System.Text.Encoding.UTF8)) {
-                string line = sr.ReadLine();
-                return line[UnityEngine.Random.Range(0, numberOfLearnedHiragana)];
+            for (int i = amountWithLowestValue; i < ordered.Count; i++) {
+                newList.Add(ordered[i].Key, ordered[i].Value);
             }
+
+            possibleChars = newList;
+            SpacedRepetitionImplementation(ref possibleChars, UnityEngine.Random.Range(0f, 1f) < 0.75f);
         }
     }
 
@@ -215,6 +231,7 @@ public class Utils
 
         bf.Serialize(file, data);
         file.Close();
+        Debug.Log(dataToWrite);
     }
 
     private static void LoadKanaData() {
@@ -271,10 +288,12 @@ public class Utils
     public static void ModifyKanaData(string kana, float value) {
         foreach (Pair<string, float> pair in kanaPercentageLearned) {
             if (pair.First == kana) {
-                pair.Second = value;
-                return;
+                pair.Second = Mathf.Max(Mathf.Min(pair.Second + value, 100f), 0f);
+                break;
             }
         }
+
+        SaveKanaData();
     }
 
     private static void SaveTeamData() {
@@ -316,34 +335,16 @@ public class Utils
                         (List<Item>) data[4]);
     }
 
-    private static void InitTextRecognitionData() {
-        string filePath = Application.persistentDataPath + "/hiragana.dat";
-        if (!File.Exists(filePath)) {
-            WriteOneLineToFile(filePath,
-                            "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん" +
-                            "がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ");
-        }
-
-        filePath = Application.persistentDataPath + "/katakana.dat";
-        if (!File.Exists(filePath)) {
-            WriteOneLineToFile(filePath,
-                            "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン" +
-                            "ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ");
-        }
-
-        filePath = Application.persistentDataPath + "/kanji.dat";
-        if (!File.Exists(filePath)) {
-            WriteOneLineToFile(filePath,
-                            ""); // TODO: Add kanji characters
-        }
-    }
-
     private static void WriteOneLineToFile(string filePath, string line) {
         using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write))
 
         using (StreamWriter sw = new StreamWriter(file)) {
             sw.WriteLine(line);
         }
+    }
+
+    public static string KanaToRomaji(string kana) {
+        return kanaToRomaji[kana];
     }
 
     private static void InitUnitData() {
