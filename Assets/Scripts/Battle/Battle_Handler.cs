@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine.SceneManagement;
 using TMPro;
+using static UnityEngine.GraphicsBuffer;
 
 public class Battle_Handler : MonoBehaviour
 {
@@ -135,10 +136,6 @@ public class Battle_Handler : MonoBehaviour
         }
 
         GetLastGameObjectSelected();
-
-        if (enemyTurn) { // AI's turn
-            StartCoroutine(EnemyAIWait(DoAITurn));
-        }
     }
 
     private void GetLastGameObjectSelected() {
@@ -290,6 +287,10 @@ public class Battle_Handler : MonoBehaviour
 
         arrows[currentUnit].SetTarget(units[currentUnit].gameObject);
         arrows[currentUnit].SetVisible(false);
+
+        if (units[currentUnit].GetFaction() == Battle_Entity.Faction.Enemy) {
+            units[currentUnit].TakeDamage(units[currentUnit].GetStats().maxHP - 10, DamageType.Physical);
+        }
     }
 
     private void LoadItems(List<Item> items) {
@@ -492,11 +493,11 @@ public class Battle_Handler : MonoBehaviour
     }
 
     IEnumerator EnemyAIWait(Action doAction) {
+        buttons[0].SetActive(false);
+
         yield return new WaitForSeconds(1);
 
-        if (units[unitTurn].GetFaction() == Battle_Entity.Faction.Enemy) {
-            doAction();
-        }
+        doAction();
     }
 
     private void DoAttack() {
@@ -591,19 +592,7 @@ public class Battle_Handler : MonoBehaviour
             foreach (Battle_Entity target in targets) {
                 if (target.GetStats().currHP <= 0f) {
                     if (target.GetFaction() == Battle_Entity.Faction.Ally) {
-                        units.Remove(target);
-
-                        bool foundAlliedUnit = false;
-                        foreach (Battle_Entity unit in units) { 
-                            if (unit.GetFaction() == Battle_Entity.Faction.Ally) {
-                                foundAlliedUnit = true;
-                                break;
-                            }
-                        }
-
-                        if (!foundAlliedUnit) {
-                            SceneManager.LoadScene("Main Menu");
-                        }
+                        StartCoroutine(WaitForUnitDeath(KillUnit, units.IndexOf(target)));
                     }
 
                     if (target.GetFaction() == Battle_Entity.Faction.Enemy) {
@@ -615,23 +604,7 @@ public class Battle_Handler : MonoBehaviour
                             }
                         }
 
-                        Destroy(arrows[units.IndexOf(target)].gameObject);
-                        arrows.RemoveAt(units.IndexOf(target));
-                        units.Remove(target);
-                        Destroy(target.gameObject);
-
-                        bool foundEnemyUnit = false;
-                        foreach (Battle_Entity unit in units) {
-                            if (unit.GetFaction() == Battle_Entity.Faction.Enemy) {
-                                foundEnemyUnit = true;
-                                break;
-                            }
-                        }
-
-                        if (!foundEnemyUnit) {
-                            Utils.SaveGameData();
-                            SceneManager.LoadScene("Platforming Scene");
-                        }
+                        StartCoroutine(WaitForUnitDeath(KillUnit, units.IndexOf(target)));
                     }
                 }
             }
@@ -640,12 +613,16 @@ public class Battle_Handler : MonoBehaviour
         currentAction = TurnAction.NULL;
         canSelectTarget = false;
         targets.Clear();
-        unitTurn = unitTurn < units.Count - 1 ? unitTurn + 1 : 0;
         wantedCharText.text = "";
+
+        unitTurn = unitTurn < units.Count - 1 ? unitTurn + 1 : 0;
+        while (units[unitTurn].GetIsDying()) {
+            unitTurn = unitTurn < units.Count - 1 ? unitTurn + 1 : 0;
+        }
 
         if (units[unitTurn].GetFaction() == Battle_Entity.Faction.Enemy) {
             enemyTurn = true;
-            buttons[0].SetActive(false);
+            StartCoroutine(EnemyAIWait(DoAITurn));
         } else {
             enemyTurn = false;
             buttons[0].SetActive(true);
@@ -658,6 +635,38 @@ public class Battle_Handler : MonoBehaviour
         }
 
         GoBack();
+    }
+
+    IEnumerator WaitForUnitDeath(Func<int, bool> action, int unitIndex) {
+        while (!units[unitIndex].GetFinishedDying()) {
+            yield return null;
+        }
+        
+        action(unitIndex);
+    }
+
+    private bool KillUnit(int unitIndex) {
+        Battle_Entity.Faction unitFaction = units[unitIndex].GetFaction();
+
+        Destroy(arrows[unitIndex].gameObject);
+        arrows.RemoveAt(unitIndex);
+        Destroy(units[unitIndex].gameObject);
+        units.RemoveAt(unitIndex);
+
+        bool foundUnitFaction = false;
+        foreach (Battle_Entity unit in units) {
+            if (unit.GetFaction() == unitFaction) {
+                foundUnitFaction = true;
+                break;
+            }
+        }
+
+        if (!foundUnitFaction) {
+            Utils.SaveGameData();
+            SceneManager.LoadScene("Platforming Scene");
+        }
+
+        return true;
     }
 
     private void DoAITurn() {

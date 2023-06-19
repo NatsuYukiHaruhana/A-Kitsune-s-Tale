@@ -28,6 +28,7 @@ public class Battle_Entity : MonoBehaviour {
     private Battle_Entity_Bar hpBar;
     private Battle_Entity_Bar manaBar;
 
+    private SpriteRenderer spriteRend;
     private SpriteRenderer shieldRenderer;
     private bool fadeIn;
     private float fadeSpeed;
@@ -35,6 +36,10 @@ public class Battle_Entity : MonoBehaviour {
     private Animator animator, effectAnimator;
 
     private Sound_Manager sfxManager;
+
+    private bool isDying;
+    private bool finishedDying;
+    private float dieSpeed;
 
     private void Awake() {
         hpBar = Instantiate(barPrefab, this.transform).GetComponent<Battle_Entity_Bar>();
@@ -55,6 +60,8 @@ public class Battle_Entity : MonoBehaviour {
         items = new List<Item>();
 
         SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        spriteRend = renderers[0];
+
         for (int i = 0; i < renderers.Length; i++) {
             if (renderers[i].gameObject.name == "Shield") {
                 shieldRenderer = renderers[i];
@@ -62,12 +69,16 @@ public class Battle_Entity : MonoBehaviour {
             }
         }
         fadeIn = true;
-        fadeSpeed = 0.003f;
+        fadeSpeed = 0.006f;
 
         Animator[] animators = GetComponentsInChildren<Animator>();
         animator = animators[0];
 
         effectAnimator = animators[1];
+
+        isDying = false;
+        finishedDying = false;
+        dieSpeed = 0.0005f;
     }
 
     private void Start() {
@@ -75,6 +86,13 @@ public class Battle_Entity : MonoBehaviour {
     }
 
     void Update() {
+        if (isDying) {
+            if (!finishedDying) {
+                DoDeathAnimation();
+            }
+            return;
+        }
+        
         if (isGuarding) {
             RenderShield();
         }
@@ -167,12 +185,30 @@ public class Battle_Entity : MonoBehaviour {
             battleStats.currHP -= damageDealt;
         } else {
             battleStats.currHP = 0;
+            StartDying();
         }
 
         hpBar.SetTargetPercentage(battleStats.currHP / battleStats.maxHP);
         hpBar.gameObject.SetActive(true);
 
         animator.SetTrigger("isHurt");
+    }
+
+    private void StartDying() {
+        isDying = true;
+    }
+
+    private void DoDeathAnimation() {
+        animator.SetTrigger("isHurt");
+
+        Color spriteColor = spriteRend.color;
+        spriteColor.a -= dieSpeed;
+
+        if (spriteColor.a <= 0f) {
+            finishedDying = true;
+        }
+
+        spriteRend.color = spriteColor;
     }
 
     public void RestoreMana(float amount) {
@@ -314,5 +350,13 @@ public class Battle_Entity : MonoBehaviour {
 
     public Animator GetEffectAnimator() {
         return effectAnimator;
+    }
+
+    public bool GetIsDying() {
+        return isDying;
+    }
+
+    public bool GetFinishedDying() {
+        return finishedDying;
     }
 }

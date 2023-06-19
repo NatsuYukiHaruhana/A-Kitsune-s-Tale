@@ -56,7 +56,7 @@ public class EnemyBehaviour : MonoBehaviour
             CheckForRespawn();
         }
 
-        if (rigidbody2D.isKinematic) {
+        if (rigidbody2D.IsSleeping()) {
             InvincibilityFrames();
         }
 
@@ -149,6 +149,7 @@ public class EnemyBehaviour : MonoBehaviour
             animator.enabled = true;
             spriteRend.enabled = true;
             col2D.enabled = true;
+            rigidbody2D.isKinematic = false;
         }
     }
 
@@ -182,7 +183,6 @@ public class EnemyBehaviour : MonoBehaviour
     private void DoInvincibilityFrames() {
         if (invincibilityTimer < DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond) {
             rigidbody2D.WakeUp();
-            rigidbody2D.isKinematic = false;
             ResetSpriteTransparency();
             isInvincible = false;
         }
