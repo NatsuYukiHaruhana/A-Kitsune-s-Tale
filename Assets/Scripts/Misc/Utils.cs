@@ -53,7 +53,7 @@ public class Utils
         InitUnitData();
         InitEnemyData();
         InitLevelData();
-        //InitKanaData();
+        InitKanaData();
     }
 
     public static void SaveGameData() {
@@ -62,7 +62,6 @@ public class Utils
 
     public static void LoadGameData() {
         LoadTeamData();
-        LoadKanaData();
     }
 
     public static char GetRandomCharacter(bool allowHiragana, bool allowKatakana) {
@@ -134,29 +133,41 @@ public class Utils
         ArrayList data = (ArrayList)bf.Deserialize(file);
         file.Close();
 
-        if (!((string)data[0]).Contains("[Hiragana_Number]: ")) {
-            string dataToWrite = (string)data[0] + "0\n";
+        int index = -1;
+        for (int i = 0; i < data.Count; i++) {
+            if (((string)data[i]).Contains("[Hiragana_Number]: ")) {
+                index = i;
+            }
+        }
+
+        if (index == -1) {
+            string dataToWrite = "[Hiragana_Number]: 0";
 
             file = File.OpenWrite(filePath);
 
-            data = new ArrayList() { dataToWrite };
+            data.Add(dataToWrite);
+            data.Add("");
 
             bf.Serialize(file, data);
             file.Close();
         } else {
-            string substring = ((string)data[0]).Substring(((string)data[0]).IndexOf("[Hiragana_Number]: ")); // contains everything after [Hiragana_Number]
-            substring = substring.Substring(substring.IndexOf(':'), substring.IndexOf('\n') - substring.IndexOf(':')); // contains the number in [Hiragana_Number]
-            numberOfLearnedHiragana = int.Parse(substring.Substring(2)); // offset of 2 for ": ". Should contain only the number.
+            string substring = (string)data[index];
+            substring = substring.Substring(substring.IndexOf(':') + 2);
+            numberOfLearnedHiragana = int.Parse(substring);
 
             if (numberOfLearnedHiragana > 0) {
-                string kanaSubstring = ((string)data[0]).Substring(((string)data[0]).IndexOf("[Hiragana_Percentages]: "));
-                kanaSubstring = kanaSubstring.Substring(kanaSubstring.IndexOf('\n') + 1);
+                string kanaSubstring = (string)data[index + 1];
+
                 for (int i = 0; i < numberOfLearnedHiragana; i++) {
                     Pair<string, float> newPair = new Pair<string, float>();
                     newPair.First = kanaSubstring.Substring(0, kanaSubstring.IndexOf(':'));
-                    newPair.Second = float.Parse(kanaSubstring.Substring(kanaSubstring.IndexOf(':') + 1, kanaSubstring.IndexOf('\n') - kanaSubstring.IndexOf(':') - 1));
+                    newPair.Second = float.Parse(kanaSubstring.Substring(kanaSubstring.IndexOf(':') + 2, kanaSubstring.IndexOf('\n') - kanaSubstring.IndexOf(':') - 2));
 
                     kanaPercentageLearned.Add(newPair);
+
+                    if (i != numberOfLearnedHiragana - 1) {
+                        kanaSubstring = kanaSubstring.Substring(kanaSubstring.IndexOf('\n') + 1); // offset to next entry
+                    }
                 }
             }
         }
@@ -177,11 +188,93 @@ public class Utils
         ArrayList data = (ArrayList)bf.Deserialize(file);
         file.Close();
 
+        int index = -1;
+        for (int i = 0; i < data.Count; i++) {
+            if (((string)data[i]).Contains("[Hiragana_Number]: ")) {
+                index = i;
+            }
+        }
 
+        if (index == -1) {
+            Debug.LogError("Kana data has not been initialized! Reload game to fix issue. Any previous data has been lost.");
+            return;
+        }
+
+        string substring = (string)data[index];
+        substring = substring.Replace(substring.Substring(substring.IndexOf(':') + 2), numberOfLearnedHiragana.ToString());
+        data[index] = substring;
+
+        string dataToWrite = "";
+        foreach(Pair<string, float> pair in kanaPercentageLearned) {
+            string newData = pair.First + ": " + pair.Second + "\n";
+            dataToWrite += newData;
+        }
+        data[index + 1] = dataToWrite;
+
+        file = File.OpenWrite(filePath);
+
+        bf.Serialize(file, data);
+        file.Close();
     }
 
     private static void LoadKanaData() {
+        string filePath = Application.persistentDataPath + "/save_data_" + saveFile + ".dat";
+        FileStream file;
 
+        if (!File.Exists(filePath)) {
+            Debug.LogError(filePath + " does not exist! Can't write kana data!");
+            return;
+        }
+
+        file = File.OpenRead(filePath);
+
+        BinaryFormatter bf = new BinaryFormatter();
+        ArrayList data = (ArrayList)bf.Deserialize(file);
+        file.Close();
+
+        int index = -1;
+        for (int i = 0; i < data.Count; i++) {
+            if (((string)data[i]).Contains("[Hiragana_Number]: ")) {
+                index = i;
+            }
+        }
+        
+        string substring = (string)data[index];
+        substring = substring.Substring(substring.IndexOf(':') + 2);
+        numberOfLearnedHiragana = int.Parse(substring);
+
+        if (numberOfLearnedHiragana > 0) {
+            string kanaSubstring = (string)data[index + 1];
+            kanaSubstring = kanaSubstring.Substring(kanaSubstring.IndexOf('\n') + 1); // offset to first entry
+
+            for (int i = 0; i < numberOfLearnedHiragana; i++) {
+                Pair<string, float> newPair = new Pair<string, float>();
+                newPair.First = kanaSubstring.Substring(0, kanaSubstring.IndexOf(':'));
+                newPair.Second = float.Parse(kanaSubstring.Substring(kanaSubstring.IndexOf(':') + 2, kanaSubstring.IndexOf('\n') - kanaSubstring.IndexOf(':') - 2));
+
+                kanaPercentageLearned.Add(newPair);
+            }
+        }
+    }
+
+    public static void AddKanaData(string kana) {
+        foreach (Pair<string, float> pair in kanaPercentageLearned) {
+            if (pair.First == kana) {
+                return;
+            }
+        }
+
+        kanaPercentageLearned.Add(new Pair<string, float>(kana, 0f));
+        numberOfLearnedHiragana = kanaPercentageLearned.Count;
+    }
+
+    public static void ModifyKanaData(string kana, float value) {
+        foreach (Pair<string, float> pair in kanaPercentageLearned) {
+            if (pair.First == kana) {
+                pair.Second = value;
+                return;
+            }
+        }
     }
 
     private static void SaveTeamData() {

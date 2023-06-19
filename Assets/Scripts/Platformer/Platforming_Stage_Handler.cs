@@ -86,4 +86,13 @@ public class Platforming_Stage_Handler : MonoBehaviour
             playerController.ResetSpriteTransparency();
         }
     }
+
+    public void AddFirstBatchOfKana() {
+        Utils.AddKanaData("あ");
+        Utils.AddKanaData("い");
+        Utils.AddKanaData("う");
+        Utils.AddKanaData("え");
+        Utils.AddKanaData("お");
+        Utils.SaveKanaData();
+    }
 }

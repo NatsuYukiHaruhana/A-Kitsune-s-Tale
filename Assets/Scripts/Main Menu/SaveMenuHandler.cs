@@ -185,7 +185,6 @@ public class SaveMenuHandler : MonoBehaviour
 
     private void NewGame() {
         Utils.username = usernameField.text;
-        Utils.InitGameData();
 
         string filePath = Application.persistentDataPath + "/save_data_" + Utils.saveFile + ".dat";
         FileStream file;
@@ -200,6 +199,7 @@ public class SaveMenuHandler : MonoBehaviour
         bf.Serialize(file, data);
         file.Close();
 
+        Utils.InitGameData();
         Utils.LoadLevelData(1);
         SceneManager.LoadScene("Platforming Scene");
     }

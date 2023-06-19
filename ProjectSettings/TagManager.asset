@@ -14,6 +14,7 @@ TagManager:
   - Background
   - Interactable
   - Popup
+  - Trigger
   layers:
   - Default
   - TransparentFX

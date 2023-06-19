@@ -215,7 +215,17 @@ public class CharacterController2D : MonoBehaviour {
 					collision.gameObject.GetComponentInChildren<Popup>().BeginRaise();
 					readingPopup = true;
 				}
-            }
+            } else if (collision.gameObject.CompareTag("Trigger")) {
+				string triggerName = collision.gameObject.name;
+
+				string gameObjectToFind = triggerName.Substring(0, triggerName.IndexOf(':'));
+				string message = triggerName.Substring(triggerName.IndexOf(':') + 2);
+
+				GameObject receiver = GameObject.Find(gameObjectToFind);
+				if (receiver != null) {
+					receiver.SendMessage(message);
+				}
+			}
         }
     }
 
