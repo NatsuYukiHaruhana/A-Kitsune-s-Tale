@@ -21,6 +21,9 @@ public class Utils
 
     public static string saveToFile = "null";
 
+    public static int numberOfLearnedHiragana = 0;
+    public static List<Pair<string, float>> kanaPercentageLearned = new List<Pair<string, float>>();
+
     public static Vector3 GetMouseWorldPosition() {
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPos.z = 0f;
@@ -50,6 +53,7 @@ public class Utils
         InitUnitData();
         InitEnemyData();
         InitLevelData();
+        //InitKanaData();
     }
 
     public static void SaveGameData() {
@@ -58,6 +62,7 @@ public class Utils
 
     public static void LoadGameData() {
         LoadTeamData();
+        LoadKanaData();
     }
 
     public static char GetRandomCharacter(bool allowHiragana, bool allowKatakana) {
@@ -109,9 +114,74 @@ public class Utils
         using (FileStream file = File.OpenRead(allowedFiles[fileToUse])) {
             using (StreamReader sr = new StreamReader(file, System.Text.Encoding.UTF8)) {
                 string line = sr.ReadLine();
-                return line[UnityEngine.Random.Range(0, 5)];
+                return line[UnityEngine.Random.Range(0, numberOfLearnedHiragana)];
             }
         }
+    }
+
+    private static void InitKanaData() {
+        string filePath = Application.persistentDataPath + "/save_data_" + saveFile + ".dat";
+        FileStream file;
+
+        if (!File.Exists(filePath)) {
+            Debug.LogError(filePath + " does not exist! Can't write kana data!");
+            return;
+        }
+
+        file = File.OpenRead(filePath);
+
+        BinaryFormatter bf = new BinaryFormatter();
+        ArrayList data = (ArrayList)bf.Deserialize(file);
+        file.Close();
+
+        if (!((string)data[0]).Contains("[Hiragana_Number]: ")) {
+            string dataToWrite = (string)data[0] + "0\n";
+
+            file = File.OpenWrite(filePath);
+
+            data = new ArrayList() { dataToWrite };
+
+            bf.Serialize(file, data);
+            file.Close();
+        } else {
+            string substring = ((string)data[0]).Substring(((string)data[0]).IndexOf("[Hiragana_Number]: ")); // contains everything after [Hiragana_Number]
+            substring = substring.Substring(substring.IndexOf(':'), substring.IndexOf('\n') - substring.IndexOf(':')); // contains the number in [Hiragana_Number]
+            numberOfLearnedHiragana = int.Parse(substring.Substring(2)); // offset of 2 for ": ". Should contain only the number.
+
+            if (numberOfLearnedHiragana > 0) {
+                string kanaSubstring = ((string)data[0]).Substring(((string)data[0]).IndexOf("[Hiragana_Percentages]: "));
+                kanaSubstring = kanaSubstring.Substring(kanaSubstring.IndexOf('\n') + 1);
+                for (int i = 0; i < numberOfLearnedHiragana; i++) {
+                    Pair<string, float> newPair = new Pair<string, float>();
+                    newPair.First = kanaSubstring.Substring(0, kanaSubstring.IndexOf(':'));
+                    newPair.Second = float.Parse(kanaSubstring.Substring(kanaSubstring.IndexOf(':') + 1, kanaSubstring.IndexOf('\n') - kanaSubstring.IndexOf(':') - 1));
+
+                    kanaPercentageLearned.Add(newPair);
+                }
+            }
+        }
+    }
+
+    public static void SaveKanaData() {
+        string filePath = Application.persistentDataPath + "/save_data_" + saveFile + ".dat";
+        FileStream file;
+
+        if (!File.Exists(filePath)) {
+            Debug.LogError(filePath + " does not exist! Can't write kana data!");
+            return;
+        }
+
+        file = File.OpenRead(filePath);
+
+        BinaryFormatter bf = new BinaryFormatter();
+        ArrayList data = (ArrayList)bf.Deserialize(file);
+        file.Close();
+
+
+    }
+
+    private static void LoadKanaData() {
+
     }
 
     private static void SaveTeamData() {
@@ -297,17 +367,24 @@ public class Utils
         ArrayList data = (ArrayList)bf.Deserialize(file);
         file.Close();
 
+        int index = -1;
+        for (int i = 0; i < data.Count; i++) {
+            if (((string)data[i]).Contains("[Position]: ")) {
+                index = i;
+            }
+        }
+
         string dataToWrite = null;
-        if (!((string)data[0]).Contains("[Position]: x=")) {
-            dataToWrite = (string)data[0] + "\n[Position]: x=" + playerPos.x.ToString("0.00") + " y=" + playerPos.y.ToString("0.00") + " z=" + playerPos.z.ToString("0.00");
+        if (index == -1) {
+            dataToWrite = "[Position]: " + playerPos.x + ", " + playerPos.y + ", " + playerPos.z + ",";
+            data.Add(dataToWrite);
         } else {
-            dataToWrite = ((string)data[0]).Replace(((string)data[0]).Substring(((string)data[0]).IndexOf("[Position]: x=")), 
-                                                        "\n[Position]: x=" + playerPos.x.ToString("0.00") + " y=" + playerPos.y.ToString("0.00") + " z=" + playerPos.z.ToString("0.00"));
+            dataToWrite = ((string)data[index]).Replace((string)data[index], 
+                                            "[Position]: " + playerPos.x + ", " + playerPos.y + ", " + playerPos.z + ",");
+            data[index] = dataToWrite;
         }
 
         file = File.OpenWrite(filePath);
-
-        data = new ArrayList() { dataToWrite };
 
         bf.Serialize(file, data);
         file.Close();
@@ -330,17 +407,18 @@ public class Utils
         ArrayList data = (ArrayList)bf.Deserialize(file);
         file.Close();
 
-        string dataRead = (string)data[0];
+        int index = -1;
+        for (int i = 0; i < data.Count; i++) {
+            if (((string)data[i]).Contains("[Position]: ")) {
+                index = i;
+            }
+        }
 
-        if (dataRead.Contains("[Position]: x=")) {
-            int length = dataRead[dataRead.IndexOf("x=") + 2] == '-' ? 5 : 4;
-            playerPos.x = float.Parse(dataRead.Substring(dataRead.IndexOf("x=") + 2, length));
+        if (index != -1) {
+            string dataRead = (string)data[index];
 
-            length = dataRead[dataRead.IndexOf("y=") + 2] == '-' ? 5 : 4;
-            playerPos.y = float.Parse(dataRead.Substring(dataRead.IndexOf("y=") + 2, length));
-
-            length = dataRead[dataRead.IndexOf("z=") + 2] == '-' ? 5 : 4;
-            playerPos.z = float.Parse(dataRead.Substring(dataRead.IndexOf("z=") + 2, length));
+            playerPos = ParsePosition(dataRead);
+            Debug.Log(playerPos);
         }
 
         return playerPos;
@@ -408,6 +486,7 @@ public class Utils
         }
     }
 
+    // string form: "Name: xCoords, yCoords, [zCoords,]"
     public static Vector3 ParsePosition(string str) {
         Vector3 pos = Vector3.zero;
 
