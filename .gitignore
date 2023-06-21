@@ -133,6 +133,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Asset stuff
+*.xcf
+*.xcf.meta
+
 # Visual Studio stuff
 .vs/
 .idea/
